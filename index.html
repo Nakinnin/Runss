@@ -1,0 +1,1331 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0B1815">
+<title>Run To Earn</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap"></noscript><link rel="dns-prefetch" href="https://tile.openstreetmap.org">
+<style>
+/* Layout: single phone-width column, scrolling content, fixed 5-tab bar. Light mint single look. */
+:root{--card:#FFFFFF;--ink:#0B3B35;--dark:#0F4A41;--dark2:#0A3A33;--green:#1FA971;--green2:#14935F;--mint:#DDF1EA;--mint2:#EAF6F2;--bg:#E6FAF0;--card:#FFFFFF;--muted:#6E8882;--line:#E1F3EB;--bar:#E3EEEA;--navbg:rgba(255,255,255,.97);--pillbg:#CFF0E2;--pilltx:#0F4A41;--strkbg:#FFF1EA;--tb:#0F4A41;--orange:#F26B38;--red:#E5453A;
+--f-th:'Noto Sans Thai','Inter',system-ui,sans-serif;--f-en:'Inter','Noto Sans Thai',system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E3F2EE;--bg:#0B1815;--card:#12251F;--muted:#8FAAA3;--line:#21403A;--mint:#1B3A31;--mint2:#183229;--bar:#21403A;--navbg:rgba(11,24,21,.94);--pillbg:#1F4A3C;--pilltx:#CFF0E2;--strkbg:#3B2417;--tb:#8FE3C3;--green2:#3FCB92;--dark:#1B6B58;color-scheme:dark}}
+:root[data-theme="dark"]{--ink:#E3F2EE;--bg:#0B1815;--card:#12251F;--muted:#8FAAA3;--line:#21403A;--mint:#1B3A31;--mint2:#183229;--bar:#21403A;--navbg:rgba(11,24,21,.94);--pillbg:#1F4A3C;--pilltx:#CFF0E2;--strkbg:#3B2417;--tb:#8FE3C3;--green2:#3FCB92;--dark:#1B6B58;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-th);font-size:14px;line-height:1.35;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:6px}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0;text-align:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.app{max-width:430px;margin:0 auto}
+main{padding-bottom:96px;display:flex;flex-direction:column;gap:12px}
+.ic{flex:none}
+.top{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:6px;padding:6px 0 2px}
+.ttl{text-align:center;font-family:var(--f-en);font-weight:800;font-size:19px;letter-spacing:.2px;line-height:1.1}
+.ttl small{display:block;font-weight:500;font-size:12px;color:var(--muted);letter-spacing:0;margin-top:3px}
+.ibtn{width:44px;height:44px;border-radius:50%;background:var(--card);display:grid;place-items:center;box-shadow:0 2px 10px rgba(15,74,65,.08)}
+.sp{width:44px}
+.bal{display:flex;align-items:center;gap:14px;width:100%;padding:18px;border-radius:22px;color:#fff;background:linear-gradient(135deg,#14584D,#0A3A33);box-shadow:0 8px 20px rgba(10,58,51,.25)}
+.bal-t{flex:1;display:flex;flex-direction:column;min-width:0}
+.bal-t span{font-size:16px;color:#CFE9E1}
+.bal-t b{font-family:var(--f-en);font-size:44px;line-height:1.05;font-weight:700}
+.bal-t em{font-style:normal;font-family:var(--f-en);font-size:13px;color:#CFE9E1;letter-spacing:.5px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;gap:10px;align-items:flex-start;min-width:0}
+.stat .sl{font-size:12px;color:var(--ink)}
+.stat .sv{font-family:var(--f-en);font-size:26px;font-weight:700;line-height:1.15;margin-top:2px}
+.stat .sv small{font-size:14px;font-weight:700}
+.stat .sub{font-size:11px;color:var(--muted)}
+.stat .st{min-width:0;flex:1}
+.bar{height:9px;border-radius:9px;background:var(--bar);margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#46C393,#1FA971);border-radius:9px}
+.go{display:flex;align-items:center;gap:14px;width:100%;padding:14px 18px;border-radius:22px;color:#fff;background:linear-gradient(135deg,#2BB67D,#14935F);box-shadow:0 8px 18px rgba(20,147,95,.3)}
+.go div{flex:1}
+.go b{display:block;font-family:var(--f-en);font-size:26px;font-weight:600;letter-spacing:.3px}
+.go span{font-size:13px}
+.hero{display:flex;gap:14px;align-items:center;padding:18px;border-radius:22px;color:#fff;background:linear-gradient(135deg,#14584D,#0A3A33)}
+.hero h2{margin:0;font-size:28px;font-weight:700;line-height:1.1}
+.hero p{margin:4px 0 0;color:#8FE3C3;font-weight:600;font-size:16px}
+.hero small{display:block;margin-top:6px;font-family:var(--f-en);color:#CFE9E1;font-size:12px;line-height:1.3}
+.big{font-family:var(--f-en);font-size:32px;font-weight:700}
+.cap{font-family:var(--f-en);font-size:10px;color:var(--muted);letter-spacing:.4px;text-transform:uppercase}
+.pgt{text-align:center;margin:0}
+.pgt h1{margin:0;font-family:var(--f-en);font-size:24px;font-weight:800}
+.pgt p{margin:2px 0 0;font-size:13px;font-weight:600}
+.wt{display:flex;align-items:center;gap:12px}
+.wt h1{margin:0;font-family:var(--f-en);font-size:28px;font-weight:700;line-height:1.1}
+.wt p{margin:2px 0 0;font-size:12px;color:var(--ink)}
+.wbox{width:56px;height:56px;border-radius:16px;background:var(--dark);color:#fff;display:grid;place-items:center;flex:none}
+.xfer{width:78px;align-self:stretch;border-radius:16px;background:var(--mint);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-weight:700}
+.xfer small{font-family:var(--f-en);font-size:11px;font-weight:500}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px}
+.ph{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
+.ph b{font-size:15px}
+select{font:inherit;font-size:13px;padding:6px 10px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.chart{width:100%;height:auto;display:block}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hist{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px 10px;min-width:0}
+.hist h3{margin:0 0 8px;font-size:13px;display:flex;align-items:center;gap:6px}
+.row{display:flex;align-items:center;gap:8px;padding:7px 0;min-width:0}
+.row .rb{width:30px;height:30px;border-radius:50%;background:var(--mint2);display:grid;place-items:center;flex:none}
+.row .rt{flex:1;min-width:0;font-size:12px;font-weight:600}
+.row .rt small{display:block;font-weight:400;color:var(--muted);font-size:10px}
+.row .ra{font-family:var(--f-en);font-weight:700;font-size:12px;white-space:nowrap}
+.in{color:var(--green2)}.out{color:var(--red)}
+.link{display:flex;align-items:center;justify-content:flex-end;gap:2px;width:100%;font-weight:700;font-size:12px;padding-top:6px}
+.search{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0 14px;height:48px;color:var(--muted)}
+.search input{flex:1;min-width:0;border:0;background:none;font:inherit;color:var(--ink);height:100%}
+.search input::placeholder{color:var(--muted)}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.cat{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:600}
+.cat i{width:56px;height:56px;border-radius:50%;background:var(--mint);display:grid;place-items:center}
+.cat small{font-family:var(--f-en);font-weight:400;font-size:11px;color:var(--muted)}
+.cat.on i{background:var(--dark);color:#fff}
+.sh{display:flex;justify-content:space-between;align-items:center}
+.sh b{font-size:17px}
+.sh button{color:var(--green2);font-weight:600;font-size:13px;display:flex;align-items:center}
+.deal{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:8px 12px 8px 8px}
+.thumb{width:84px;height:84px;border-radius:14px;display:grid;place-items:center;color:#fff;flex:none}
+.deal .dt{flex:1;min-width:0}
+.deal .dt b{display:block;font-family:var(--f-en);font-size:15px}
+.deal .dt span{font-size:12px;color:var(--muted)}
+.deal .cost{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:6px}
+.deal .cost em{font-style:normal;font-family:var(--f-en);font-weight:700;font-size:13px;display:flex;align-items:center;gap:5px}
+.rbtn{background:var(--green);color:#fff;font-family:var(--f-en);font-weight:700;font-size:12px;padding:8px 14px;border-radius:999px}
+.rbtn.dim{background:#9CC9B8}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--card);border-radius:16px;padding:5px;border:1px solid var(--line)}
+.tab{text-align:center;padding:7px 4px;border-radius:12px;font-weight:700;font-size:15px;line-height:1.1}
+.tab small{display:block;font-family:var(--f-en);font-size:12px;font-weight:600;opacity:.8}
+.tab.on{background:var(--dark);color:#fff}
+.cp{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.cph{display:grid;grid-template-columns:1fr 1fr;height:96px}
+.cph .l{display:grid;place-items:center;color:#fff}
+.cph .r{background:var(--dark);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-family:var(--f-en);font-weight:700;font-size:20px}
+.cph .r small{font-size:8px;font-weight:500;letter-spacing:.8px;line-height:1.1;text-align:center}
+.cpb{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px}
+.cpb h3{margin:0;font-size:22px}
+.cpb .t2{font-weight:700;color:var(--ink);font-size:15px;line-height:1.3}
+.cpb .en{font-family:var(--f-en);font-size:11px;font-weight:600;color:var(--ink)}
+.qrw{align-self:center;padding:6px;background:#fff;position:relative}
+.qr{width:104px;height:104px;display:grid;place-items:center}
+.qr img,.qr canvas{width:104px!important;height:104px!important}
+.used .qr{opacity:.2}
+.code{align-self:center;background:var(--mint2);border-radius:10px;padding:6px 26px;font-family:var(--f-en);font-weight:700;letter-spacing:.5px}
+.cpf{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}
+.cpf .ex{display:flex;gap:8px;align-items:center;font-size:12px;font-weight:700;line-height:1.25;min-width:0}
+.cpf .ex small{display:block;font-family:var(--f-en);font-weight:500;font-size:11px}
+.pill{background:var(--pillbg);color:var(--pilltx);border-radius:14px;padding:8px 14px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;line-height:1.1;text-align:left}
+.pill small{display:block;font-family:var(--f-en);font-size:12px;font-weight:600}
+.pill.used{background:var(--mint);color:var(--muted)}
+.cpact{align-self:flex-end;font-weight:700;font-size:12px;color:var(--green2);padding:4px 0}
+.empty{text-align:center;color:var(--muted);padding:28px 10px}
+.map{width:100%;height:auto;display:block;border-radius:18px;border:1px solid var(--line)}
+.mapw{position:relative}
+.badge{position:absolute;left:10px;top:10px;background:var(--dark);color:#fff;display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:12px;font-weight:700;font-size:14px;line-height:1.1}
+.badge small{display:block;font-family:var(--f-en);font-weight:500;font-size:10px;letter-spacing:.5px}
+.gps{position:absolute;right:10px;top:10px;color:#0B3B35;background:rgba(255,255,255,.92);border-radius:999px;padding:4px 10px;font-size:11px;display:flex;align-items:center;gap:6px;font-weight:600}
+.gps i{width:7px;height:7px;border-radius:50%;background:var(--green)}
+.ctl{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center;padding:6px 0}
+.cb{display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:700;font-size:12px;line-height:1.1}
+.cb small{display:block;font-family:var(--f-en);font-size:11px}
+.cb i{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:0 6px 14px rgba(0,0,0,.15)}
+.cb:disabled{opacity:.4;cursor:default}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--navbg);border-top:1px solid var(--line);padding:6px max(16px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));}
+.nav-in{max-width:430px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr)}
+.nv{display:flex;flex-direction:column;align-items:center;gap:2px;font-family:var(--f-en);font-size:10px;color:var(--muted);font-weight:500;padding:2px 0}
+.nv i{width:38px;height:34px;border-radius:50%;display:grid;place-items:center}
+.nv.on{color:var(--ink);font-weight:700}
+.nv.on i{background:var(--mint)}
+.sheetbg{position:fixed;inset:0;background:rgba(5,30,25,.5);z-index:40;display:flex;align-items:flex-end;justify-content:center}
+.sheet{width:100%;max-width:430px;background:var(--card);border-radius:24px 24px 0 0;padding:20px max(18px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:12px}
+.sheet h3{margin:0;font-size:19px}
+.sheet p{margin:0;color:var(--muted)}
+.fld{display:flex;flex-direction:column;gap:4px;font-weight:600;font-size:13px}
+.fld input{font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--mint2);color:var(--ink)}
+.err{color:var(--red);font-size:12px;min-height:16px}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.b1,.b2{padding:13px;border-radius:14px;font-weight:700;text-align:center}
+.b1{background:var(--green);color:#fff}.b2{background:var(--mint);color:var(--ink)}.b1.red{background:var(--red)}
+#toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--dark2);color:#fff;padding:10px 16px;border-radius:999px;z-index:50;max-width:88vw;text-align:center;font-weight:600;font-size:13px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.prof{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px}
+.av{width:64px;height:64px;border-radius:50%;background:var(--dark);color:#fff;display:grid;place-items:center;flex:none}
+.kv{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}
+.kv:last-child{border:0}
+.kv b{font-family:var(--f-en)}
+.thumb{position:relative}
+.hot{position:absolute;left:6px;top:6px;background:var(--orange);color:#fff;font-family:var(--f-en);font-size:9px;font-weight:800;padding:2px 6px;border-radius:999px}
+.feat{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.fc{flex:none;width:150px;border-radius:18px;padding:12px;color:#fff;display:flex;flex-direction:column;gap:2px;scroll-snap-align:start;text-align:left}
+.fc b{font-family:var(--f-en);font-size:14px;margin-top:8px}.fc span{font-size:11px;opacity:.85}.fc em{font-style:normal;font-family:var(--f-en);font-weight:700;font-size:13px;margin-top:6px}
+.deal,.cp,.grp{content-visibility:auto;contain-intrinsic-size:auto 110px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.chip{flex:none;padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-weight:600;font-size:13px;white-space:nowrap}
+.chip.on{background:var(--dark);color:#fff;border-color:var(--dark)}
+.grp{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.gh{display:flex;gap:12px;align-items:center}
+.gi{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:#fff;flex:none}
+.gh b{font-size:15px;display:block}
+.gm{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted)}
+.gm span{display:flex;align-items:center;gap:5px}
+.ga{display:flex;gap:8px;justify-content:space-between;align-items:center}
+.ga .ct{font-size:12px;font-weight:600;display:flex;align-items:center;gap:5px}
+.jb{padding:9px 16px;border-radius:999px;font-weight:700;font-size:13px;background:var(--green);color:#fff}
+.jb.on{background:var(--mint);color:var(--ink)}
+.cki{padding:9px 14px;border-radius:999px;font-weight:700;font-size:12px;background:var(--dark);color:#fff}
+.cki:disabled{opacity:.45;cursor:default}
+.sel{font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--mint2);color:var(--ink)}
+.sheet{max-height:92vh;overflow-y:auto}
+button.stat{width:100%;text-align:left}
+.strk{display:flex;align-items:center;gap:4px;font-weight:700;font-size:12px;color:var(--orange);background:var(--strkbg);padding:4px 10px;border-radius:999px}
+.inf{display:flex;flex-direction:column;gap:1px;margin-top:2px;font-size:11px;font-weight:700}
+.lowst{color:var(--red)}
+.cd{color:var(--orange);font-family:var(--f-en);font-variant-numeric:tabular-nums}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.m3{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.m3 span{font-size:11px;color:var(--muted)}
+.m3 b{font-family:var(--f-en);font-size:16px}
+.stk{display:flex;flex-direction:column;gap:10px}
+.evt{color:var(--orange);font-weight:700;font-size:12px}
+.jb:disabled{opacity:.5;cursor:default}
+.seg{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.kv{align-items:center}
+html[lang="en"] .tab small:not(.keep),html[lang="en"] .cat small,html[lang="en"] .cb small,html[lang="en"] .badge small,html[lang="en"] .stat .cap,html[lang="en"] .hero small,html[lang="en"] .xfer small,html[lang="en"] .cpf .ex small,html[lang="en"] .pill small,html[lang="en"] .dup,html[lang="en"] .ttl.dup small,html[lang="en"] .cpb h3,html[lang="en"] .cpb .t2{display:none}
+html[lang="en"] .cpb .en{font-size:15px;font-weight:700}
+@media (prefers-reduced-motion:no-preference){.rbtn,.go,.bal,.nv i,.tab{transition:transform .12s}.rbtn:active,.go:active,.bal:active{transform:scale(.97)}}
+
+/* ===== v6 modern layer ===== */
+:root{--bgtop:#7BE6B8;--sh:0 10px 28px rgba(8,50,42,.10);--sh2:0 8px 22px rgba(10,150,100,.16)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bgtop:#0F3A30}}
+:root[data-theme="dark"]{--bgtop:#0F3A30}
+body{background:radial-gradient(120% 46% at 50% -8%,var(--bgtop),transparent 70%),var(--bg);background-repeat:no-repeat}
+main{padding-bottom:108px;gap:14px}
+.ibtn{width:42px;height:42px;border:1px solid var(--line);box-shadow:var(--sh2)}
+.ibtn.glass{background:var(--navbg);}
+.ttl{font-size:18px;letter-spacing:.6px}
+.panel,.stat,.sumc,.m3,.grp,.cp,.search,.hist{border-radius:20px;box-shadow:var(--sh2)}
+.bal2{position:relative;display:block;width:100%;overflow:hidden;text-align:left;padding:20px 20px 62px;border-radius:26px;color:#fff;background:radial-gradient(120% 120% at 100% 0,#2A8F77 0,transparent 55%),linear-gradient(140deg,#14584D,#0A3A33);box-shadow:0 14px 30px rgba(10,58,51,.30)}
+.bal2::after{content:"";position:absolute;right:-40px;top:-50px;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.06)}
+.b2c{position:absolute;right:18px;top:16px;z-index:1}
+.b2t{position:relative;z-index:1;display:flex;flex-direction:column}
+.b2l{font-size:15px;color:#CFE9E1}
+.b2n{font-family:var(--f-en);font-size:52px;line-height:1.05;font-weight:800;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.b2u{display:flex;align-items:center;gap:8px;font-family:var(--f-en);font-size:13px;color:#CFE9E1;letter-spacing:.6px}
+.chip2{font-style:normal;font-weight:700;color:#0A3A33;background:#8FE3C3;border-radius:999px;padding:2px 10px;font-size:12px;letter-spacing:0}
+.spk{position:absolute;left:0;right:0;bottom:0;width:100%;height:50px}
+.bal{border-radius:26px;box-shadow:0 14px 30px rgba(10,58,51,.28)}
+.bal-t b{font-weight:800;font-variant-numeric:tabular-nums}
+.today{display:grid;grid-template-columns:128px 1fr;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:16px;box-shadow:var(--sh2)}
+.ring{position:relative;width:128px;height:128px}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .rk{fill:none;stroke:var(--bar);stroke-width:9}
+.ring .rf{fill:none;stroke:url(#rg);stroke-width:9;stroke-linecap:round}
+.rc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.rc b{font-family:var(--f-en);font-size:30px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.rc span{font-size:11px;color:var(--muted);margin-top:3px}
+.tm{display:flex;flex-direction:column;gap:9px;min-width:0}
+.mr{display:flex;align-items:center;gap:8px;font-size:12px;min-width:0}
+.mr span{flex:1;color:var(--muted);min-width:0}
+.mr b{font-family:var(--f-en);font-size:15px;white-space:nowrap}
+.mr b small{font-size:10px;color:var(--muted)}
+.ge{display:flex;align-items:center;gap:2px;font-size:11px;font-weight:600;color:var(--green2);padding-top:2px}
+.go{position:relative;overflow:hidden;border-radius:24px;padding:16px 20px}
+.go::after{content:"";position:absolute;top:0;bottom:0;width:60px;left:-80px;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);animation:sheen 4.5s ease-in-out infinite}
+@keyframes sheen{0%,60%{left:-80px}100%{left:120%}}
+.sumc{background:var(--card);border:1px solid var(--line);padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.sumc .sl{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted)}
+.sumc b{font-family:var(--f-en);font-size:22px;font-variant-numeric:tabular-nums}
+.stk{display:flex;flex-direction:column;gap:12px}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dc{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--sh2);min-width:0}
+.db{display:flex;flex-direction:column;gap:2px;padding:10px 12px 12px;min-width:0;flex:1}
+.db b{font-family:var(--f-en);font-size:14px;line-height:1.2}
+.ds{font-size:12px;color:var(--muted)}
+.dtag{display:flex;flex-direction:column;gap:1px;min-height:0;font-size:11px;font-weight:700}
+.dcost{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:auto;padding-top:8px}
+.dcost em{font-style:normal;font-family:var(--f-en);font-weight:800;font-size:15px;display:flex;align-items:center;gap:4px}
+.art{position:relative;overflow:hidden;height:96px;display:grid;place-items:center;color:#fff}
+.art>svg{position:absolute;inset:0;width:100%;height:100%}
+.art .ai{position:relative;opacity:.95;filter:drop-shadow(0 4px 8px rgba(0,0,0,.25))}
+.art .lg{position:absolute;left:8px;bottom:8px;min-width:26px;height:26px;padding:0 5px;border-radius:8px;background:#fff;font-family:var(--f-en);font-weight:800;font-size:11px;display:grid;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.art .hot{left:auto;right:8px;top:8px}
+.art.fa{height:118px}
+.art.cpa{height:100%;min-height:96px}
+.feat{gap:12px;margin:0 -16px;padding:2px 16px 8px;scroll-padding:0 16px}
+.fc{display:flex;flex-direction:column;width:190px;padding:0;border-radius:22px;overflow:hidden;background:var(--card);border:1px solid var(--line);box-shadow:var(--sh);color:var(--ink)}
+.fc .fb{display:flex;flex-direction:column;gap:2px;padding:10px 12px 12px}
+.fc .fb b{font-family:var(--f-en);font-size:15px;margin:0}
+.fc .fb span{font-size:12px;color:var(--muted);opacity:1}
+.fc .fb em{display:flex;align-items:center;gap:5px;margin-top:6px;font-weight:800;font-family:var(--f-en);font-size:14px}
+.cph .l{display:block;place-items:stretch;color:#fff;min-width:0}
+.cph .l .art{width:100%;height:100%}
+.tabs{border-radius:16px}
+.tab{transition:background .15s}
+.nav{background:none;border:0;padding:0 max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));pointer-events:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.nav-in{pointer-events:auto;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--navbg);border:1px solid var(--line);border-radius:28px;padding:6px;box-shadow:0 12px 32px rgba(8,40,34,.20);}
+.nv{font-size:10.5px;gap:1px;padding:3px 0;border-radius:22px;transition:color .15s}
+.nv i{width:46px;height:32px;border-radius:16px;transition:background .2s}
+.nv.on{color:var(--ink)}
+.nv.on i{background:var(--green);color:#fff}
+.sheetbg{}
+.fxc{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
+body.runmode{overflow:hidden}
+.runm{position:fixed;top:0;bottom:0;left:0;right:0;max-width:430px;margin:0 auto;padding:0;display:block;z-index:30;background:var(--bg);overflow:hidden}
+.mapc{position:absolute;inset:0;width:100%;height:100%;display:block}
+.rtop{position:absolute;left:0;right:0;top:0;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:calc(10px + env(safe-area-inset-top,0px)) 14px 0}
+.rpill{display:flex;align-items:center;gap:8px;background:var(--navbg);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-weight:700;font-size:13px;box-shadow:var(--sh2);}
+.rpill i{width:9px;height:9px;border-radius:50%;background:var(--muted)}
+.rpill[data-st=running] i{background:var(--red);animation:blink 1.2s infinite}
+.rpill[data-st=paused] i{background:var(--orange)}
+@keyframes blink{50%{opacity:.25}}
+.gps2{background:var(--navbg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:11px;font-weight:600;min-width:42px;text-align:center;box-shadow:var(--sh2)}
+.rpanel{position:absolute;left:0;right:0;bottom:0;background:var(--card);border-radius:30px 30px 0 0;padding:8px 20px calc(20px + env(safe-area-inset-bottom,0px));box-shadow:0 -14px 40px rgba(0,0,0,.22);display:flex;flex-direction:column;gap:12px}
+.grab{width:40px;height:4px;border-radius:4px;background:var(--line);align-self:center}
+.rbig{text-align:center;display:flex;flex-direction:column}
+.rbig b{font-family:var(--f-en);font-size:58px;line-height:1;font-weight:800;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+.rbig span{font-size:12px;color:var(--muted);margin-top:2px}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.rgrid div{background:var(--mint2);border-radius:16px;padding:10px 4px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.rgrid b{font-family:var(--f-en);font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+.rgrid span{font-size:10px;color:var(--muted)}
+.rctl{display:flex;justify-content:center;align-items:flex-start;gap:34px;min-height:96px}
+.bigstart{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:68px;border-radius:34px;color:#fff;font-size:20px;font-weight:800;background:linear-gradient(135deg,#2BB67D,#14935F);box-shadow:0 10px 22px rgba(20,147,95,.35)}
+.cl{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;font-weight:700}
+.rc2{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.2)}
+.rc2.pause{background:var(--dark2)}.rc2.go2{background:#16A36B}.rc2.stop{background:var(--red)}
+@media (prefers-reduced-motion:no-preference){
+.enter{animation:enter .3s ease-out}
+@keyframes enter{from{opacity:0;transform:translateY(10px)}}
+.ring .rf{animation:ringin .9s cubic-bezier(.2,.7,.2,1)}
+@keyframes ringin{from{stroke-dasharray:0 276.46}}
+.sheet{animation:sup .26s cubic-bezier(.2,.8,.2,1)}
+@keyframes sup{from{transform:translateY(40px);opacity:.4}}
+.dc,.fc{transition:transform .15s}.dc:active,.fc:active{transform:scale(.98)}}
+@media (prefers-reduced-motion:reduce){.go::after{animation:none}}
+
+/* ===== v7 registration / admin / community detail ===== */
+.wel{display:flex;flex-direction:column;gap:14px;padding-top:calc(10px + env(safe-area-inset-top,0px))}
+.wel-h{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:10px 6px 0}
+.wel-h h1{margin:6px 0 0;font-size:24px;line-height:1.2}
+.wel-h p{margin:0;color:var(--muted);font-size:13px}
+.wel-f{display:flex;flex-direction:column;gap:14px}
+.note{font-size:12px;color:var(--muted);text-align:center;margin:0}
+.pfc{display:flex;gap:10px;flex-wrap:wrap}
+.pfsw{background-origin:border-box;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;border:3px solid transparent;box-shadow:var(--sh2)}
+.pfsw.on{border-color:var(--ink)}
+.av2{display:inline-grid;place-items:center;border-radius:50%;color:#fff;font-family:var(--f-th);font-weight:800;flex:none;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.av2.more{width:38px;height:38px;font-size:12px;background:var(--mint);color:var(--ink);box-shadow:none}
+.av-btn{overflow:hidden;padding:0}
+.psp{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.psp span{font-size:11px;background:var(--mint);border-radius:999px;padding:2px 10px}
+.hint{display:flex;align-items:center;gap:10px;background:var(--strkbg);border-radius:18px;padding:12px 14px;font-size:13px;font-weight:600}
+.hint span{flex:1;min-width:0}
+.admb{position:fixed;top:0;left:0;right:0;z-index:35;height:calc(18px + env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);background:var(--orange);color:#fff;font-family:var(--f-en);font-size:10px;font-weight:800;letter-spacing:1px;text-align:center;line-height:18px}
+body.adminmode main:not(.runm){padding-top:20px}
+button.gh{width:100%;text-align:left}
+.dh{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--sh)}
+.art.dha{height:150px}
+.dha .lg{display:none}
+.dhi{position:absolute;left:0;right:0;bottom:0;padding:28px 16px 14px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.55));display:flex;flex-direction:column;gap:2px}
+.dhi b{font-size:20px;line-height:1.2}.dhi span{font-size:12px;opacity:.9}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+.acts .jb,.acts .cki{padding:13px 20px;font-size:14px;flex:1;text-align:center;min-width:0}
+.panel .kv span{display:flex;align-items:center;gap:6px;color:var(--muted)}
+.panel .kv b{text-align:right;min-width:0}
+.chl{display:flex;align-items:baseline;gap:10px;margin:8px 0 6px}
+.chl b{font-family:var(--f-en);font-size:22px}
+.chl span{font-size:12px;color:var(--muted)}
+.lbr{display:flex;align-items:center;gap:10px;padding:8px 6px;border-radius:14px}
+.lbr.me{background:var(--mint)}
+.lbr b{flex:1;min-width:0;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lbr b em{font-style:normal;font-size:11px;color:var(--green2)}
+.lbk{font-family:var(--f-en);font-weight:800;font-size:15px;white-space:nowrap}
+.lbk small{font-size:10px;color:var(--muted);font-weight:500}
+.rk{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-en);font-weight:800;font-size:12px;background:var(--mint2);flex:none}
+.rk.r1{background:#FFD84D;color:#5A4300}.rk.r2{background:#D5DCE0;color:#33414A}.rk.r3{background:#E9B27A;color:#5A3210}
+.mem{display:flex;flex-wrap:wrap;gap:6px}
+.txt{margin:6px 0 0;font-size:13px;line-height:1.5}
+.bl{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:13px}
+.bl li{display:flex;align-items:center;gap:8px}
+.bl li svg{color:var(--green2)}
+.dlk{display:block;width:100%;text-align:left;padding:0;color:inherit}
+.dlk b{display:block}
+.stp{margin:6px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.45}
+.tl li svg{display:none}
+.tl{list-style:disc;padding-left:18px}
+.tl li{display:list-item}
+.jb.dim{background:var(--dim)}
+
+/* ===== v8 vibrant style ===== */
+.panel,.stat,.sumc,.m3,.grp,.cp,.search,.hist,.dc,.today,.fc{border-radius:26px}
+.bal2{background:radial-gradient(120% 120% at 100% 0,#5CF0B4 0,transparent 55%),linear-gradient(140deg,#10B97A,#067A52);border-radius:32px}
+.bal{background:linear-gradient(135deg,#10B97A,#067A52)}
+.go{background:linear-gradient(135deg,#FFB020,#F26B38);box-shadow:0 12px 26px rgba(242,107,56,.4);border-radius:30px}
+.hero{background:linear-gradient(135deg,#10B97A,#067A52);border-radius:28px}
+.rbtn,.jb,.b1{background:linear-gradient(135deg,#1FD38C,#0A9F68);box-shadow:0 5px 12px rgba(10,159,104,.35)}
+.rbtn.dim,.jb.dim,.jb:disabled{background:#9CC9B8;box-shadow:none}
+.b1.red{background:var(--red);box-shadow:none}
+.nv.on i{background:linear-gradient(135deg,#1FD38C,#0A9F68);box-shadow:0 4px 10px rgba(10,159,104,.35)}
+.sh b,.ph b,.hero h2{font-weight:900}
+.bar i{background:linear-gradient(90deg,#46C393,#1FD38C 70%,#F5B82E)}
+.ring .rf,.ring .rk{stroke-width:11}
+.ring.near .rf,.ring.done .rf{stroke:url(#rg2)}
+.ring.done .rf{filter:drop-shadow(0 0 5px rgba(255,200,61,.7))}
+.bigstart{height:76px;border-radius:38px;font-size:22px;background:linear-gradient(135deg,#FFB020,#F26B38);box-shadow:0 14px 28px rgba(242,107,56,.45)}
+.rbig b{font-size:68px}
+.rpanel{border-radius:36px 36px 0 0}
+.rgrid div{background:linear-gradient(160deg,var(--mint2),var(--mint));border-radius:20px}
+.rc2{width:84px;height:84px;box-shadow:0 10px 22px rgba(0,0,0,.25)}
+.rc2.go2{background:linear-gradient(135deg,#1FD38C,#0A9F68)}
+.rc2.pause{background:linear-gradient(135deg,#FFB020,#F26B38)}
+.rc2.stop{background:linear-gradient(135deg,#FF6B5E,#E5453A)}
+.empty{background:var(--card);border:2px dashed var(--line);border-radius:26px;display:flex;flex-direction:column;align-items:center;gap:10px;padding:26px 16px}
+.empty>svg{box-sizing:content-box;padding:18px;border-radius:50%;background:linear-gradient(135deg,var(--mint),var(--mint2));color:var(--green2)}
+.empty p{margin:0;font-weight:600;color:var(--ink)}
+.bdgs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 6px}
+.bdg{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;font-size:10.5px;line-height:1.2;color:var(--muted);min-width:0}
+.bdg i{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:var(--bar);color:var(--muted);opacity:.55;filter:grayscale(1)}
+.bdg.on{color:var(--ink);font-weight:700}
+.bdg.on i{background:linear-gradient(135deg,#FFD25E,#F2A21E);color:#fff;opacity:1;filter:none;box-shadow:0 5px 12px rgba(242,162,30,.45)}
+.done{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.done h3{font-size:22px}
+.dtok{display:flex;align-items:baseline;gap:6px;font-family:var(--f-en)}
+.dtok b{font-size:56px;font-weight:900;line-height:1;color:var(--green2);font-variant-numeric:tabular-nums}
+.dtok span{font-weight:700;color:var(--muted)}
+.dex{color:var(--orange)!important;font-weight:700;font-size:13px}
+.done .rgrid{width:100%}
+.dbg{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;align-items:center}
+.dbg .cap{width:100%}
+.bgd{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#FFD25E,#F2A21E);color:#5A3A00;font-weight:800;font-size:12px;padding:6px 12px;border-radius:999px}
+.done .btns{width:100%}
+@media (prefers-reduced-motion:no-preference){
+.rbtn:active,.jb:active,.b1:active,.b2:active,.bigstart:active,.rc2:active,.chip:active,.cki:active{transform:scale(.94)}
+.rbtn,.jb,.b1,.b2,.bigstart,.rc2,.chip,.cki{transition:transform .12s}
+.nv:active i{transform:scale(.88)}
+.dgrid>*,.stk>*,.cats>*{animation:enter .4s both}
+.dgrid>*:nth-child(2),.stk>*:nth-child(2){animation-delay:.05s}.dgrid>*:nth-child(3),.stk>*:nth-child(3){animation-delay:.1s}.dgrid>*:nth-child(4),.stk>*:nth-child(4){animation-delay:.15s}.dgrid>*:nth-child(n+5),.stk>*:nth-child(n+5){animation-delay:.2s}
+.ring.near .rf{animation:ringin .9s cubic-bezier(.2,.7,.2,1),glow 2.2s 1s ease-in-out infinite}
+@keyframes glow{50%{filter:drop-shadow(0 0 6px rgba(255,200,61,.8))}}
+.dcoin{animation:pop .6s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes pop{from{transform:scale(.3) rotate(-20deg);opacity:0}}
+.bgd{animation:pop .5s .5s cubic-bezier(.2,1.4,.4,1) both}
+#toast{animation:enter .25s}
+.bdg.on i{animation:pop .4s both}}
+
+/* ===== v9 polish: richer cards + home motion ===== */
+.art::after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(255,255,255,.30),transparent 42%,rgba(0,0,0,.20));pointer-events:none}
+.art .ai{transform:scale(1.4);filter:drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+.art .lg{z-index:1;min-width:30px;height:30px;border-radius:10px;font-size:12px}
+.art .hot{z-index:1}
+.dc,.fc{box-shadow:0 10px 24px rgba(10,120,80,.14)}
+.dcost em{font-size:16px}
+.dh{position:relative;border-radius:28px;overflow:hidden;box-shadow:var(--sh)}
+.dhi{position:absolute;left:16px;bottom:14px;right:16px;color:#fff;display:flex;flex-direction:column;z-index:2;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.dhi b{font-family:var(--f-en);font-size:24px;font-weight:800;line-height:1.15}
+.dhi span{font-size:14px;opacity:.92}
+.art.dha{height:178px}.dha .ai{transform:translateY(-26px) scale(1.7)}
+.dhi{padding:0;background:none}
+.dh::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(transparent,rgba(0,0,0,.6));z-index:1;pointer-events:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .dc,:root:not([data-theme="light"]) .fc,:root:not([data-theme="light"]) .panel{box-shadow:0 8px 22px rgba(0,0,0,.35)}:root:not([data-theme="light"]) .rbtn,:root:not([data-theme="light"]) .jb{box-shadow:0 4px 12px rgba(31,211,140,.25)}:root:not([data-theme="light"]) .bgd{color:#4A3000}}
+:root[data-theme="dark"] .dc,:root[data-theme="dark"] .fc,:root[data-theme="dark"] .panel{box-shadow:0 8px 22px rgba(0,0,0,.35)}
+@media (prefers-reduced-motion:no-preference){
+.b2c{animation:flt 3.2s ease-in-out infinite}
+@keyframes flt{50%{transform:translateY(-5px) rotate(6deg)}}
+.enter>*:nth-child(1){animation:enter .4s both}.enter>*:nth-child(2){animation:enter .4s .06s both}.enter>*:nth-child(3){animation:enter .4s .12s both}.enter>*:nth-child(4){animation:enter .4s .18s both}.enter>*:nth-child(5){animation:enter .4s .24s both}.enter>*:nth-child(n+6){animation:enter .4s .3s both}
+.dc:hover,.fc:hover{transform:translateY(-3px)}
+.art .ai{transition:transform .25s}.dc:active .art .ai{transform:scale(1.6) rotate(-6deg)}}
+
+.wsteps{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.wsteps i{height:7px;border-radius:7px;background:var(--bar);transition:background .3s}
+.wsteps i.on{background:linear-gradient(90deg,#1FD38C,#F5B82E)}
+.wsl{font-size:12px;color:var(--muted);font-weight:700;margin-top:-4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.two .fld{min-width:0}
+.chk{display:flex;gap:10px;align-items:flex-start;text-align:left;width:100%;padding:12px;border-radius:14px;background:var(--mint2);font-size:13px;line-height:1.4;font-weight:600}
+.chk i{flex:none;width:22px;height:22px;border-radius:7px;border:2px solid var(--green);display:grid;place-items:center;color:#fff}
+.chk.on i{background:var(--green)}
+.b1.dimb{background:#9CC9B8;box-shadow:none}
+.sum2{background:var(--mint2);border-radius:14px;padding:2px 12px}
+
+.rgs{background:var(--mint2);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:3px;font-size:13px;margin-bottom:8px}.rgs b{font-size:16px}
+.note.wn{background:#FFF1D0;color:#7A4A00;border-radius:12px;padding:10px 12px;font-weight:600}
+.tkt{border-radius:22px;overflow:hidden;background:var(--card);border:1px solid var(--line);margin-bottom:12px}
+.tk1{padding:16px;background:linear-gradient(135deg,#10B97A,#067A52);color:#fff;display:flex;flex-direction:column;gap:3px}.tk1 b{font-size:19px;line-height:1.2}.tk1 .cap{color:rgba(255,255,255,.8)}.tk1 span{font-size:12.5px}
+.tkd{border-top:2px dashed var(--line);margin:0 14px}
+.tk2{padding:16px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.tkt .qr,.tkt .qr img,.tkt .qr canvas{width:124px!important;height:124px!important}
+.wq{font-size:24px;font-weight:900;color:var(--orange)}
+.nr{margin-top:-2px}
+.nhi{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:8px 0;color:inherit}
+.nhi b{display:block;font-size:14px;line-height:1.25}
+.nh .ph{align-items:center}
+.stat .sv.tm{font-size:clamp(17px,5.3vw,24px);letter-spacing:-.3px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.stat .sv{white-space:nowrap}
+.stat .st{overflow:hidden}
+
+@media (prefers-reduced-motion:no-preference){
+.enter{animation:enterx .34s cubic-bezier(.2,.8,.2,1)}
+@keyframes enterx{from{opacity:0;transform:translateX(var(--dx,0px)) translateY(8px)}}
+.sheetbg{animation:bgin .22s ease-out}
+@keyframes bgin{from{opacity:0}}
+.sheet{animation:sup2 .42s cubic-bezier(.2,1.15,.3,1)}
+@keyframes sup2{from{transform:translateY(60px);opacity:.3}}
+.sheetbg.out{animation:bgout .19s ease-in forwards;pointer-events:none}
+.sheetbg.out .sheet{animation:sout .19s ease-in forwards}
+@keyframes bgout{to{opacity:0}}
+@keyframes sout{to{transform:translateY(70px)}}
+.navpop .nv.on i{animation:navpop .42s cubic-bezier(.3,1.6,.4,1)}
+@keyframes navpop{0%{transform:scale(.7) translateY(4px)}60%{transform:scale(1.14) translateY(-3px)}100%{transform:none}}
+.okfx{animation:okfade 1.2s ease both}
+.okfx circle{stroke-dasharray:214;stroke-dashoffset:214;animation:okdraw .5s .05s ease-out forwards}
+.okfx path{stroke-dasharray:60;stroke-dashoffset:60;animation:okdraw .35s .45s ease-out forwards}
+@keyframes okdraw{to{stroke-dashoffset:0}}
+@keyframes okfade{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}15%{opacity:1;transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(1.08)}}
+}
+.grab{display:block;width:40px;height:5px;border-radius:3px;background:var(--line);margin:-8px auto 12px;flex:none}
+.flyc{position:fixed;z-index:70;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='r' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23E9FFF5'/%3E%3Cstop offset='.4' stop-color='%236EF0BE'/%3E%3Cstop offset='1' stop-color='%230B8A5E'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='47' fill='url(%23r)'/%3E%3Ccircle cx='50' cy='50' r='37' fill='%230B1F1A'/%3E%3Cpath d='M54 25L34 55H48L43 77L67 45H52Z' fill='%2319D98F'/%3E%3C/svg%3E") center/contain no-repeat;filter:drop-shadow(0 0 6px rgba(25,217,143,.7))}
+.okfx{position:fixed;left:50%;top:46%;transform:translate(-50%,-50%);z-index:75;width:112px;height:112px;border-radius:50%;background:rgba(31,169,113,.96);display:grid;place-items:center;pointer-events:none;box-shadow:0 14px 40px rgba(10,100,70,.4)}
+.okfx svg{width:72px;height:72px;fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.okfx circle{stroke-opacity:.35}
+.jb.leave{background:transparent;color:var(--red);box-shadow:inset 0 0 0 1.5px var(--red)}
+.jtag{color:var(--green2);font-weight:700}
+.tk{overflow:visible;flex:none}
+.tkglow,.tksh{transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion:no-preference){
+.tkfx .tkglow{animation:tkg 2.8s ease-in-out infinite}
+@keyframes tkg{0%,100%{opacity:.45;transform:scale(.92)}50%{opacity:1;transform:scale(1.06)}}
+.tkfx .tksh{animation:tks 5.5s linear infinite;transform-origin:50px 50px;transform-box:view-box}
+@keyframes tks{to{transform:rotate(360deg)}}
+.dcoin .tkfx .tksh{animation-duration:3s}
+}
+html.calm *,html.calm *::before,html.calm *::after{animation-play-state:paused!important}
+html.lowfx .go::after,html.lowfx .b2c,html.lowfx .tkglow,html.lowfx .tksh,html.lowfx .ring .rf{animation:none!important}
+html.lowfx .sheetbg{-webkit-backdrop-filter:none;backdrop-filter:none}
+.sheetbg{-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.grp,.dc{content-visibility:auto;contain-intrinsic-size:auto 170px}
+button,a,[data-act],input,select{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+#dim{position:fixed;inset:0;z-index:90;background:#000;color:#cfe;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+#dim .dt{font:800 56px/1 "Inter",sans-serif;letter-spacing:-1px;color:#8FE3C3;font-variant-numeric:tabular-nums}
+#dim .dr{display:flex;gap:44px}#dim .dr div{text-align:center}
+#dim .dr b{display:block;font:800 34px/1.1 "Inter",sans-serif;color:#e8fff6;font-variant-numeric:tabular-nums}
+#dim .dr span{font-size:12px;letter-spacing:.6px;color:#6a8f83}
+#dim p{position:absolute;bottom:calc(36px + env(safe-area-inset-bottom,0px));margin:0;font-size:12.5px;color:#4d6b61}
+article{content-visibility:auto;contain-intrinsic-size:auto 170px}
+.dc{content-visibility:auto;contain-intrinsic-size:auto 260px}
+.ghost{position:fixed;z-index:6;pointer-events:none;overflow:hidden;margin:0;padding-top:0;opacity:0}
+@media (prefers-reduced-motion:no-preference){
+.ghost{opacity:1;animation:ghostout .2s cubic-bezier(.4,0,1,1) forwards;will-change:transform,opacity}
+@keyframes ghostout{to{opacity:0;transform:translateX(var(--gx,0px)) scale(.985)}}
+}
+</style>
+<svg width="1" height="1" style="position:absolute;left:0;top:0;pointer-events:none" aria-hidden="true" focusable="false"><defs><linearGradient id="tkr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E9FFF5"/><stop offset=".3" stop-color="#6EF0BE"/><stop offset=".55" stop-color="#12B97E"/><stop offset=".8" stop-color="#9CF7D3"/><stop offset="1" stop-color="#0B8A5E"/></linearGradient><linearGradient id="tkc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12302A"/><stop offset="1" stop-color="#06120F"/></linearGradient><linearGradient id="tkb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B8FFE0"/><stop offset="1" stop-color="#19D98F"/></linearGradient><radialGradient id="tkg"><stop offset=".55" stop-color="#19D98F" stop-opacity=".55"/><stop offset="1" stop-color="#19D98F" stop-opacity="0"/></radialGradient></defs></svg><div id="root" class="app"></div>
+<div id="sheet"></div>
+<div id="toast" hidden></div>
+<script>
+(function(){
+let LANG='th';const T_=(th,en)=>LANG==='en'?en:th;const $=s=>document.querySelector(s);
+const ICON={
+pin:'<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+flame:'<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
+feet:'<ellipse cx="8" cy="14" rx="3.2" ry="5"/><ellipse cx="16" cy="9" rx="3.2" ry="5"/><path d="M6.5 20.5h3M14.5 15.5h3"/>',
+target:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+bell:'<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+chevR:'<path d="m9 18 6-6-6-6"/>',chevL:'<path d="m15 18-6-6 6-6"/>',
+home:'<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>',
+bars:'<path d="M12 20V10M18 20V4M6 20v-4"/>',
+wallet:'<path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>',
+gift:'<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>',
+user:'<circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/>',
+run:'<circle cx="15" cy="4.5" r="2"/><path d="m5 12 4-3 3.5 1 2.5 3.5 4 1M9 9l-1.5 5L4 19M12.5 10.5 11 15l4 3 1 4"/>',
+play:'<path d="M7 4.5v15l13-7.5z" fill="currentColor"/>',
+pause:'<rect x="6" y="4.5" width="4.2" height="15" rx="1" fill="currentColor"/><rect x="13.8" y="4.5" width="4.2" height="15" rx="1" fill="currentColor"/>',
+stop:'<rect x="5.5" y="5.5" width="13" height="13" rx="2" fill="currentColor"/>',
+search:'<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>',
+share:'<path d="M4 12v8h16v-8M12 3v13M8 7l4-4 4 4"/>',
+nav:'<path d="m3 11 19-9-9 19-2-8z"/>',
+cart:'<circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h8a2 2 0 0 0 2-1.5L21.5 7H6"/>',
+star:'<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor"/>',
+down:'<circle cx="12" cy="12" r="10" fill="currentColor" stroke="none"/><path d="m8 12 4 4 4-4M12 8v8" stroke="#fff"/>',
+up:'<circle cx="12" cy="12" r="10" fill="currentColor" stroke="none"/><path d="m16 12-4-4-4 4M12 16V8" stroke="#fff"/>',
+food:'<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>',
+cup:'<path d="M7 5h10l-1.2 15a1 1 0 0 1-1 1H9.2a1 1 0 0 1-1-1z"/><path d="M6 5h12M13 5l1-3 3-1"/>',
+shoe:'<path d="M2 17v-4l5-2 3 2.2 6 1.3c3 .6 6 1.2 6 3.5V18a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>',
+heart:'<path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/><path d="M3.2 12h4l1.5-3 3 6 1.5-3h4"/>',
+cal:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18m-11 5 2 2 4-4"/>',
+check:'<circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/>',
+tag:'<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"/><circle cx="7" cy="7" r="1.5"/>',
+leaf:'<path d="M12 21V11M12 12c-5 0-7-3-7-7 5 0 7 3 7 7Zm0 0c0-4 3-6 7-6 0 4-2 6-7 6Z"/>',
+ticket:'<path d="M3 8a2 2 0 0 0 0 8v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a2 2 0 0 1 0-4V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z" transform="translate(0 -1)"/><path d="M14 7v10" stroke-dasharray="2 2"/>',
+ball:'<circle cx="12" cy="12" r="10"/><path d="m12 7 4 3-1.5 5h-5L8 10zM12 2v5M16 10l5-1.5M14.5 15l3 4.5M9.5 15l-3 4.5M8 10 3 8.5"/>',
+dumbbell:'<path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/>',
+bike:'<circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h-3l-3 6 3 5.5M5.5 17.5 9 12h8l1.5 5.5M15 6h2"/>',
+users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1M17 4.5a3.5 3.5 0 0 1 0 7M22 21v-1a6 6 0 0 0-4-5.6"/>',
+plus:'<path d="M12 5v14M5 12h14"/>',
+watch:'<circle cx="12" cy="12" r="6"/><path d="M9 18l1 4h4l1-4M9 6l1-4h4l1 4M12 9v3l2 1"/>'};
+const ic=(n,s=20,x='')=>`<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${x}>${ICON[n]}</svg>`;
+const coin=(s=72)=>{const fx=s>=40;return `<svg class="ic tk${fx?' tkfx':''}" width="${s}" height="${s}" viewBox="0 0 100 100" aria-hidden="true">${fx?'<circle class="tkglow" cx="50" cy="50" r="64" fill="url(#tkg)"/>':''}<circle cx="50" cy="50" r="47" fill="url(#tkr)"/><circle cx="50" cy="50" r="${fx?39:37}" fill="url(#tkc)"/>${fx?'<circle cx="50" cy="50" r="39" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="1.5"/>':''}<path d="M54 25 L34 55 H48 L43 77 L67 45 H52 Z" fill="url(#tkb)" stroke-linejoin="round"/>${fx?'<g class="tksh"><path d="M18 36 A36 36 0 0 1 42 14" stroke="#fff" stroke-opacity=".75" stroke-width="3" stroke-linecap="round" fill="none"/></g>':''}</svg>`};
+
+const MS=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+const ME=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const p2=x=>String(x).padStart(2,'0');
+const n0=x=>Math.round(x).toLocaleString('en-US');
+const fk=k=>k.toFixed(2).replace(/0$/,'');
+const hms=s=>{s=Math.floor(s);return [Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(p2).join(':')};
+const pace=(s,m)=>{if(m<20)return '--:--';const p=s/(m/1000);return Math.floor(p/60)+':'+p2(Math.floor(p%60))};
+const dtm=t=>{const d=new Date(t);return `${d.getDate()} ${MN(d.getMonth())} ${d.getFullYear()+(LANG==='en'?0:543)} ${p2(d.getHours())}:${p2(d.getMinutes())}`};
+const dshort=t=>{const d=new Date(t);return `${d.getDate()} ${MN(d.getMonth())}`};
+const todayKey=()=>{const d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()};
+
+const ADMIN_HASH='9bf3bdd2660484f8';
+function hpin(p){let a=0xdeadbeef,b=0x41c6ce57;const s='rte-admin-v1:'+p;for(let r=0;r<3000;r++){for(let i=0;i<s.length;i++){const c=s.charCodeAt(i);a=Math.imul(a^c,2654435761);b=Math.imul(b^c,1597334677)}a=Math.imul(a^(a>>>16),2246822507)^Math.imul(b^(b>>>13),3266489909);b=Math.imul(b^(b>>>16),2246822507)^Math.imul(a^(a>>>13),3266489909)}return ((b>>>0).toString(16)+(a>>>0).toString(16))}
+let MODE=(()=>{try{return localStorage.getItem('run-to-earn-mode')===ADMIN_HASH?'admin':'user'}catch(e){return'user'}})();
+let KEY=MODE==='admin'?'run-to-earn-admin-v1':'run-to-earn-user-v1';
+const getLock=()=>{try{return JSON.parse(localStorage.getItem('run-to-earn-lock'))||{n:0,until:0}}catch(e){return{n:0,until:0}}};
+const setLock=v=>{try{localStorage.setItem('run-to-earn-lock',JSON.stringify(v))}catch(e){}};
+function load(){try{const j=localStorage.getItem(KEY),o=j?JSON.parse(j):null;return o&&typeof o.balance==='number'&&Array.isArray(o.tx)&&o.today&&o.last?o:null}catch(e){return null}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function seed(){return MODE==='admin'?seedAdmin():seedUser()}
+function seedUser(){return{profile:null,balance:0,day:todayKey(),today:{km:0,kcal:0,steps:0},goalKm:5,goalDone:false,last:{km:0,sec:0,kcal:0,tok:0},series:Array(29).fill(0),tx:[],coupons:[],pref:{lang:'th',theme:'auto'},gj:[],gc:[],ck:{},ev:[],evck:{},goal:{type:'km',val:5},mc:{},stock:{},streak:{count:0,last:''},runs:[],chl:{}}}
+function seedAdmin(){const now=Date.now(),H=36e5,series=[];
+ for(let i=0;i<29;i++)series.push(Math.round(900+i/29*4100+Math.sin(i*2.3)*70));
+ return{profile:{name:'Admin',color:3,sports:[],created:now},chl:{},balance:5000,day:todayKey(),today:{km:4.2,kcal:210,steps:6380},goalKm:7,goalDone:false,
+ last:{km:4.2,sec:1938,kcal:210,tok:25},series,
+ tx:[{t:now-5*H,type:'in',title:'วิ่งออกกำลังกาย',amt:120},{t:now-48*H,type:'in',title:'เดินออกกำลังกาย',amt:50},{t:now-168*H,type:'in',title:'ทำเป้าหมายสำเร็จ',amt:200},
+ {t:now-72*H,type:'out',title:'แลกของรางวัล',amt:300},{t:now-240*H,type:'out',title:'ซื้อสินค้าพิเศษ',amt:150},{t:now-360*H,type:'out',title:'แลกบริการ',amt:250}],coupons:[],pref:{lang:'th',theme:'auto'},gj:[],gc:[],ck:{},ev:[],evck:{},goal:{type:'km',val:7},mc:{},stock:{},streak:{count:3,last:todayKey()},
+ runs:[[6,4.0,410],[5,6.2,395],[4,2.4,430],[2,5.0,402],[1,3.1,418]].map(a=>({t:now-a[0]*864e5,km:a[1],sec:Math.round(a[1]*a[2]),kcal:Math.round(a[1]*50),tok:Math.round(a[1]*6)})).concat([{t:now-6e4,km:4.2,sec:1938,kcal:210,tok:25}])}}
+let S=load()||seed();
+if(!('profile' in S))S.profile=null;S.chl=S.chl||{};
+S.gj=S.gj||[];S.gc=S.gc||[];S.ck=S.ck||{};S.ev=S.ev||[];S.evck=S.evck||{};S.pref=S.pref||{lang:'th',theme:'auto'};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const yKey=()=>{const d=new Date(Date.now()-864e5);return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()};
+S.goal=S.goal||{type:'km',val:S.goalKm||7};S.mc=S.mc||{};S.stock=S.stock||{};S.streak=S.streak||{count:3,last:todayKey()};
+if(!S.runs){const now=Date.now(),D=864e5,mk=(d,km,pc)=>({t:now-d*D,km,sec:Math.round(km*pc),kcal:Math.round(km*50),tok:Math.round(km*6)});
+ S.runs=[mk(6,4.0,410),mk(5,6.2,395),mk(4,2.4,430),mk(2,5.0,402),mk(1,3.1,418)];
+ if(S.last)S.runs.push({t:now-6e4,km:S.last.km,sec:S.last.sec,kcal:S.last.kcal,tok:S.last.tok})}
+if(S.day!==todayKey()){S.day=todayKey();S.today={km:0,kcal:0,steps:0};S.goalDone=false;S.mc={};S.stock={};save()}
+const curStreak=()=>S.streak.last===todayKey()||S.streak.last===yKey()?S.streak.count:0;
+const goalMet=()=>S.goal.type==='km'?S.today.km>=S.goal.val:S.today.steps>=S.goal.val;
+const goalPct=()=>Math.min(100,Math.round((S.goal.type==='km'?S.today.km:S.today.steps)/S.goal.val*100));
+const goalTxt=()=>S.goal.type==='km'?fk(S.goal.val)+' กม.':n0(S.goal.val)+' ก้าว';
+LANG=S.pref.lang==='en'?'en':'th';
+let themeSet=false;
+function applyPref(){const p=S.pref;LANG=p.lang==='en'?'en':'th';const r=document.documentElement;r.lang=LANG;
+ if(p.theme==='light'||p.theme==='dark'){r.setAttribute('data-theme',p.theme);themeSet=true}else if(themeSet){r.removeAttribute('data-theme');themeSet=false}}
+const MN=m=>(LANG==='en'?ME:MS)[m];
+function addTx(type,title,amt){S.tx.unshift({t:Date.now(),type,title,amt});S.balance+=type==='in'?amt:-amt}
+function norm2(){S.reg=S.reg||{};S.cxl=S.cxl||[];S.wl=S.wl||[];S.blk=S.blk||0;S.gj=S.gj||[];S.gc=S.gc||[];S.ck=S.ck||{};S.ev=S.ev||[];S.evck=S.evck||{};S.pref=S.pref||{lang:'th',theme:'auto'};S.goal=S.goal||{type:'km',val:5};S.mc=S.mc||{};S.stock=S.stock||{};S.streak=S.streak||{count:0,last:''};S.runs=S.runs||[];S.chl=S.chl||{};if(!('profile' in S))S.profile=null;
+ if(S.day!==todayKey()){S.day=todayKey();S.today={km:0,kcal:0,steps:0};S.goalDone=false;S.mc={};S.stock={}}}
+function switchMode(m){save();const pf=S.pref;MODE=m;try{if(m==='admin')localStorage.setItem('run-to-earn-mode',ADMIN_HASH);else localStorage.removeItem('run-to-earn-mode')}catch(e){}
+ KEY=m==='admin'?'run-to-earn-admin-v1':'run-to-earn-user-v1';S=load()||seed();norm2();if(pf)S.pref=pf;ui.cu={};ui.pf=null;ui.pfSheet=false;applyPref();save()}
+
+const GR={cup:['#7A5240','#2B1A12'],food:['#E0A23A','#3E7D3A'],shoe:['#4A5560','#14181C'],heart:['#2BB67D','#0F4A41'],ball:['#3A7BD5','#0B2A55'],dumbbell:['#6A4FD8','#1F1650'],bike:['#E2663A','#7A2A12'],watch:['#8A5CF6','#2A1566']};
+const mkD=(id,cat,title,shop,cost,what,icon,hot,cb)=>({id,cat,title,shop,cost,cb:cb||shop,th:`ส่วนลด ${cost} บาท`,th2:`เมื่อ${what}`,th3:`ที่ร้าน ${cb||shop}`,en:`Discount ${cost} THB at ${cb||shop}`,pre:shop.replace(/[^A-Za-z]/g,'').slice(0,3).toUpperCase().padEnd(3,'X')+cost,icon,hot:!!hot,grad:`linear-gradient(135deg,${GR[icon][0]},${GR[icon][1]})`});
+const DEALS=[
+mkD('coffee','beverage','Coffee Discount','Café Day',50,'ซื้อเครื่องดื่มเมนูไหนก็ได้','cup',1,'GreenBite'),
+mkD('food','food','Food Discount','Good Food',100,'สั่งอาหารเมนูไหนก็ได้','food',1),
+mkD('sports','sports','Sports Discount','Move Sports',500,'ซื้อสินค้ากีฬาชิ้นไหนก็ได้','shoe',1),
+mkD('tea','beverage','Matcha Latte Deal','Zen Tea House',40,'ซื้อชาและเครื่องดื่มเมนูไหนก็ได้','cup'),
+mkD('boba','beverage','Bubble Tea Discount','Boba Time',60,'ซื้อชานมไข่มุกแก้วไหนก็ได้','cup'),
+mkD('smoothie','beverage','Smoothie Deal','Fresh Press',70,'ซื้อสมูทตี้หรือน้ำผลไม้สดแก้วไหนก็ได้','cup',1),
+mkD('salad','food','Salad Bowl Discount','Green Bowl',80,'สั่งสลัดโบลว์เมนูไหนก็ได้','food'),
+mkD('thai','food','Thai Meal Voucher','Baan Aroi',90,'สั่งอาหารไทยเมนูไหนก็ได้','food'),
+mkD('burger','food','Burger Combo Deal','Grill House',120,'สั่งเบอร์เกอร์คอมโบชุดไหนก็ได้','food'),
+mkD('sushi','food','Sushi Set Discount','Sushi Hana',150,'สั่งซูชิเซตไหนก็ได้','food',1),
+mkD('ball','sports','Football Gear Deal','Goal Line',250,'ซื้ออุปกรณ์ฟุตบอลชิ้นไหนก็ได้','ball'),
+mkD('wear','sports','Sportswear Voucher','Court Pro',300,'ซื้อชุดกีฬาชิ้นไหนก็ได้','shoe'),
+mkD('bike','sports','Bike Rental Pass','Cycle City',200,'เช่าจักรยานครึ่งวัน','bike'),
+mkD('shoe','sports','Running Shoes Discount','Pace Runner',800,'ซื้อรองเท้าวิ่งรุ่นไหนก็ได้','shoe',1),
+mkD('gym','health','Gym Day Pass','FitLab Gym',200,'เข้าใช้ฟิตเนสหนึ่งวัน','dumbbell',1),
+mkD('yoga','health','Yoga Class Voucher','Zen Studio',180,'เข้าคลาสโยคะหนึ่งคลาส','heart'),
+mkD('vit','health','Vitamin Discount','Vital Pharmacy',120,'ซื้อวิตามินและอาหารเสริมชิ้นไหนก็ได้','heart'),
+mkD('massage','health','Sports Massage','Relax Lab',350,'จองนวดคลายกล้ามเนื้อ','heart'),
+mkD('check','health','Health Check-up Discount','CarePlus Clinic',600,'ตรวจสุขภาพประจำปี','heart'),
+mkD('sneaker','sports','Sneaker Discount','Swift Athletics',900,'ซื้อรองเท้าผ้าใบคู่ไหนก็ได้','shoe',1),
+mkD('apparel','sports','Training Kit Voucher','Apex Sportswear',350,'ซื้อชุดออกกำลังกายชิ้นไหนก็ได้','shoe'),
+mkD('volt','sports','Running Gear Deal','Volt Running',400,'ซื้ออุปกรณ์วิ่งชิ้นไหนก็ได้','shoe'),
+mkD('watch','sports','Sports Watch Discount','PeakFit',1000,'ซื้อสมาร์ทวอทช์รุ่นไหนก็ได้','watch',1),
+mkD('outdoor','sports','Outdoor Gear Voucher','Summit Outdoor',450,'ซื้ออุปกรณ์เดินป่าชิ้นไหนก็ได้','bike'),
+mkD('hoop','sports','Basketball Deal','Hoop House',220,'ซื้อลูกบาสหรือเสื้อบาสชิ้นไหนก็ได้','ball'),
+mkD('swim','sports','Swim Day Pass','Aqua Club',120,'เข้าสระว่ายน้ำหนึ่งวัน','heart'),
+mkD('racket','sports','Badminton Racket Deal','Racket Club',380,'ซื้อไม้แบดมินตันอันไหนก็ได้','dumbbell'),
+mkD('trail','sports','Trail Run Entry','Trail Co.',600,'สมัครงานวิ่งเทรลรายการไหนก็ได้','shoe'),
+mkD('pasta','food','Pasta Deal','Pasta Fresca',110,'สั่งพาสต้าจานไหนก็ได้','food'),
+mkD('wok','food','Stir Fry Voucher','Wok Master',95,'สั่งอาหารผัดเมนูไหนก็ได้','food'),
+mkD('poke','food','Poke Bowl Discount','Poke Island',130,'สั่งโพคโบลว์ชามไหนก็ได้','food',1),
+mkD('bakery','food','Bakery Voucher','Sunrise Bakery',60,'ซื้อเบเกอรีชิ้นไหนก็ได้','food'),
+mkD('burrito','food','Burrito Deal','Burrito Boss',100,'สั่งเบอร์ริโต้ชุดไหนก็ได้','food'),
+mkD('street','food','Street Food Pass','Thai Street',70,'สั่งอาหารสตรีทฟู้ดเมนูไหนก็ได้','food'),
+mkD('coldbrew','beverage','Cold Brew Deal','Cold Brew Lab',55,'ซื้อโคลด์บรูว์แก้วไหนก็ได้','cup'),
+mkD('juice','beverage','Fresh Juice Deal','Juice Garden',45,'ซื้อน้ำผลไม้สดแก้วไหนก็ได้','cup'),
+mkD('protein','beverage','Protein Shake Deal','Muscle Fuel',80,'ซื้อโปรตีนเชคแก้วไหนก็ได้','cup',1),
+mkD('coconut','beverage','Coconut Water Deal','Coco Co.',35,'ซื้อน้ำมะพร้าวลูกไหนก็ได้','cup'),
+mkD('physio','health','Physio Session','Physio Plus',500,'จองกายภาพบำบัดหนึ่งครั้ง','heart'),
+mkD('spa','health','Spa Discount','Aqua Spa',450,'จองสปาคลายกล้ามเนื้อ','heart'),
+mkD('sleep','health','Sleep Clinic Voucher','Sleep Well',400,'ปรึกษาคลินิกการนอนหลับ','heart'),
+mkD('mind','health','Meditation Class','Mind Studio',150,'เข้าคลาสสมาธิหนึ่งครั้ง','heart')];
+const STK={coffee:12,food:8,sports:3,tea:25,boba:15,smoothie:6,salad:20,thai:30,burger:9,sushi:4,ball:7,wear:10,bike:14,shoe:2,gym:5,yoga:11,vit:40,massage:3,check:2,sneaker:3,apparel:12,volt:10,watch:2,outdoor:6,hoop:9,swim:25,racket:7,trail:5,pasta:14,wok:20,poke:6,bakery:30,burrito:11,street:35,coldbrew:18,juice:22,protein:8,coconut:40,physio:4,spa:5,sleep:6,mind:15};
+const FLASH=['coffee','smoothie','sushi','gym','shoe','watch','poke','protein'];
+const left=id=>Math.max(0,(STK[id]||0)-(S.stock[id]||0));
+const endOfDay=()=>{const d=new Date();d.setHours(24,0,0,0);return d.getTime()};
+const cdTxt=ms=>{const s=Math.floor(Math.max(0,ms)/1000);return p2(Math.floor(s/3600))+':'+p2(Math.floor(s%3600/60))+':'+p2(s%60)};
+const MISS=[{id:'steps',th:'เดินให้ครบ 5,000 ก้าว',v:()=>S.today.steps,max:5000,tok:20,icon:'feet'},{id:'km',th:'วิ่งให้ครบ 3 กม.',v:()=>S.today.km,max:3,tok:30,icon:'run'},{id:'kcal',th:'เผาผลาญ 200 kcal',v:()=>S.today.kcal,max:200,tok:25,icon:'flame'}];
+const SPORTS=[['all','ทั้งหมด'],['football','ฟุตบอล'],['running','วิ่ง'],['badminton','แบดมินตัน'],['cycling','ปั่นจักรยาน'],['basketball','บาสเกตบอล'],['yoga','โยคะ'],['swimming','ว่ายน้ำ'],['dance','เต้น']];
+const SI={football:'ball',running:'run',badminton:'ball',cycling:'bike',basketball:'ball',yoga:'heart',swimming:'heart',dance:'heart'};
+const SG={football:'ball',running:'heart',badminton:'dumbbell',cycling:'bike',basketball:'shoe',yoga:'food',swimming:'ball',dance:'dumbbell'};
+const GROUPS=[
+{id:'g1',sport:'football',name:'เตะบอลเย็นวันศุกร์',place:'สนามหญ้าเทียม ลาดพร้าว',when:'ศุกร์ 18:30',members:14,level:'ทุกระดับ'},
+{id:'g2',sport:'football',name:'บอลหญ้าเทียมสุดสัปดาห์',place:'สนามฟุตบอล อารีย์',when:'เสาร์ 17:00',members:22,level:'กลาง'},
+{id:'g3',sport:'running',name:'Lumphini Sunrise Run',place:'สวนลุมพินี',when:'ทุกวัน 05:30',members:86,level:'ทุกระดับ'},
+{id:'g4',sport:'running',name:'วิ่งสบาย ๆ 5K',place:'สวนเบญจกิติ',when:'อาทิตย์ 06:00',members:54,level:'เริ่มต้น'},
+{id:'g5',sport:'badminton',name:'แบดมือใหม่ก๊วนสนุก',place:'คอร์ทแบด บางนา',when:'พุธ 19:00',members:18,level:'เริ่มต้น'},
+{id:'g6',sport:'cycling',name:'ปั่นเลียบเจ้าพระยา',place:'ท่าพระอาทิตย์',when:'เสาร์ 06:30',members:40,level:'กลาง'},
+{id:'g7',sport:'basketball',name:'3x3 ฮาล์ฟคอร์ท',place:'สวนจตุจักร',when:'พฤหัส 18:00',members:12,level:'ทุกระดับ'},
+{id:'g8',sport:'yoga',name:'โยคะยามเช้ากลางสวน',place:'สวนรถไฟ',when:'จันทร์ 07:00',members:30,level:'เริ่มต้น'},
+{id:'g9',sport:'running',name:'Night Run พระราม 9',place:'ลานสวนหลวง ร.9',when:'อังคาร 20:00',members:33,level:'ทุกระดับ'},
+{id:'g10',sport:'football',name:'ฟุตซอลหลังเลิกงาน',place:'สนามฟุตซอล สีลม',when:'พุธ 19:30',members:20,level:'ทุกระดับ'},
+{id:'g11',sport:'football',name:'บอลเช้าวันอาทิตย์',place:'สนามกีฬาชุมชน บางกะปิ',when:'อาทิตย์ 07:00',members:26,level:'กลาง'},
+{id:'g12',sport:'swimming',name:'ว่ายน้ำเช้าสบาย ๆ',place:'สระว่ายน้ำสาธารณะ',when:'เสาร์ 07:30',members:17,level:'เริ่มต้น'},
+{id:'g13',sport:'dance',name:'Zumba กลางแจ้ง',place:'ลานกีฬา สวนจตุจักร',when:'พฤหัส 18:30',members:45,level:'ทุกระดับ'},
+{id:'g14',sport:'badminton',name:'แบดสายแข่ง',place:'คอร์ทแบด รามอินทรา',when:'ศุกร์ 20:00',members:16,level:'สูง'},
+{id:'g15',sport:'basketball',name:'บาสเย็นวันอังคาร',place:'สนามบาส สวนรถไฟ',when:'อังคาร 18:00',members:15,level:'กลาง'},
+{id:'g16',sport:'cycling',name:'ปั่นชมเมืองเก่า',place:'เสาชิงช้า',when:'อาทิตย์ 06:30',members:28,level:'เริ่มต้น'},
+{id:'g17',sport:'yoga',name:'Yoga & Stretch ออฟฟิศซินโดรม',place:'ห้องฟิตเนสส่วนกลาง',when:'พุธ 12:15',members:24,level:'เริ่มต้น'}];
+const EVENTS=[
+{id:'e1',sport:'running',name:'Sunset Fun Run 5K',place:'สวนลุมพินี',off:0,time:'17:30',cost:0,cap:200,taken:143},
+{id:'e2',sport:'badminton',name:'แบดมินตันมือใหม่ Open Day',place:'คอร์ทแบด บางนา',off:2,time:'18:30',cost:0,cap:40,taken:31},
+{id:'e3',sport:'football',name:'ศึกฟุตบอล 7 คน ชิงถ้วย',place:'สนามหญ้าเทียม อารีย์',off:3,time:'16:00',cost:150,cap:16,taken:12},
+{id:'e4',sport:'yoga',name:'Yoga in the Park',place:'สวนรถไฟ',off:4,time:'07:30',cost:0,cap:60,taken:44},
+{id:'e5',sport:'cycling',name:'ปั่นรอบเมือง 40K',place:'ท่าพระอาทิตย์',off:5,time:'06:00',cost:100,cap:120,taken:87},
+{id:'e6',sport:'basketball',name:'3x3 Street Tournament',place:'สวนจตุจักร',off:6,time:'14:00',cost:120,cap:24,taken:24},
+{id:'e7',sport:'football',name:'Friendly Match บอลชุมชน',place:'สนามกีฬาชุมชน บางกะปิ',off:7,time:'09:00',cost:0,cap:30,taken:18},
+{id:'e8',sport:'running',name:'Half Marathon 21K',place:'ถนนพระราม 9',off:9,time:'05:00',cost:300,cap:500,taken:388},
+{id:'e9',sport:'swimming',name:'Swim Challenge 400 ม.',place:'สระว่ายน้ำสาธารณะ',off:10,time:'08:00',cost:80,cap:60,taken:41},
+{id:'e10',sport:'running',name:'Night Run 10K',place:'สวนหลวง ร.9',off:12,time:'19:30',cost:200,cap:300,taken:215},
+{id:'e11',sport:'dance',name:'Zumba Party Day',place:'ลานกีฬา สวนจตุจักร',off:13,time:'16:30',cost:0,cap:100,taken:72},
+{id:'e12',sport:'cycling',name:'Bike & Brunch',place:'สวนเบญจกิติ',off:14,time:'07:00',cost:80,cap:50,taken:22},
+{id:'e13',sport:'running',name:'Trail Run เขาใหญ่ 15K',place:'เขาใหญ่',off:20,time:'06:30',cost:350,cap:150,taken:96}];
+const evDate=e=>{const d=new Date(Date.now()+e.off*864e5);return e.off===0?T_('วันนี้','Today'):(LANG==='en'?['Sun','Mon','Tue','Wed','Thu','Fri','Sat']:['อา.','จ.','อ.','พ.','พฤ.','ศ.','ส.'])[d.getDay()]+' '+d.getDate()+' '+MN(d.getMonth())};
+const GEN={g1:['Friday Evening Football','Artificial turf, Lat Phrao'],g2:['Weekend Turf Football','Football field, Ari'],g3:['Lumphini Sunrise Run','Lumphini Park'],g4:['Easy 5K Run','Benjakitti Park'],g5:['Beginner Badminton Crew','Badminton courts, Bang Na'],g6:['Chao Phraya Ride','Tha Phra Athit'],g7:['3x3 Half-court','Chatuchak Park'],g8:['Sunrise Yoga in the Park','Rot Fai Park'],g9:['Rama 9 Night Run','Suan Luang Rama 9'],g10:['After-work Futsal','Futsal arena, Silom'],g11:['Sunday Morning Football','Community field, Bang Kapi'],g12:['Easy Morning Swim','Public swimming pool'],g13:['Outdoor Zumba','Sports lawn, Chatuchak Park'],g14:['Competitive Badminton','Badminton courts, Ramintra'],g15:['Tuesday Basketball','Courts, Rot Fai Park'],g16:['Old Town Ride','Giant Swing'],g17:['Desk-worker Yoga & Stretch','Shared fitness room'],
+e1:['Sunset Fun Run 5K','Lumphini Park'],e2:['Badminton Beginner Open Day','Badminton courts, Bang Na'],e3:['7-a-side Football Cup','Artificial turf, Ari'],e4:['Yoga in the Park','Rot Fai Park'],e5:['City Ride 40K','Tha Phra Athit'],e6:['3x3 Street Tournament','Chatuchak Park'],e7:['Community Friendly Match','Community field, Bang Kapi'],e8:['Half Marathon 21K','Rama 9 Road'],e9:['Swim Challenge 400 m','Public swimming pool'],e10:['Night Run 10K','Suan Luang Rama 9'],e11:['Zumba Party Day','Sports lawn, Chatuchak Park'],e12:['Bike & Brunch','Benjakitti Park'],e13:['Khao Yai Trail Run 15K','Khao Yai']};
+const GN=(o,k)=>{if(LANG==='en'&&GEN[o.id])return GEN[o.id][k==='name'?0:1];return o.id[0]==='u'?`<span data-nt>${esc(o[k])}</span>`:esc(o[k])};
+const GW=o=>o.id[0]==='u'?`<span data-nt>${esc(o.when)}</span>`:esc(o.when);
+const allGroups=()=>[...S.gc,...GROUPS];
+const members=g=>g.members+(S.gj.includes(g.id)?1:0);
+const CATS=[['food','อาหาร','Food','food'],['beverage','เครื่องดื่ม','Beverage','cup'],['sports','กีฬา','Sports','shoe'],['health','สุขภาพ','Health','heart']];
+
+let route='home';
+const ui={cat:'food',filtered:false,q:'',range:30,all:{in:false,out:false},ctab:'all',gq:'',gs:'all',gtab:'all',allRuns:false};
+ui.wtab='all';ui.wall=false;ui.cu={};
+const SIM=10;
+const newRun=()=>({st:'idle',sec:0,m:0,mode:'sim',tm:null,geoId:null,tried:false,last:null,pts:[{x:0,y:0}],px:0,py:0,hd:Math.random()*6.28,o:null,cs:null});
+let R=newRun();
+
+
+const reduce=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches);
+const vib=n=>{try{navigator.vibrate&&navigator.vibrate(n||8)}catch(e){}};
+function hash(t){let h=2166136261;for(let i=0;i<t.length;i++){h^=t.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function rnd(seed){let a=seed||1;return()=>{a=(Math.imul(a,1664525)+1013904223)>>>0;return a/4294967296}}
+function art(d,cls){const r=rnd(hash(d.id)),g=GR[d.icon]||GR.heart;let sh='';
+ for(let i=0;i<6;i++){const x=r()*100,y=r()*100,z=14+r()*34,o=(.05+r()*.1).toFixed(2);
+  sh+=i%2?`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${z.toFixed(1)}" fill="#fff" fill-opacity="${o}"/>`:`<rect x="${(x-z/2).toFixed(1)}" y="${(y-z/2).toFixed(1)}" width="${z.toFixed(1)}" height="${z.toFixed(1)}" rx="${(z/4).toFixed(1)}" transform="rotate(${r()*60|0} ${x.toFixed(1)} ${y.toFixed(1)})" fill="#fff" fill-opacity="${o}"/>`}
+ const ini=d.shop.split(/\s+/).map(w=>w[0]).join('').replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()||'RT';
+ return `<div class="art ${cls||''}" style="background:linear-gradient(135deg,${g[0]},${g[1]})"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${sh}</svg><span class="ai">${ic(d.icon,38)}</span><span class="lg" style="color:${g[1]}">${ini}</span>${d.hot?'<span class="hot">HOT</span>':''}</div>`}
+function spark(){const d=[...S.series,S.balance].slice(-14),mn=Math.min(...d),mx=Math.max(...d),W=300,H=44,sp=Math.max(1,mx-mn),pt=d.map((v,i)=>[(i/(d.length-1)*W).toFixed(1),(H-4-(v-mn)/sp*(H-12)).toFixed(1)]),ln=pt.map(p=>p.join(',')).join(' ');
+ return `<svg class="spk" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><polygon points="0,${H} ${ln} ${W},${H}" fill="rgba(255,255,255,.1)"/><polyline points="${ln}" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>`}
+let fxC=null,fxP=[],fxRaf=0;
+function burst(n,mode){if(reduce)return;try{if(!fxC){fxC=document.createElement('canvas');fxC.className='fxc';document.body.appendChild(fxC)}
+ const dpr=Math.min(2,window.devicePixelRatio||1),W=window.innerWidth,H=window.innerHeight;fxC.width=W*dpr;fxC.height=H*dpr;
+ const cols=['#FFD84D','#1FA971','#46C393','#F26B38','#7FD7FF','#FFFFFF'];
+ for(let i=0;i<(n||48);i++)fxP.push({x:W/2+(Math.random()-.5)*90,y:H*.55,vx:(Math.random()-.5)*10,vy:-7-Math.random()*9,r:3+Math.random()*4,c:mode==='coin'?'#3EF0A8':cols[i%cols.length],rot:Math.random()*6,vr:(Math.random()-.5)*.4,life:0,coin:mode==='coin'&&i%2===0});
+ if(!fxRaf)fxRaf=requestAnimationFrame(fxStep)}catch(e){}}
+function fxStep(){const x=fxC.getContext('2d'),dpr=fxC.width/window.innerWidth,H=window.innerHeight;x.setTransform(dpr,0,0,dpr,0,0);x.clearRect(0,0,window.innerWidth,H);
+ fxP=fxP.filter(p=>p.life<90&&p.y<H+30);
+ fxP.forEach(p=>{p.life++;p.vy+=.32;p.x+=p.vx;p.y+=p.vy;p.vx*=.99;p.rot+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.rot);x.globalAlpha=Math.max(0,1-p.life/90);x.fillStyle=p.c;
+  if(p.coin){x.beginPath();x.arc(0,0,p.r+2,0,7);x.fill();x.strokeStyle='#0B8A5E';x.lineWidth=1.5;x.stroke()}else x.fillRect(-p.r,-p.r/2,p.r*2,p.r);x.restore()});
+ if(fxP.length)fxRaf=requestAnimationFrame(fxStep);else{fxRaf=0;x.clearRect(0,0,window.innerWidth,H)}}
+function countUp(){document.querySelectorAll('[data-count]').forEach(el=>{const to=+el.dataset.count,k=el.dataset.key||'x',from=ui.cu[k],suf=el.dataset.suf||'';ui.cu[k]=to;if(reduce||from===to)return;
+ const f0=from==null?0:from,t0=performance.now(),D=700;const st=t=>{const p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);el.textContent=n0(f0+(to-f0)*e)+suf;if(p<1&&el.isConnected)requestAnimationFrame(st)};requestAnimationFrame(st)})}
+let mapRaf=0,mapDark=false,cam={x:0,y:0},lastDraw=0;
+function rr(x,a,b,w,h,r){x.beginPath();if(x.roundRect)x.roundRect(a,b,w,h,r);else x.rect(a,b,w,h);x.fill()}
+function mapInit(){const c=$('#map');if(!c)return;const m=(getComputedStyle(document.body).backgroundColor.match(/\d+/g)||[240,245,242]).map(Number);mapDark=(m[0]*.299+m[1]*.587+m[2]*.114)<110;cam={x:R.px,y:R.py};if(!R.o&&R.st==='idle'&&!R.m&&!R.peek){R.peek=1;try{navigator.geolocation&&navigator.geolocation.getCurrentPosition(q=>{if(!R.o&&R.st==='idle'&&!R.m){R.o={lat:q.coords.latitude,lon:q.coords.longitude};R.mode='gps'}},()=>{},{enableHighAccuracy:true,timeout:8000,maximumAge:30000})}catch(e){}}cancelAnimationFrame(mapRaf);mapRaf=requestAnimationFrame(mapLoop)}
+function mapLoop(t){if(route!=='run'||!$('#map')||document.hidden)return;if(t-lastDraw>mapGap()){lastDraw=t;try{drawMap(t)}catch(e){console.error(e)}}mapRaf=requestAnimationFrame(mapLoop)}
+function drawMap(t){const c=$('#map');if(!c)return;const dpr=Math.min(2,window.devicePixelRatio||1),W=c.clientWidth,H=c.clientHeight;if(!W||!H)return;
+ if(c.width!==Math.round(W*dpr)||c.height!==Math.round(H*dpr)){c.width=Math.round(W*dpr);c.height=Math.round(H*dpr)}
+ const x=c.getContext('2d');x.setTransform(dpr,0,0,dpr,0,0);cam.x+=(R.px-cam.x)*.14;cam.y+=(R.py-cam.y)*.14;
+ const k=1.5,fy=.34,ox=W/2-cam.x*k,oy=H*fy-cam.y*k,K=mapDark?{road:'#21403A',blk:'#132923',bld:'#183029',park:'#17402F',water:'#123650'}:{road:'#FBFCFA',blk:'#E8EFE9',bld:'#DCE6DE',park:'#C9E5C2',water:'#B3D8EF'};
+ x.fillStyle=K.road;x.fillRect(0,0,W,H);
+ const Z=110,i0=Math.floor((cam.x-W/2/k)/Z)-1,i1=Math.ceil((cam.x+W/2/k)/Z)+1,j0=Math.floor((cam.y-H*fy/k)/Z)-1,j1=Math.ceil((cam.y+H*(1-fy)/k)/Z)+1;
+ const TL=tilesOn();if(TL)drawTiles(x,W,H,ox,oy,k);
+ for(let i=i0;i<=i1&&!TL;i++)for(let j=j0;j<=j1;j++){const h=hash(i+','+j),q=h%100,px=ox+i*Z*k,py=oy+j*Z*k,w=Z*k,g=7*k;
+  x.fillStyle=q<16?K.park:q<25?K.water:K.blk;rr(x,px+g,py+g,w-2*g,w-2*g,7*k);
+  if(q>=25){x.fillStyle=K.bld;const bw=(w-2*g-6*k)/2;for(let a=0;a<2;a++)for(let b=0;b<2;b++)if(((h>>(a*2+b+3))&3)!==0)rr(x,px+g+2*k+a*(bw+2*k),py+g+2*k+b*(bw+2*k),bw,bw,3*k)}}
+ const P=R.pts;if(P.length>1){x.lineJoin='round';x.lineCap='round';x.beginPath();x.moveTo(ox+P[0].x*k,oy+P[0].y*k);for(let n=1;n<P.length;n++)x.lineTo(ox+P[n].x*k,oy+P[n].y*k);x.lineWidth=10;x.strokeStyle=mapDark?'#0B1815':'#fff';x.stroke();x.lineWidth=6;x.strokeStyle='#1FA971';x.stroke()}
+ x.fillStyle='#fff';x.strokeStyle='#1FA971';x.lineWidth=3;x.beginPath();x.arc(ox+P[0].x*k,oy+P[0].y*k,6,0,7);x.fill();x.stroke();
+ const dx=ox+R.px*k,dy=oy+R.py*k,pl=reduce?0:Math.sin(t/380);x.fillStyle='rgba(45,127,249,.22)';x.beginPath();x.arc(dx,dy,17+4*pl,0,7);x.fill();x.fillStyle='#2D7FF9';x.strokeStyle='#fff';x.lineWidth=3.5;x.beginPath();x.arc(dx,dy,8,0,7);x.fill();x.stroke()}
+const TILE={c:new Map(),ok:0,err:0,bad:false};
+function tilesOn(){return R.mode==='gps'&&!!R.o&&!TILE.bad}
+function getTile(z,x,y){const k=z+'/'+x+'/'+y;let t=TILE.c.get(k);if(t)return t;
+ if(TILE.c.size>240){const f=TILE.c.keys().next().value;TILE.c.delete(f)}
+ const im=new Image();t={im,ok:false};im.onload=()=>{t.ok=true;TILE.ok++};im.onerror=()=>{TILE.err++;if(TILE.err>=4&&TILE.ok===0)TILE.bad=true};
+ im.src='https://tile.openstreetmap.org/'+k+'.png';TILE.c.set(k,t);return t}
+function drawTiles(x,W,H,ox,oy,k){const z=18,n=Math.pow(2,z),la=R.o.lat*Math.PI/180,tx0=(R.o.lon+180)/360*n,ty0=(1-Math.log(Math.tan(la)+1/Math.cos(la))/Math.PI)/2*n,tm=40075016.686*Math.cos(la)/n,sz=tm*k;
+ if(mapDark){x.fillStyle='#e4e4de'}else x.fillStyle='#EEF2EE';x.fillRect(0,0,W,H);
+ const a=Math.floor(tx0+(-ox/k)/tm),b=Math.floor(tx0+((W-ox)/k)/tm),c=Math.floor(ty0+(-oy/k)/tm),d=Math.floor(ty0+((H-oy)/k)/tm);
+ for(let i=a;i<=b;i++)for(let j=c;j<=d;j++){const t=getTile(z,i,j);if(t.ok)x.drawImage(t.im,ox+(i-tx0)*tm*k,oy+(j-ty0)*tm*k,sz+.6,sz+.6)}
+ if(mapDark){x.globalCompositeOperation='difference';x.fillStyle='#fff';x.fillRect(0,0,W,H);x.globalCompositeOperation='multiply';x.fillStyle='#93B5A8';x.fillRect(0,0,W,H);x.globalCompositeOperation='source-over'}
+ x.font='10px system-ui,sans-serif';x.textAlign='right';x.fillStyle=mapDark?'rgba(255,255,255,.55)':'rgba(0,0,0,.55)';x.fillText('© OpenStreetMap contributors',W-8,H*.5-6);x.textAlign='left'}
+function stepSim(d){let l=d;while(l>0){const z=Math.min(5,l);R.hd+=(Math.random()-.5)*.35;R.px+=Math.cos(R.hd)*z;R.py+=Math.sin(R.hd)*z;l-=z;R.pts.push({x:R.px,y:R.py})}if(R.pts.length>4000)R.pts.splice(1,R.pts.length-4000)}
+function gpsPt(c){if(!R.o)R.o={lat:c.latitude,lon:c.longitude};R.px=(c.longitude-R.o.lon)*111320*Math.cos(R.o.lat*Math.PI/180);R.py=-(c.latitude-R.o.lat)*110540;R.pts.push({x:R.px,y:R.py});if(R.pts.length>4000)R.pts.splice(1,R.pts.length-4000)}
+function ctlHTML(){const B=(cls,act,ic_,lb)=>`<div class="cl"><button class="rc2 ${cls}" data-act="${act}" aria-label="${lb}">${ic(ic_,34)}</button><span>${lb}</span></div>`;
+ if(R.st==='idle')return `<button class="bigstart" data-act="rs">${ic('play',28)}<span>เริ่มวิ่ง</span></button>`;
+ return (R.st==='running'?B('pause','rp','pause','พักวิ่ง'):B('go2','rs','play','วิ่งต่อ'))+B('stop','re','stop','จบการวิ่ง')}
+
+
+const PFC=[['#2BB67D','#0F4A41'],['#3A7BD5','#0B2A55'],['#E2663A','#7A2A12'],['#8A5CF6','#2A1566'],['#E0A23A','#7A4A12'],['#D6457A','#5A1233']];
+const NICK=['มินท์','บอส','ฝน','เจมส์','นุ่น','ต้น','ฟ้า','เบนซ์','แพร','ก้อง','ปิ่น','อาร์ม','เมย์','โอม','แนน','ไนท์','ปอ','พลอย','ตูน','เจน'];
+const NICKE=['Mint','Boss','Fon','James','Nun','Ton','Fah','Benz','Prae','Kong','Pin','Arm','May','Ohm','Nan','Night','Por','Ploy','Toon','Jane'];
+const nick=i=>(LANG==='en'?NICKE:NICK)[i%20];
+const n1=x=>(Math.round(x*10)/10).toFixed(1);
+const weekNo=()=>Math.floor(Date.now()/(7*864e5));
+function ini(n){const c=[...String(n).trim()];let i=0;while(i<c.length-1&&/[เแโใไ]/.test(c[i]))i++;return (c[i]||'R').toUpperCase()}
+const avatar=(n,ci,sz)=>`<span class="av2" data-nt style="width:${sz}px;height:${sz}px;font-size:${Math.round(sz*.42)}px;background:linear-gradient(135deg,${PFC[ci%6][0]},${PFC[ci%6][1]})">${esc(ini(n))}</span>`;
+const profName=()=>S.profile?S.profile.name:'?';const profColor=()=>S.profile?S.profile.color:0;
+const SPD={football:['เล่นฟุตบอลสนุก ๆ จัดทีมสุ่มให้ ไม่ต้องมีทีมมาก็เล่นได้','Casual football with random teams. No team needed.'],running:['วิ่งเป็นกลุ่ม มีเพซให้เลือกหลายระดับ วอร์มอัพและคูลดาวน์ร่วมกัน','Group run with several pace levels, warm-up and cool-down together.'],badminton:['ตีแบดสลับคู่ มีไม้ให้ยืมสำหรับมือใหม่','Rotating doubles with spare rackets for beginners.'],cycling:['ปั่นเป็นขบวน แวะพักระหว่างทาง ไม่ทิ้งใครไว้ข้างหลัง','Group ride with rest stops. Nobody gets left behind.'],basketball:['เล่นครึ่งคอร์ท 3x3 ทีมที่ชนะอยู่ต่อ','Half-court 3x3 where winners stay on.'],yoga:['ยืดเหยียดและฝึกหายใจ เหมาะกับทุกระดับ','Stretching and breathing, suitable for all levels.'],swimming:['ว่ายน้ำตามเลน แบ่งเลนตามความเร็ว มีโค้ชคอยให้คำแนะนำ','Lane swimming split by speed, with coach tips.'],dance:['เต้นออกกำลังกายสนุก ๆ ไม่ต้องมีพื้นฐาน','Fun dance workout, no experience needed.']};
+const SPB={football:[['รองเท้าผ้าใบหรือสตั๊ด','Trainers or boots'],['สนับแข้ง','Shin guards'],['น้ำดื่ม','Water']],running:[['รองเท้าวิ่ง','Running shoes'],['น้ำดื่ม','Water'],['ผ้าเช็ดตัว','Towel']],badminton:[['รองเท้าคอร์ท','Court shoes'],['ไม้แบด (มีให้ยืม)','Racket (loan available)'],['น้ำดื่ม','Water']],cycling:[['จักรยานและหมวกกันน็อก','Bike and helmet'],['น้ำดื่ม','Water'],['ชุดปั่น','Cycling kit']],basketball:[['รองเท้าบาส','Basketball shoes'],['น้ำดื่ม','Water'],['ผ้าเช็ดตัว','Towel']],yoga:[['เสื่อโยคะ','Yoga mat'],['ผ้าเช็ดตัว','Towel'],['น้ำดื่ม','Water']],swimming:[['ชุดว่ายน้ำและหมวก','Swimsuit and cap'],['แว่นตาว่ายน้ำ','Goggles'],['ผ้าเช็ดตัว','Towel']],dance:[['เสื้อผ้าใส่สบาย','Comfortable clothes'],['น้ำดื่ม','Water'],['ผ้าเช็ดตัว','Towel']]};
+function roster(x,n){const r=rnd(hash('m'+x.id)),idx=[...Array(20).keys()];for(let i=19;i>0;i--){const j=Math.floor(r()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}return idx.slice(0,n)}
+function memRow(x,total){const l=roster(x,8),more=Math.max(0,total-l.length);return l.map(k=>avatar(nick(k),k%6,38)).join('')+(more?`<span class="av2 more" data-nt>+${more}</span>`:'')}
+function lbData(g){const n=Math.min(9,Math.max(5,Math.round(members(g)/2))),r=rnd(hash('lb'+g.id)),idx=roster({id:'lb'+g.id},20).slice(0,n),base=(g.sport==='running'||g.sport==='cycling')?34:(g.sport==='yoga'||g.sport==='dance')?14:22;
+ const rows=idx.map((k,i)=>({k,km:Math.max(1,+(base-i*(base/(n+2))+r()*2).toFixed(1))})),w=Date.now()-7*864e5,me=S.runs.filter(x=>x.t>=w).reduce((a,x)=>a+x.km,0),sum=rows.reduce((a,x)=>a+x.km,0);
+ return{rows,me:+me.toFixed(1),sum,target:Math.ceil(sum*1.08/10)*10,joined:S.gj.includes(g.id)}}
+function leaderboard(g,d){const all=d.rows.map(x=>({name:nick(x.k),ci:x.k%6,km:x.km,me:0}));if(d.joined)all.push({name:profName(),ci:profColor(),km:d.me,me:1});all.sort((a,b)=>b.km-a.km);
+ return all.map((x,i)=>`<div class="lbr${x.me?' me':''}"><span class="rk r${i<3?i+1:0}">${i+1}</span>${avatar(x.name,x.ci,34)}<b data-nt>${esc(x.name)}${x.me?` <em>${T_('(คุณ)','(you)')}</em>`:''}</b><span class="lbk">${n1(x.km)} <small>${T_('กม.','km')}</small></span></div>`).join('')}
+const GEN2=[['m','ชาย','Male'],['f','หญิง','Female'],['o','อื่นๆ','Other'],['n','ไม่ระบุ','Prefer not to say']];
+const phOK=v=>/^0\d{9}$/.test(v||'');
+const phMask=v=>v&&v.length===10?v.slice(0,3)+'-xxx-'+v.slice(6):'';
+function pfPerson(p){return `<div class="two"><label class="fld">${T_('ชื่อจริง','First name')}<input id="pfFirst" maxlength="30" autocomplete="given-name" value="${esc(p.first||'')}" placeholder="${T_('เช่น สมชาย','e.g. Somchai')}"></label><label class="fld">${T_('นามสกุล','Last name')}<input id="pfLast" maxlength="30" autocomplete="family-name" value="${esc(p.last||'')}" placeholder="${T_('เช่น ใจดี','e.g. Jaidee')}"></label></div>
+<label class="fld">${T_('ชื่อเล่น (แสดงในแอพ)','Nickname (shown in app)')}<input id="pfName" maxlength="20" autocomplete="off" value="${esc(p.name)}" placeholder="${T_('เช่น มินท์','e.g. Mint')}"></label>
+<label class="fld">${T_('เบอร์โทรศัพท์','Phone number')}<input id="pfPhone" type="tel" inputmode="numeric" maxlength="14" autocomplete="tel" value="${esc(p.phone||'')}" placeholder="0812345678"></label>
+<div class="fld">${T_('เพศ','Gender')}<div class="chips" style="flex-wrap:wrap">${GEN2.map(g=>`<button class="chip${p.gender===g[0]?' on':''}" data-act="pfGender" data-v="${g[0]}">${T_(g[1],g[2])}</button>`).join('')}</div></div>`}
+function pfPrefs(p){return `<div class="fld">${T_('สีโปรไฟล์','Profile color')}<div class="pfc">${PFC.map((c,i)=>`<button class="pfsw${p.color===i?' on':''}" data-act="pfColor" data-v="${i}" aria-label="${i+1}" style="background:linear-gradient(135deg,${c[0]},${c[1]})">${p.color===i?ic('check',18):''}</button>`).join('')}</div></div>
+<div class="fld">${T_('กีฬาที่ชอบ','Favorite sports')}<div class="chips" style="flex-wrap:wrap">${SPORTS.slice(1).map(x=>`<button class="chip${p.sports.includes(x[0])?' on':''}" data-act="pfSport" data-v="${x[0]}">${x[1]}</button>`).join('')}</div></div>
+<div class="fld">${T_('เป้าหมายวิ่งต่อวัน','Daily run goal')}<div class="chips">${[3,5,7,10].map(v=>`<button class="chip${p.goal===v?' on':''}" data-act="pfGoal" data-v="${v}">${v} ${T_('กม.','km')}</button>`).join('')}</div></div>`}
+function pfFields(p){return pfPerson(p)+pfPrefs(p)}
+function pfCheck(p,strict){const nm=(p.name||'').trim(),f=(p.first||'').trim(),l=(p.last||'').trim();
+ if(strict&&(!f||!l))return T_('กรอกชื่อจริงและนามสกุล','Enter your first and last name');
+ if(nm.length<2)return T_('กรอกชื่อเล่นอย่างน้อย 2 ตัวอักษร','Enter a nickname (at least 2 characters)');
+ if((strict||p.phone)&&!phOK(p.phone))return T_('เบอร์โทรต้องเป็นตัวเลข 10 หลัก ขึ้นต้นด้วย 0','Phone must be 10 digits starting with 0');
+ if(strict&&!p.gender)return T_('เลือกเพศ','Select a gender');return ''}
+function openPfSheet(){sheet(`<h3>${T_('แก้ไขโปรไฟล์','Edit profile')}</h3>${pfFields(ui.pf)}<div class="err" id="pfErr"></div><div class="btns"><button class="b2" data-act="close">${T_('ยกเลิก','Cancel')}</button><button class="b1" data-act="saveProfile">${T_('บันทึก','Save')}</button></div>`)}
+function pfRefresh(){if(ui.pfSheet)openPfSheet();else render()}
+function pfSync(){if(!ui.pf)return;const g=id=>{const e=document.getElementById(id);return e?e.value:null};let v=g('pfName');if(v!==null)ui.pf.name=v;v=g('pfFirst');if(v!==null)ui.pf.first=v;v=g('pfLast');if(v!==null)ui.pf.last=v;v=g('pfPhone');if(v!==null)ui.pf.phone=v.replace(/\D/g,'').slice(0,10)}
+function openPin(){sheet(`<h3>${T_('โหมดผู้ดูแล','Admin mode')}</h3><p>${T_('กรอก PIN เพื่อเข้าสู่ระบบ','Enter your PIN to continue')}</p><label class="fld"><input id="pinIn" type="password" inputmode="numeric" autocomplete="off" maxlength="8" style="letter-spacing:6px;text-align:center"></label><div class="err" id="pinErr"></div><div class="btns"><button class="b2" data-act="close">${T_('ยกเลิก','Cancel')}</button><button class="b1" data-act="pinGo">${T_('เข้าสู่ระบบ','Sign in')}</button></div>`);setTimeout(()=>{const i=$('#pinIn');if(i)i.focus()},60)}
+function reco(){if(ui.gtab!=='all'||ui.gs!=='all'||ui.gq||!S.profile||!(S.profile.sports||[]).length)return '';const l=allGroups().filter(g=>S.profile.sports.includes(g.sport)&&!S.gj.includes(g.id)).slice(0,4);if(!l.length)return '';
+ return `<div class="sh"><b>${T_('แนะนำสำหรับคุณ','Recommended for you')}</b></div><div class="feat">${l.map(g=>`<button class="fc" data-act="openG" data-id="${g.id}">${art({id:g.id,icon:SG[g.sport]||'heart',shop:g.sport,hot:0},'fa')}<span class="fb"><b>${GN(g,'name')}</b><span>${GW(g)}</span><em>${ic('users',16)}${members(g)}</em></span></button>`).join('')}</div>`}
+function profBlock(){const sp=(S.profile&&S.profile.sports||[]).map(k=>(SPORTS.find(x=>x[0]===k)||[0,''])[1]);
+ return `<div class="prof">${avatar(profName(),profColor(),64)}<div style="min-width:0;flex:1"><b style="font-size:18px" data-nt>${esc(profName())}</b><div class="cap">${MODE==='admin'?'ADMIN MODE':'RUN TO EARN'}</div>${sp.length?`<div class="psp">${sp.map(x=>`<span>${x}</span>`).join('')}</div>`:''}</div><button class="chip" data-act="editProfile">${T_('แก้ไข','Edit')}</button></div>`}
+function idPanel(){const p=S.profile||{};if(!p.first&&!p.phone&&!p.gender)return '';const g=GEN2.find(x=>x[0]===p.gender);return `<div class="panel"><div class="ph"><b>${T_('ข้อมูลส่วนตัว','Personal info')}</b></div>${p.first?`<div class="kv"><span>${T_('ชื่อ-นามสกุล','Full name')}</span><b data-nt>${esc((p.first||'')+' '+(p.last||''))}</b></div>`:''}${p.phone?`<div class="kv"><span>${T_('เบอร์โทรศัพท์','Phone')}</span><b data-nt>${phMask(p.phone)}</b></div>`:''}${g?`<div class="kv"><span>${T_('เพศ','Gender')}</span><b>${T_(g[1],g[2])}</b></div>`:''}</div>`}
+function adminPanel(){return `<div class="panel"><div class="ph"><b>${T_('เครื่องมือผู้ดูแล','Admin tools')}</b></div><div class="btns"><button class="b2" data-act="admAdd">+1,000 TOKEN</button><button class="b2" data-act="exitAdmin">${T_('ออกจากโหมดผู้ดูแล','Exit admin mode')}</button></div></div>`}
+
+const CDESC={food:['ส่วนลดค่าอาหารสำหรับมื้อถัดไปของคุณ ใช้เป็นส่วนลดท้ายบิลได้ทันที','A discount on your next meal, applied to the bill at checkout.'],beverage:['ส่วนลดเครื่องดื่มแก้วโปรด ใช้ที่หน้าเคาน์เตอร์ได้ทันที','A discount on your favorite drink, applied at the counter.'],sports:['ส่วนลดอุปกรณ์หรือบริการด้านกีฬา ใช้ตอนชำระเงินที่ร้าน','A discount on sports gear or services, applied at checkout.'],health:['ส่วนลดบริการดูแลสุขภาพ แสดงคูปองตอนจองหรือเข้าใช้บริการ','A discount on health and wellness services. Show the coupon when you book or arrive.']};
+const top=o=>`<header class="top">${o.left||'<span class="sp"></span>'}<div class="ttl${o.dup?' dup':''}">${o.title}${o.sub?`<small>${o.sub}</small>`:''}</div>${o.right||'<span class="sp"></span>'}</header>`;
+const bell=()=>`<button class="ibtn" data-act="bell" aria-label="การแจ้งเตือน">${ic('bell',22)}</button>`;
+const back=r=>`<button class="ibtn" data-act="go" data-r="${r}" aria-label="ย้อนกลับ">${ic('chevL',22)}</button>`;
+
+const VIEWS={
+home(){const t=S.today,pct=goalPct(),C=276.46,dayStart=new Date().setHours(0,0,0,0),gain=S.tx.filter(x=>x.type==='in'&&x.t>=dayStart).reduce((a,x)=>a+x.amt,0);
+return top({left:`<button class="ibtn av-btn" data-act="go" data-r="profile" aria-label="โปรไฟล์">${avatar(profName(),profColor(),36)}</button>`,title:'RUN TO EARN',sub:'Move · Earn · Live Better',right:bell()})+
+`<button class="bal2" data-act="go" data-r="wallet" aria-label="ไปที่กระเป๋า Token">${spark()}<span class="b2c">${coin(60)}</span><div class="b2t"><span class="b2l">ยอดคงเหลือ</span><b class="b2n" data-count="${S.balance}" data-key="bal">${n0(S.balance)}</b><span class="b2u">TOKEN${gain?`<em class="chip2">วันนี้ +${n0(gain)}</em>`:''}</span></div></button>
+<section class="today"><div class="ring${pct>=100?' done':pct>=80?' near':''}" role="img" aria-label="${pct}%"><svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46C393"/><stop offset="1" stop-color="#1FA971"/></linearGradient><linearGradient id="rg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46C393"/><stop offset="1" stop-color="#FFC83D"/></linearGradient></defs><circle class="rk" cx="50" cy="50" r="44"/><circle class="rf" cx="50" cy="50" r="44" style="stroke-dasharray:${(C*pct/100).toFixed(1)} ${C}"/></svg><div class="rc"><b data-count="${pct}" data-suf="%" data-key="pct">${pct}%</b><span>เป้าหมายวันนี้</span></div></div>
+<div class="tm"><div class="mr">${ic('pin',18,'style="color:#3DB88A"')}<span>ระยะทางวันนี้</span><b>${fk(t.km)} <small>KM</small></b></div><div class="mr">${ic('flame',18,'style="color:var(--orange)"')}<span>พลังงาน</span><b>${n0(t.kcal)} <small>KCAL</small></b></div><div class="mr">${ic('feet',18,'style="color:#168A5F"')}<span>จำนวนก้าว</span><b>${n0(t.steps)}</b></div><button class="ge" data-act="goal" aria-label="ตั้งเป้าหมายวันนี้">เป้า ${goalTxt()} · แตะเพื่อแก้ ${ic('chevR',14)}</button></div></section>
+<button class="go" data-act="go" data-r="run">${ic('run',44)}<div><b>START RUN</b><span>เริ่มออกกำลังกาย รับ TOKEN</span></div>${ic('chevR',26)}</button>
+${nearHome()}${missionsHTML()}`},
+
+welcome(){const p=ui.pf||(ui.pf={name:'',first:'',last:'',phone:'',gender:'',color:0,sports:[],goal:5,step:1,ok:false});const st=p.step||1;
+ const ttl=[['ข้อมูลส่วนตัว','Personal info'],['ความชอบของคุณ','Your preferences'],['ยืนยันและยินยอม','Review and consent']][st-1];
+ const prog=`<div class="wsteps">${[1,2,3].map(i=>`<i class="${i<=st?'on':''}"></i>`).join('')}</div><div class="wsl">${T_('ขั้นตอนที่ '+st+' จาก 3','Step '+st+' of 3')} · ${T_(ttl[0],ttl[1])}</div>`;
+ const gl=(GEN2.find(g=>g[0]===p.gender)||['','-','-']);
+ const body=st===1?pfPerson(p):st===2?pfPrefs(p):`<div class="sum2"><div class="kv"><span>${T_('ชื่อ-นามสกุล','Full name')}</span><b data-nt>${esc((p.first||'')+' '+(p.last||''))}</b></div><div class="kv"><span>${T_('ชื่อเล่น','Nickname')}</span><b data-nt>${esc(p.name)}</b></div><div class="kv"><span>${T_('เบอร์โทรศัพท์','Phone')}</span><b data-nt>${phMask(p.phone)}</b></div><div class="kv"><span>${T_('เพศ','Gender')}</span><b>${T_(gl[1],gl[2])}</b></div></div>
+<ul class="bl tl"><li>${T_('ข้อมูลของคุณเก็บไว้ในเครื่องนี้เท่านั้น ไม่ถูกส่งไปที่อื่น','Your data stays on this device only and is not sent anywhere')}</li><li>${T_('ใช้เพื่อแสดงโปรไฟล์และคำนวณผลในแอพนี้','Used only to show your profile and calculate results in this app')}</li><li>${T_('Token และคูปองเป็นของจำลองเพื่อการสาธิต','Token and coupons are simulated for demonstration')}</li><li>${T_('ลบข้อมูลได้ทุกเมื่อด้วยปุ่มรีเซ็ตในหน้าโปรไฟล์','You can erase everything any time with Reset in Profile')}</li></ul>
+<button class="chk${p.ok?' on':''}" data-act="pfAccept" role="checkbox" aria-checked="${p.ok?'true':'false'}"><i>${p.ok?ic('check',14):''}</i><span>${T_('ฉันยอมรับเงื่อนไขการใช้งานและนโยบายความเป็นส่วนตัว','I accept the Terms of Use and Privacy Policy')}</span></button>`;
+ const nav=st===1?`<button class="go" data-act="pfNext"><div><b style="font-size:20px">${T_('ถัดไป','Next')}</b><span>${T_('ขั้นตอนที่ 2 ความชอบของคุณ','Step 2: your preferences')}</span></div>${ic('chevR',26)}</button>`
+ :st===2?`<div class="btns"><button class="b2" data-act="pfBack">${T_('ย้อนกลับ','Back')}</button><button class="b1" data-act="pfNext">${T_('ถัดไป','Next')}</button></div>`
+ :`<div class="btns"><button class="b2" data-act="pfBack">${T_('ย้อนกลับ','Back')}</button><button class="b1${p.ok?'':' dimb'}" data-act="saveProfile">${T_('สร้างบัญชี','Create account')}</button></div>`;
+ return `<div class="wel"><div class="wel-h">${coin(84)}<h1>${T_('ยินดีต้อนรับสู่ Run To Earn','Welcome to Run To Earn')}</h1><p>${T_('ลงทะเบียนใช้เวลาไม่ถึงหนึ่งนาที','Registration takes under a minute')}</p></div>
+<div class="panel wel-f">${prog}${body}<div class="err" id="pfErr"></div>${nav}${st===1?`<p class="note">${T_('ข้อมูลทั้งหมดเก็บไว้ในเครื่องนี้เท่านั้น','All your data stays on this device')}</p>`:''}</div></div>`},
+group(){const g=allGroups().find(x=>x.id===ui.gid);if(!g){route='community';return VIEWS.community()}
+ const j=S.gj.includes(g.id),done=S.ck[g.id]===todayKey(),d=lbData(g),pct=Math.min(100,Math.round((d.sum+(j?d.me:0))/d.target*100)),claimed=S.chl[g.id]===weekNo(),sp=(SPORTS.find(x=>x[0]===g.sport)||[0,''])[1];
+ return top({left:back('community'),title:T_('รายละเอียดกลุ่ม','Group'),right:`<button class="ibtn" data-act="shareG" data-id="${g.id}" aria-label="${T_('แชร์','Share')}">${ic('share',20)}</button>`})+
+`<div class="dh">${art({id:g.id,icon:SG[g.sport]||'heart',shop:g.sport,hot:0},'dha')}<div class="dhi"><b>${GN(g,'name')}</b><span>${sp} · ${esc(g.level)}</span></div></div>
+<div class="panel"><div class="kv"><span>${ic('pin',16)} ${T_('สถานที่','Place')}</span><b>${GN(g,'place')}${dTxt(g)}</b></div><div class="kv"><span>${ic('cal',16)} ${T_('เวลา','When')}</span><b>${GW(g)}</b></div><div class="kv"><span>${ic('users',16)} ${T_('สมาชิก','Members')}</span><b>${members(g)}</b></div></div>
+${tkPanel('g',g.id)}<div class="acts"><button class="jb${j?' on':''}" data-act="join" data-id="${g.id}">${j?T_('ออกจากกลุ่ม','Leave group'):T_('เข้าร่วมกลุ่ม','Join group')}</button>${j?`<button class="cki" data-act="checkin" data-id="${g.id}"${done?' disabled':''}>${done?T_('เช็กอินแล้ว','Checked in'):T_('เช็กอิน +10','Check in +10')}</button>`:''}</div>
+<div class="panel"><div class="ph"><b>${T_('ชาเลนจ์ 7 วัน','7-day challenge')}</b><span class="cap" style="text-transform:none">${T_('เป้ารวมกลุ่ม ','Group goal ')}${d.target} ${T_('กม.','km')}</span></div><div class="bar" style="height:12px"><i style="width:${pct}%"></i></div><div class="chl"><b>${pct}%</b><span>${j?T_('คุณวิ่งแล้ว ','You ran ')+n1(d.me)+' '+T_('กม.','km'):T_('เข้าร่วมเพื่อร่วมชาเลนจ์','Join to take part')}</span></div>${pct>=100&&j?(claimed?`<div class="note">${T_('รับรางวัลสัปดาห์นี้แล้ว','Reward claimed this week')}</div>`:`<button class="go" style="padding:12px 16px" data-act="claimChl" data-id="${g.id}"><div><b style="font-size:17px">${T_('รับรางวัล +50 TOKEN','Claim +50 TOKEN')}</b></div></button>`):`<div class="note">${T_('กลุ่มทำสำเร็จรับ +50 TOKEN','Reach the goal to earn +50 TOKEN')}</div>`}</div>
+<div class="panel"><div class="ph"><b>${T_('อันดับสัปดาห์นี้','Weekly ranking')}</b><span class="cap" style="text-transform:none">${T_('กม. รวม','Total km')}</span></div>${leaderboard(g,d)}${j?'':`<div class="note">${T_('เข้าร่วมกลุ่มเพื่อขึ้นอันดับ','Join the group to appear in the ranking')}</div>`}</div>
+<div class="panel"><div class="ph"><b>${T_('สมาชิก','Members')}</b><span class="cap">${members(g)}</span></div><div class="mem">${memRow(g,members(g))}</div></div>`},
+event(){const e=EVENTS.find(x=>x.id===ui.eid);if(!e){route='community';return VIEWS.community()}
+ const j=S.ev.includes(e.id),taken=e.taken+(j?1:0),lf=e.cap-taken,full=lf<=0&&!j,pc=Math.min(100,Math.round(taken/e.cap*100)),done=S.evck[e.id]===todayKey(),dsc=SPD[e.sport]||SPD.running,bring=SPB[e.sport]||SPB.running,sp=(SPORTS.find(x=>x[0]===e.sport)||[0,''])[1],fee=e.cost?e.cost+' TOKEN':T_('ฟรี','Free');
+ return top({left:back('community'),title:T_('รายละเอียดอีเวนต์','Event'),right:`<button class="ibtn" data-act="shareE" data-id="${e.id}" aria-label="${T_('แชร์','Share')}">${ic('share',20)}</button>`})+
+`<div class="dh">${art({id:e.id,icon:SG[e.sport]||'heart',shop:e.sport,hot:0},'dha')}<div class="dhi"><b>${GN(e,'name')}</b><span>${sp} · ${fee}</span></div></div>
+<div class="panel"><div class="kv"><span>${ic('cal',16)} ${T_('วันที่','Date')}</span><b>${evDate(e)} · ${e.time}</b></div><div class="kv"><span>${ic('pin',16)} ${T_('สถานที่','Place')}</span><b>${GN(e,'place')}${dTxt(e)}</b></div><div class="kv"><span>${ic('tag',16)} ${T_('ค่าสมัคร','Fee')}</span><b>${fee}</b></div></div>
+<div class="panel"><div class="ph"><b>${T_('ผู้สมัคร','Participants')}</b><span class="cap">${taken}/${e.cap}</span></div><div class="bar" style="height:10px"><i style="width:${pc}%"></i></div><div class="mem" style="margin-top:12px">${memRow(e,taken)}</div>${full?`<div class="note">${T_('เต็มแล้ว','Full')}</div>`:lf<=20?`<div class="note">${T_('เหลือ '+lf+' ที่นั่ง','Only '+lf+' seats left')}</div>`:''}</div>
+<div class="panel"><div class="ph"><b>${T_('รายละเอียด','About')}</b></div><p class="txt">${T_(dsc[0],dsc[1])}</p><div class="ph" style="margin-top:10px"><b>${T_('สิ่งที่ต้องเตรียม','What to bring')}</b></div><ul class="bl">${bring.map(b=>`<li>${ic('check',16)}${T_(b[0],b[1])}</li>`).join('')}</ul></div>
+${tkPanel('e',e.id)}<div class="panel"><div class="ph"><b>${T_('เงื่อนไขการสมัคร','Sign-up terms')}</b></div><ul class="bl tl"><li>${T_('ต้องกรอกใบสมัครและยอมรับกติกา','Fill in the form and accept the rules')}</li><li>${T_('ยกเลิกได้ก่อนเริ่มอย่างน้อย 24 ชม. ต้องระบุเหตุผลและยืนยันสองครั้ง','Cancel at least 24 h before start, with a reason and double confirmation')}</li><li>${T_('ยกเลิกครบ 2 ครั้งใน 7 วัน สมัครใหม่ไม่ได้ 7 วัน','2 cancellations in 7 days pauses sign-ups for 7 days')}</li><li>${T_('ถ้าเต็ม เข้าคิวรอได้','If full you can join the waitlist')}</li></ul></div>
+<div class="acts"><button class="jb${j?' on':''}" data-act="evjoin" data-id="${e.id}">${j?T_('ยกเลิกการสมัคร','Cancel signup'):WL().includes(e.id)?T_('ออกจากคิวรอ','Leave waitlist'):full?T_('เข้าคิวรอ','Join waitlist'):T_('สมัครเข้าร่วม','Sign up')}</button>${j&&e.off===0?`<button class="cki" data-act="evck" data-id="${e.id}"${done?' disabled':''}>${done?T_('เช็กอินแล้ว','Checked in'):T_('เช็กอิน +30','Check in +30')}</button>`:''}</div>`},
+deal(){const d=DEALS.find(x=>x.id===ui.did);if(!d){route='rewards';return VIEWS.rewards()}
+ const l=left(d.id),can=l>0&&S.balance>=d.cost,cd=CDESC[d.cat]||CDESC.food;
+ const cta=l<=0?T_('สิทธิ์หมดแล้ว','Sold out'):can?T_('แลกเลย · ','Redeem · ')+d.cost+' TOKEN':T_('Token ไม่พอ ต้องใช้ ','Not enough Token. Need ')+d.cost+' TOKEN';
+ return top({left:back('rewards'),title:T_('รายละเอียดของรางวัล','Reward details')})+
+`<div class="dh">${art(d,'dha')}<div class="dhi"><b>${d.title}</b><span>${d.shop}</span></div></div>
+<div class="panel"><div class="kv"><span>${T_('ราคา','Price')}</span><b>${coin(18)} ${d.cost} TOKEN</b></div><div class="kv"><span>${T_('สิทธิ์คงเหลือวันนี้','Left today')}</span><b>${l}</b></div><div class="kv"><span>${T_('ยอดคงเหลือของคุณ','Your balance')}</span><b>${n0(S.balance)} TOKEN</b></div><div class="kv"><span>${T_('ใช้ได้ภายใน','Valid for')}</span><b>${T_('30 วันหลังแลก','30 days after redeeming')}</b></div></div>
+<div class="panel"><div class="ph"><b>${T_('ของรางวัลนี้คืออะไร','What you get')}</b></div><p class="txt"><b>${LANG==='en'?d.en:d.th+' '+d.th2+' '+d.th3}</b></p><p class="txt">${T_(cd[0],cd[1])}</p></div>
+<div class="panel"><div class="ph"><b>${T_('วิธีใช้','How to use')}</b></div><ol class="stp"><li>${T_('แลกด้วย TOKEN แล้วคูปองจะอยู่ในหน้าคูปองของฉัน','Redeem with TOKEN. The coupon appears in My coupons.')}</li><li>${T_('เปิดคูปอง แล้วแสดง QR หรือรหัสให้พนักงาน','Open the coupon and show the QR or code to staff.')}</li><li>${T_('รับส่วนลดทันทีตอนชำระเงิน','Get the discount when you pay.')}</li></ol></div>
+<div class="panel"><div class="ph"><b>${T_('เงื่อนไข','Terms')}</b></div><ul class="bl tl"><li>${T_('ใช้ได้ 1 ครั้งต่อคูปอง','One use per coupon')}</li><li>${T_('ใช้ได้ภายใน 30 วันหลังแลก','Valid for 30 days after redeeming')}</li><li>${T_('ไม่สามารถแลกเป็นเงินสดหรือขอคืน Token','No cash value and no Token refunds')}</li><li>${T_('ไม่ใช้ร่วมกับโปรโมชันอื่น','Cannot be combined with other promotions')}</li><li>${T_('จำนวนสิทธิ์จำกัดต่อวัน','Limited number of rewards per day')}</li></ul><p class="note" style="margin-top:10px">${T_('ร้านค้าและดีลทั้งหมดในแอพนี้เป็นตัวอย่างจำลองเพื่อการสาธิต','All shops and deals in this app are fictional samples for demonstration.')}</p></div>
+<div class="acts"><button class="jb${can?'':' dim'}" data-act="redeem" data-id="${d.id}">${cta}</button></div>${can?`<p class="note">${T_('คงเหลือหลังแลก ','Balance after redeeming: ')}${n0(S.balance-d.cost)} TOKEN</p>`:''}`},
+activity(){const l=S.last;
+return top({left:back('home'),title:'RUN TO EARN',right:`<button class="ibtn" data-act="share" aria-label="แชร์">${ic('share',20)}</button>`})+
+`<div class="pgt"><h1>Activity Summary</h1><p>สรุปผลการออกกำลังกาย</p></div>
+<div class="hero">${coin(86)}<div><h2>${S.runs.length?'ยอดเยี่ยม!':T_('พร้อมออกวิ่งหรือยัง?','Ready to run?')}</h2><p>${S.runs.length?'ทุกการเคลื่อนไหวมีคุณค่า':T_('วิ่งครั้งแรกเพื่อรับ Token','Run once to earn Token')}</p><small>GREAT JOB!<br>EVERY MOVE COUNTS</small></div></div>
+<div class="grid2">
+<div class="stat">${ic('pin',30,'style="color:#168A5F"')}<div class="st"><div class="sl">ระยะทางรวม</div><div class="sv">${fk(l.km)} <small>km</small></div><div class="cap">Total distance</div></div></div>
+<div class="stat">${ic('cal',30,'style="color:#3DB88A"')}<div class="st"><div class="sl">เวลาที่ใช้</div><div class="sv tm">${hms(l.sec)}</div><div class="cap">Total time</div></div></div>
+<div class="stat">${ic('flame',30,'style="color:var(--orange)"')}<div class="st"><div class="sl">พลังงานที่ใช้<br>โดยประมาณ</div><div class="sv">${n0(l.kcal)} <small>kcal</small></div><div class="cap">Calories burned</div></div></div>
+<div class="stat">${coin(34)}<div class="st"><div class="sl">ได้รับ TOKEN</div><div class="sv">${n0(l.tok)}</div><div class="cap">Token earned</div></div></div>
+</div>
+<button class="go" data-act="go" data-r="home"><div style="text-align:center"><b style="font-family:var(--f-th);font-size:20px">กลับสู่หน้าหลัก</b><span class="dup" style="font-family:var(--f-en);font-size:12px;letter-spacing:.5px">BACK TO HOME</span></div>${ic('chevR',26)}</button>
+${histHTML()}`},
+
+wallet(){const now=Date.now(),mo=S.tx.filter(x=>now-x.t<=30*864e5),sIn=mo.filter(x=>x.type==='in').reduce((a,x)=>a+x.amt,0),sOut=mo.filter(x=>x.type==='out').reduce((a,x)=>a+x.amt,0),tb=ui.wtab;
+const list=S.tx.filter(x=>tb==='all'||x.type===tb).sort((a,b)=>b.t-a.t),shown=ui.wall?list:list.slice(0,6);
+const rows=shown.map(x=>{const i=x.type==='in';return `<div class="row"><span class="rb">${ic(i?(x.title.includes('เดิน')?'feet':x.title.includes('เป้า')?'target':'run'):(x.title.includes('ซื้อ')?'cart':x.title.includes('บริการ')?'star':'gift'),16,'style="color:var(--ink)"')}</span><div class="rt">${x.title}<small>${dtm(x.t)}</small></div><span class="ra ${x.type}">${i?'+':'-'}${n0(x.amt)}</span></div>`}).join('')||'<div class="empty" style="padding:16px 0">ยังไม่มีรายการ</div>';
+const T=(k,a)=>`<button class="tab${tb===k?' on':''}" data-act="wtab" data-v="${k}">${a}</button>`;
+return top({title:'RUN TO EARN',right:bell()})+
+`<div class="wt"><span class="wbox">${ic('wallet',30)}</span><div><h1>Token Wallet</h1><p>สะสมทุกก้าว สู่สุขภาพที่ดีกว่า</p></div></div>
+<div class="bal"><span class="b2c" style="position:static">${coin(64)}</span><div class="bal-t"><span>ยอดคงเหลือ</span><b data-count="${S.balance}" data-key="bal">${n0(S.balance)}</b><em>TOKEN</em></div><button class="xfer" data-act="transfer">${ic('nav',24)}<span>โอน</span><small>Transfer</small></button></div>
+<div class="grid2"><div class="sumc"><span class="sl">${ic('down',18,'style="color:var(--green)"')}ได้รับ 30 วันล่าสุด</span><b class="in">+${n0(sIn)}</b></div><div class="sumc"><span class="sl">${ic('up',18,'style="color:var(--orange)"')}ใช้ไป 30 วันล่าสุด</span><b class="out">-${n0(sOut)}</b></div></div>
+<div class="panel"><div class="ph"><b>กราฟการสะสม Token</b><select id="range" aria-label="ช่วงเวลา"><option value="30"${ui.range===30?' selected':''}>30 วัน</option><option value="7"${ui.range===7?' selected':''}>7 วัน</option></select></div><div id="chart">${chart()}</div></div>
+<div class="panel"><div class="tabs" style="grid-template-columns:repeat(3,1fr);margin-bottom:6px">${T('all','ทั้งหมด')}${T('in','ได้รับ')}${T('out','ใช้ไป')}</div>${rows}${list.length>6?`<button class="link" data-act="wmore">${ui.wall?'ย่อ':'ดูทั้งหมด'} ${ic('chevR',14)}</button>`:''}</div>`},
+
+rewards(){
+return top({title:'RUN TO EARN',sub:'Reward Marketplace',left:`<button class="ibtn" data-act="go" data-r="coupons" aria-label="คูปองของฉัน">${ic('ticket',22)}</button>`,right:bell()})+
+`<label class="search">${ic('search',20)}<input id="q" type="search" placeholder="ค้นหาร้านค้าหรือสิทธิพิเศษ" value="${ui.q.replace(/"/g,'&quot;')}" autocomplete="off"></label>
+${S.balance<=0?`<div class="hint">${ic('run',22)}<span>${T_('วิ่งเพื่อสะสม Token ก่อน แล้วค่อยมาแลกของรางวัล','Run to earn Token first, then redeem rewards')}</span><button class="rbtn" data-act="go" data-r="run">${T_('เริ่มวิ่ง','Start run')}</button></div>`:''}<div class="cats">${CATS.map(c=>`<button class="cat${ui.cat===c[0]?' on':''}" data-act="cat" data-v="${c[0]}"><i>${ic(c[3],26)}</i>${c[1]}<small>${c[2]}</small></button>`).join('')}</div>
+<div id="deals" class="stk">${dealsHTML()}</div>`},
+
+coupons(){
+const f=S.coupons.filter(c=>ui.ctab==='all'||(ui.ctab==='avail'?!c.used:c.used)).sort((a,b)=>b.t-a.t);
+const T=(k,a,b)=>`<button class="tab${ui.ctab===k?' on':''}" data-act="ctab" data-v="${k}">${a}<small>${b}</small></button>`;
+return top({left:back('rewards'),title:'คูปองของฉัน',sub:'My Coupons',dup:1})+
+`<div class="tabs">${T('all','ทั้งหมด','All')}${T('avail','พร้อมใช้','Available')}${T('used','ใช้แล้ว','Used')}</div>`+
+(f.length?f.map(c=>{const d=DEALS.find(x=>x.id===c.deal),e=new Date(c.exp);
+return `<article class="cp${c.used?' used':''}"><div class="cph"><div class="l">${art(d,"cpa")}</div><div class="r">${ic('leaf',30)}${d.cb}<small>GOOD FOOD,<br>BETTER PEOPLE</small></div></div>
+<div class="cpb"><h3>${d.th}</h3><div class="t2">${d.th2}<br>${d.th3}</div><div class="en">${d.en}</div>
+<div class="qrw"><div class="qr" data-code="${c.code}"></div></div><div class="code">${c.code}</div>
+<div class="cpf"><div class="ex">${ic('cal',30)}<div>หมดอายุ ${e.getDate()} ${MN(e.getMonth())} ${e.getFullYear()+(LANG==='en'?0:543)}<small>Valid until ${ME[e.getMonth()]} ${e.getDate()}, ${e.getFullYear()}</small></div></div>
+<div class="pill${c.used?' used':''}">${ic('check',24)}<div>${c.used?'ใช้แล้ว':'พร้อมใช้'}<small>${c.used?'Used':'Ready to Use'}</small></div></div></div>
+${c.used?'':`<button class="cpact" data-act="useC" data-id="${c.id}">ทำเครื่องหมายว่าใช้แล้ว</button>`}</div></article>`}).join('')
+:`<div class="empty">${ic('ticket',40)}<p>ยังไม่มีคูปองในหมวดนี้</p><button class="rbtn" data-act="go" data-r="rewards">ไปแลกรางวัล</button></div>`)},
+
+run(){
+return `<canvas id="map" class="mapc" role="img" aria-label="แผนที่เส้นทางวิ่ง"></canvas>
+<div class="rtop"><button class="ibtn glass" data-act="back" aria-label="ย้อนกลับ">${ic('chevL',22)}</button><div class="rpill"><i></i><span id="rst"></span></div><div class="gps2"><span id="gps"></span></div></div>
+<div class="rpanel"><div class="grab"></div><div class="rbig"><b id="rt">00:00:00</b><span>เวลา</span></div>
+<div class="rgrid"><div><b id="rd">0.00</b><span>ระยะทาง KM</span></div><div><b id="rp">--:--</b><span>เพซเฉลี่ย /KM</span></div><div><b id="rk">0</b><span>แคลอรี่ KCAL</span></div></div>
+<div class="rctl" id="rctl"></div></div>`},
+community(){const t=ui.gtab,T=(k,a,b)=>`<button class="tab${t===k?' on':''}" data-act="gtab" data-v="${k}">${a}<small${k==='mine'?' class="keep"':''}>${b}</small></button>`;
+const body=t==='events'?eventsHTML():t==='mine'?mineHTML():groupsHTML();
+return top({title:'Community',sub:'ชวนออกกำลังกาย หาก๊วน หาอีเวนต์',right:`<button class="ibtn" data-act="newGroup" aria-label="สร้างกลุ่มใหม่">${ic('plus',22)}</button>`})+
+`<div class="tabs">${T('all','กลุ่ม','Groups')}${T('events','อีเวนต์','Events')}${T('mine','ของฉัน','Mine · '+(S.gj.length+S.ev.length))}</div>
+<label class="search">${ic('search',20)}<input id="gq" type="search" placeholder="ค้นหากลุ่ม อีเวนต์ หรือสถานที่" value="${esc(ui.gq)}" autocomplete="off"></label>
+<div class="chips">${SPORTS.map(s=>`<button class="chip${ui.gs===s[0]?' on':''}" data-act="gsport" data-v="${s[0]}">${s[1]}</button>`).join('')}</div>
+${nearBar()}${reco()}<div id="groups" class="stk">${body}</div>`},
+profile(){const n=S.coupons.filter(c=>!c.used).length;
+return top({left:back('home'),title:'โปรไฟล์',sub:'Profile',dup:1})+
+`${profBlock()}${idPanel()}${badgesHTML()}
+<div class="panel"><div class="kv"><span>ยอดคงเหลือ</span><b>${n0(S.balance)} TOKEN</b></div><div class="kv"><span>ระยะทางวันนี้</span><b>${fk(S.today.km)} KM</b></div><div class="kv"><span>เป้าหมายวันนี้</span><b>${goalTxt()}</b></div><div class="kv"><span>คูปองพร้อมใช้</span><b>${n}</b></div></div>
+<div class="panel"><div class="kv"><span>${T_('ภาษา','Language')}</span><div class="seg">${[['th','ไทย'],['en','English']].map(a=>`<button class="chip${S.pref.lang===a[0]?' on':''}" data-act="setLang" data-v="${a[0]}">${a[1]}</button>`).join('')}</div></div><div class="kv"><span>${T_('ธีม','Theme')}</span><div class="seg">${[['auto',T_('อัตโนมัติ','Auto')],['light',T_('สว่าง','Light')],['dark',T_('มืด','Dark')]].map(a=>`<button class="chip${S.pref.theme===a[0]?' on':''}" data-act="setTheme" data-v="${a[0]}">${a[1]}</button>`).join('')}</div></div><div class="kv"><span>${T_('หน้าจอมืดตอนวิ่ง (ประหยัดแบต)','Dim screen while running')}</span><div class="seg">${[[1,T_('เปิด','On')],[0,T_('ปิด','Off')]].map(a=>`<button class="chip${(S.pref.dim!==false)===!!a[0]?' on':''}" data-act="setDim" data-v="${a[0]}">${a[1]}</button>`).join('')}</div></div></div>
+${MODE==='admin'?adminPanel():''}<button class="b2" data-act="reset" style="color:var(--red)">รีเซ็ตข้อมูลทั้งหมด</button>`}};
+
+function dTitle(){if(!ui.filtered)return 'ดีลยอดนิยม';const c=CATS.find(x=>x[0]===ui.cat);return 'ดีลหมวด'+c[1]}
+function dealCard(d){const l=left(d.id),fl=FLASH.includes(d.id),can=l>0&&S.balance>=d.cost;
+ const tag=(l<=10?`<span class="lowst">${l>0?'เหลือ '+l+' สิทธิ์':'หมดแล้ว'}</span>`:'')+(fl&&l>0?`<span class="cd" data-end="${endOfDay()}">หมดเวลาใน ${cdTxt(endOfDay()-Date.now())}</span>`:'');
+ return `<article class="dc"><button class="dlk" data-act="openD" data-id="${d.id}" aria-label="${d.title}">${art(d)}</button><div class="db"><button class="dlk" data-act="openD" data-id="${d.id}"><b>${d.title}</b><span class="ds">${d.shop}</span></button><div class="dtag">${tag}</div><div class="dcost"><em>${coin(18)}${d.cost}</em><button class="rbtn${can?'':' dim'}" data-act="redeem" data-id="${d.id}">${l<=0?'หมด':'REDEEM'}</button></div></div></article>`}
+function missionsHTML(){return `<div class="panel"><div class="ph"><b>ภารกิจวันนี้</b><span class="strk">${ic('flame',14)}สตรีค ${curStreak()} วัน</span></div><div class="cap" style="margin-bottom:4px;text-transform:none">โบนัสสตรีค 3 วัน +30 · 7 วัน +100 · 30 วัน +500 TOKEN</div>${MISS.map(m=>{const pc=Math.round(Math.min(m.v(),m.max)/m.max*100),done=!!S.mc[m.id],ready=pc>=100&&!done;return `<div class="row"><span class="rb">${ic(m.icon,16,'style="color:var(--ink)"')}</span><div class="rt">${m.th}<div class="bar" style="margin-top:5px;height:6px"><i style="width:${pc}%"></i></div></div>${done?`<span class="ra in">${ic('check',20)}</span>`:`<button class="rbtn${ready?'':' dim'}" data-act="claim" data-id="${m.id}">${ready?'รับ +'+m.tok:'+'+m.tok}</button>`}</div>`}).join('')}</div>`}
+function histHTML(){const runs=[...S.runs].sort((a,b)=>b.t-a.t),t0=new Date();t0.setHours(0,0,0,0);
+ const days=[];for(let i=6;i>=0;i--)days.push({d:new Date(t0.getTime()-i*864e5),km:0});
+ runs.forEach(r=>{const x=new Date(r.t);x.setHours(0,0,0,0);const o=days.find(z=>z.d.getTime()===x.getTime());if(o)o.km+=r.km});
+ const wk=days.reduce((a,z)=>a+z.km,0),wn=runs.filter(r=>r.t>=days[0].d.getTime()).length,mx=Math.max(3,...days.map(z=>z.km));
+ const good=runs.filter(r=>r.km>=1).sort((a,b)=>a.sec/a.km-b.sec/b.km)[0],best=runs.reduce((a,r)=>Math.max(a,r.km),0),DN=LANG==='en'?['Sun','Mon','Tue','Wed','Thu','Fri','Sat']:['อา','จ','อ','พ','พฤ','ศ','ส'];
+ const bars=days.map((z,i)=>{const h=Math.round(z.km/mx*76),x=14+i*41;return `<rect x="${x}" y="${96-Math.max(h,2)}" width="26" height="${Math.max(h,2)}" rx="6" fill="${i===6?'var(--tb)':'#1FA971'}" opacity="${z.km?1:.25}"/>${z.km?`<text x="${x+13}" y="${91-h}" text-anchor="middle" font-size="9" font-weight="700" fill="var(--ink)" font-family="Inter">${fk(z.km)}</text>`:''}<text x="${x+13}" y="112" text-anchor="middle" font-size="10" fill="var(--muted)">${DN[z.d.getDay()]}</text>`}).join('');
+ const list=(ui.allRuns?runs:runs.slice(0,5)).map(r=>`<div class="row"><span class="rb">${ic('run',16,'style="color:var(--ink)"')}</span><div class="rt">${fk(r.km)} กม. · ${hms(r.sec)}<small>${dtm(r.t)} · เพซ ${pace(r.sec,r.km*1000)}/กม.</small></div><span class="ra in">+${r.tok}</span></div>`).join('');
+ return `<div class="panel"><div class="ph"><b>สถิติ 7 วันล่าสุด</b><span class="cap">กม. ต่อวัน</span></div><svg viewBox="0 0 300 120" class="chart" role="img" aria-label="กราฟระยะทาง 7 วัน">${bars}</svg></div>
+<div class="grid3"><div class="m3"><span>รวมสัปดาห์</span><b>${fk(wk)} กม.</b></div><div class="m3"><span>จำนวนรอบ</span><b>${wn}</b></div><div class="m3"><span>เพซดีที่สุด</span><b>${good?pace(good.sec,good.km*1000):'--:--'}</b></div></div>
+<div class="panel"><div class="ph"><b>ประวัติการวิ่ง</b><span class="cap">ไกลสุด ${fk(best)} กม.</span></div>${list||'<div class="empty">ยังไม่มีประวัติ</div>'}${runs.length>5?`<button class="link" data-act="moreRuns">${ui.allRuns?'ย่อ':'ดูทั้งหมด'} ${ic('chevR',14)}</button>`:''}</div>`}
+function dealsHTML(){const q=ui.q.trim().toLowerCase();
+ const l=DEALS.filter(d=>(!ui.filtered||d.cat===ui.cat)&&(!q||(d.title+d.shop+d.th+d.cb).toLowerCase().includes(q)));
+ const feat=(!ui.filtered&&!q)?`<div class="sh"><b>ดีลแนะนำ</b></div><div class="feat">${DEALS.filter(d=>d.hot).map(d=>`<button class="fc" data-act="openD" data-id="${d.id}">${art(d,'fa')}<span class="fb"><b>${d.title}</b><span>${d.shop}</span><em>${coin(16)}${d.cost} TOKEN</em></span></button>`).join('')}</div>`:'';
+ return feat+`<div class="sh"><b id="dtitle">${dTitle()}</b><button data-act="allDeals">ดูทั้งหมด ${ic('chevR',15)}</button></div>`+(l.length?`<div class="dgrid">${l.map(dealCard).join('')}</div>`:'<div class="empty">ยังไม่มีดีลในหมวดนี้</div>')}
+function groupsHTML(only){const q=ui.gq.trim().toLowerCase(),mine=!!only,td=todayKey();
+ const l=nearApply(allGroups().filter(g=>(ui.gs==='all'||g.sport===ui.gs)&&(!mine||S.gj.includes(g.id))&&(!q||(g.name+g.place+(GEN[g.id]||[]).join(' ')).toLowerCase().includes(q))),only);
+ return l.length?l.map(g=>{const j=S.gj.includes(g.id),done=S.ck[g.id]===td,c=SG[g.sport]||'heart';
+ return `<article class="grp"><button class="gh" data-act="openG" data-id="${g.id}"><span class="gi" style="background:linear-gradient(135deg,${GR[c][0]},${GR[c][1]})">${ic(SI[g.sport]||'users',26)}</span><div style="min-width:0"><b>${GN(g,'name')}</b><span class="cap" style="text-transform:none">${(SPORTS.find(s=>s[0]===g.sport)||[0,''])[1]} · ${esc(g.level)}${j?` · <span class="jtag">✓ ${T_('เข้าร่วมแล้ว','Joined')}</span>`:''}</span></div>${ic('chevR',18,'style="margin-left:auto;color:var(--muted)"')}</button><div class="gm"><span>${ic('pin',14)}${GN(g,'place')}${dTxt(g)}</span><span>${ic('cal',14)}${GW(g)}</span></div><div class="ga"><span class="ct">${ic('users',18)}${members(g)} คน</span><div style="display:flex;gap:8px">${j?`<button class="cki" data-act="checkin" data-id="${g.id}"${done?' disabled':''}>${done?'เช็กอินแล้ว':'เช็กอิน +10'}</button>`:''}<button class="jb${j?' on leave':''}" data-act="join" data-id="${g.id}">${j?T_('ออกจากกลุ่ม','Leave'):T_('เข้าร่วม','Join')}</button></div></div></article>`}).join(''):`<div class="empty">${ic('users',40)}<p>${mine?'ยังไม่ได้เข้าร่วมกลุ่มใด':'ไม่พบกลุ่มที่ค้นหา'}</p>${mine?'<button class="rbtn" data-act="gtab" data-v="all">ดูกลุ่มทั้งหมด</button>':''}</div>`}
+function eventsHTML(only){const q=ui.gq.trim().toLowerCase();
+ const l=nearApply(EVENTS.filter(e=>(ui.gs==='all'||e.sport===ui.gs)&&(!only||S.ev.includes(e.id))&&(!q||(e.name+e.place+(GEN[e.id]||[]).join(' ')).toLowerCase().includes(q))).sort((a,b)=>a.off-b.off),only);
+ return l.length?l.map(e=>{const j=S.ev.includes(e.id),taken=e.taken+(j?1:0),lf=e.cap-taken,full=lf<=0&&!j,pc=Math.min(100,Math.round(taken/e.cap*100)),c=SG[e.sport]||'heart',done=S.evck[e.id]===todayKey();
+ return `<article class="grp"><button class="gh" data-act="openE" data-id="${e.id}"><span class="gi" style="background:linear-gradient(135deg,${GR[c][0]},${GR[c][1]})">${ic(SI[e.sport]||'users',26)}</span><div style="min-width:0"><b>${GN(e,'name')}</b><span class="cap" style="text-transform:none">${(SPORTS.find(s=>s[0]===e.sport)||[0,''])[1]} · ${e.cost?e.cost+' TOKEN':'ฟรี'}</span></div>${ic('chevR',18,'style="margin-left:auto;color:var(--muted)"')}</button><div class="gm"><span>${ic('cal',14)}${evDate(e)} · ${e.time}</span><span>${ic('pin',14)}${GN(e,'place')}${dTxt(e)}</span></div><div><div class="bar" style="margin:0 0 4px;height:6px"><i style="width:${pc}%"></i></div><span class="cap" style="text-transform:none">${taken}/${e.cap} คน${full?' · เต็มแล้ว':lf<=20?' · เหลือ '+lf+' ที่':''}</span></div><div class="ga"><span class="evt">${e.off===0?'วันนี้!':''}</span><div style="display:flex;gap:8px">${j&&e.off===0?`<button class="cki" data-act="evck" data-id="${e.id}"${done?' disabled':''}>${done?'เช็กอินแล้ว':'เช็กอิน +30'}</button>`:''}<button class="jb${j?' on':''}" data-act="evjoin" data-id="${e.id}"> ${j?T_('ยกเลิก','Cancel'):WL().includes(e.id)?T_('รอคิว','Queued'):full?T_('เข้าคิวรอ','Waitlist'):'สมัคร'}</button></div></div></article>`}).join(''):`<div class="empty">${ic('cal',40)}<p>ไม่พบอีเวนต์</p></div>`}
+function mineHTML(){const gs=allGroups().filter(g=>S.gj.includes(g.id)).length,es=EVENTS.filter(e=>S.ev.includes(e.id)).length;
+ if(!gs&&!es)return `<div class="empty">${ic('users',40)}<p>ยังไม่ได้เข้าร่วมกลุ่มหรืออีเวนต์</p><div style="display:flex;gap:8px;justify-content:center"><button class="rbtn" data-act="gtab" data-v="all">ดูกลุ่ม</button><button class="rbtn" data-act="gtab" data-v="events">ดูอีเวนต์</button></div></div>`;
+ return (es?`<div class="sh"><b>อีเวนต์ที่สมัครไว้</b></div>${eventsHTML(true)}`:'')+(gs?`<div class="sh"><b>กลุ่มของฉัน</b></div>${groupsHTML(true)}`:'')}
+function drawGroups(){const a=$('#groups');if(a)a.innerHTML=ui.gtab==='events'?eventsHTML():ui.gtab==='mine'?mineHTML():groupsHTML()}
+function drawDeals(){const a=$('#deals');if(a)a.innerHTML=dealsHTML()}
+
+function chart(){const n=ui.range,d=[...S.series,S.balance].slice(-n),W=330,H=170,pl=36,pr=14,pt=22,pb=24,mx=Math.max(500,Math.ceil(Math.max(...d)/500)*500);
+ const X=i=>pl+(W-pl-pr)*i/(n-1),Y=v=>pt+(H-pt-pb)*(1-v/mx);let g='';
+ for(let v=500;v<=mx;v+=500)g+=`<line x1="${pl}" x2="${W-pr}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--bar)"/><text x="${pl-6}" y="${Y(v)+3}" text-anchor="end" font-size="10" fill="var(--muted)" font-family="Inter">${n0(v)}</text>`;
+ const pts=d.map((v,i)=>[X(i),Y(v)]),line=pts.map(p=>p.join(',')).join(' '),area=`${pl},${Y(0)} ${line} ${X(n-1)},${Y(0)}`;
+ let xl='';for(let k=0;k<5;k++){const i=Math.round(k*(n-1)/4);xl+=`<text x="${X(i)}" y="${H-6}" text-anchor="middle" font-size="9.5" fill="var(--muted)">${dshort(Date.now()-(n-1-i)*864e5)}</text>`}
+ const lp=pts[n-1],bx=Math.min(lp[0]-20,W-pr-38);
+ return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="กราฟการสะสม Token"><defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1FA971" stop-opacity=".35"/><stop offset="1" stop-color="#1FA971" stop-opacity="0"/></linearGradient></defs>${g}<polygon points="${area}" fill="url(#ag)"/><polyline points="${line}" fill="none" stroke="#1FA971" stroke-width="2" stroke-linejoin="round"/>${pts.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="${n>8?1.8:2.8}" fill="#1FA971"/>`).join('')}<circle cx="${lp[0]}" cy="${lp[1]}" r="4.5" fill="#fff" stroke="#1FA971" stroke-width="2.5"/><rect x="${bx}" y="${lp[1]-24}" width="40" height="18" rx="6" fill="#14935F"/><text x="${bx+20}" y="${lp[1]-11.5}" text-anchor="middle" font-size="10.5" font-weight="700" fill="#fff" font-family="Inter">${n0(S.balance)}</text>${xl}</svg>`}
+
+function navHTML(){const on=r=>({home:['home','run'],activity:['activity'],wallet:['wallet'],rewards:['rewards','coupons','deal'],community:['community','group','event']}[r].includes(route));
+ const I=[['home','Home','home'],['activity','Activity','bars'],['wallet','Wallet','wallet'],['rewards','Rewards','gift'],['community','Community','users']];
+ return `<nav class="nav" aria-label="เมนูหลัก"><div class="nav-in">${I.map(i=>`<button class="nv${on(i[0])?' on':''}" data-act="go" data-r="${i[0]}"${on(i[0])?' aria-current="page"':''}><i>${ic(i[2],22)}</i>${i[1]}</button>`).join('')}</div></nav>`}
+
+function render(){try{render0()}catch(e){console.error(e);$('#root').innerHTML='<main><div class="empty"><p>แอพเจอข้อมูลที่ผิดพลาด กดรีเซ็ตเพื่อเริ่มใหม่</p><button class="rbtn" data-act="yesReset">รีเซ็ตแอพ</button></div></main>'}}
+let lastRoute='';
+function render0(){if(MODE==='user'&&!S.profile)route='welcome';const ent=route!==lastRoute,prv=lastRoute;lastRoute=route;const rm=route==='run',nn=rm||route==='welcome';document.body.classList.toggle('runmode',rm);document.body.classList.toggle('adminmode',MODE==='admin'&&!rm);
+ let ghost=null;
+ if(ent&&!reduce&&!LOWFX&&prv&&prv!=='run'&&route!=='run'&&prv!=='welcome'&&route!=='welcome'){try{const o=document.querySelector('#root main');const r=o&&o.getBoundingClientRect();if(r&&r.width&&r.height){ghost=o.cloneNode(true);ghost.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));ghost.querySelectorAll('canvas,input,textarea,select').forEach(e=>e.remove());ghost.removeAttribute('id');ghost.className='ghost';ghost.setAttribute('aria-hidden','true');ghost.inert=true;ghost.style.cssText='left:'+r.left+'px;top:'+r.top+'px;width:'+r.width+'px;height:'+r.height+'px;--gx:'+(-dxOf(prv,route)*.45)+'px'}}catch(e){ghost=null}}
+ $('#root').classList.toggle('navpop',ent);$('#root').innerHTML=`<main class="${rm?'runm':''}${ent?' enter':''}"${ent?` style="--dx:${dxOf(prv,route)}px"`:''}>${VIEWS[route]()}</main>${nn?'':navHTML()}${MODE==='admin'&&!rm?`<button class="admb" data-act="exitAdmin">ADMIN · ${T_('แตะเพื่อออก','tap to exit')}</button>`:''}`;
+ if(route==='coupons'&&document.querySelector('.qr'))withQR(()=>document.querySelectorAll('.qr').forEach(el=>{try{new QRCode(el,{text:el.dataset.code,width:104,height:104,colorDark:'#0B3B35',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M})}catch(e){}}));
+ if(rm){R.cs=null;updRun();mapInit()}else cancelAnimationFrame(mapRaf);
+ countUp();
+ if(ghost){document.body.appendChild(ghost);setTimeout(()=>ghost.remove(),230)}
+ clearInterval(cdT);if(route==='rewards')cdT=setInterval(updCd,1000)}
+const EN={
+'ยอดคงเหลือ':'Balance','ระยะทางวันนี้':"Today's distance",'พลังงานที่ใช้':'Energy used','พลังงาน':'Energy','(ค่าประมาณ)':'(estimated)','จำนวนก้าว':'Steps','เป้าหมายวันนี้':"Today's goal",'เป้า ':'Goal ',' · แตะเพื่อแก้':' · tap to edit','เริ่มออกกำลังกาย รับ TOKEN':'Start a workout, earn TOKEN','ภารกิจวันนี้':"Today's missions",
+'โบนัสสตรีค 3 วัน +30 · 7 วัน +100 · 30 วัน +500 TOKEN':'Streak bonus: 3 days +30 · 7 days +100 · 30 days +500 TOKEN','เดินให้ครบ 5,000 ก้าว':'Walk 5,000 steps','วิ่งให้ครบ 3 กม.':'Run 3 km','เผาผลาญ 200 kcal':'Burn 200 kcal','กม.':'km','ก้าว':'steps','โดยประมาณ':'(approx.)','เวลาที่ใช้':'Time',
+'ระยะทางรวม':'Total distance','ได้รับ TOKEN':'Token earned','ยอดเยี่ยม!':'Great job!','ทุกการเคลื่อนไหวมีคุณค่า':'Every move counts','สรุปผลการออกกำลังกาย':'Workout summary','กลับสู่หน้าหลัก':'Back to Home','สถิติ 7 วันล่าสุด':'Last 7 days','กม. ต่อวัน':'km per day','รวมสัปดาห์':'This week','จำนวนรอบ':'Runs','เพซดีที่สุด':'Best pace','เพซ':'pace','ประวัติการวิ่ง':'Run history','ไกลสุด':'Longest','ดูทั้งหมด':'See all','ย่อ':'Show less','ยังไม่มีประวัติ':'No history yet',
+'สะสมทุกก้าว สู่สุขภาพที่ดีกว่า':'Every step towards better health','โอน Token':'Transfer Token','โอนให้ ':'Sent to ','โอน':'Transfer','กราฟการสะสม Token':'Token growth','ประวัติการได้รับ Token':'Token earned','ประวัติการใช้ Token':'Token spent','วิ่งออกกำลังกาย':'Run','เดินออกกำลังกาย':'Walk','ทำเป้าหมายสำเร็จ':'Goal reached','แลกของรางวัล':'Reward redeemed','ซื้อสินค้าพิเศษ':'Special purchase','แลกบริการ':'Service redeemed','แลก ':'Redeem ','โบนัสสตรีค ':'Streak bonus ','ภารกิจประจำวัน':'Daily mission','เช็กอินกิจกรรมกลุ่ม':'Group check-in','เช็กอินอีเวนต์':'Event check-in','สมัครอีเวนต์':'Event registration','คืน Token อีเวนต์':'Event refund','ยังไม่มีรายการ':'No items yet',
+'ค้นหาร้านค้าหรือสิทธิพิเศษ':'Search shops or perks','อาหาร':'Food','เครื่องดื่ม':'Drinks','กีฬา':'Sports','สุขภาพ':'Health','ดีลยอดนิยม':'Popular deals','ดีลหมวด':'Deals · ','ยังไม่มีดีลในหมวดนี้':'No deals in this category yet','หมดแล้ว':'Sold out','หมดเวลาใน ':'Ends in ','หมดอายุ':'Expires','หมด':'Sold out','ทั้งหมด':'All','ใช้ ':'Costs ','คงเหลือ':'Balance',
+'ยกเลิก':'Cancel','ยืนยัน':'Confirm','ตั้งเป้าหมายวันนี้':"Set today's goal",'กิโลเมตร':'Kilometres','เป้าหมายต่อวัน':'Daily goal','บันทึก':'Save','รหัสผู้รับ':'Recipient ID','จำนวน TOKEN':'Amount (TOKEN)','สร้างกลุ่มชวนออกกำลังกาย':'Create a workout group','ชื่อกลุ่ม':'Group name','ประเภทกีฬา':'Sport','สถานที่':'Place','วัน-เวลา':'Day & time','สร้างกลุ่ม':'Create group','แชร์ผลวิ่ง':'Share your run','บนมือถือกดค้างที่รูปเพื่อบันทึก หรือกดคัดลอกเพื่อนำไปวางในแอพโซเชียล':'On mobile, long-press the image to save, or tap copy to paste into a social app','คัดลอกข้อความ':'Copy text','คัดลอกรูป':'Copy image','ปิด':'Close','รีเซ็ตข้อมูลทั้งหมด?':'Reset all data?','รีเซ็ตข้อมูลทั้งหมด':'Reset all data','Token ประวัติ และคูปองจะกลับเป็นค่าเริ่มต้น':'Tokens, history and coupons return to defaults','รีเซ็ต':'Reset',
+'เช่น RUN12345':'e.g. RUN12345','เช่น เตะบอลเย็นวันพุธ':'e.g. Wednesday football','เช่น สวนลุมพินี':'e.g. Lumphini Park','เช่น เสาร์ 17:00':'e.g. Sat 17:00','ค้นหากลุ่ม อีเวนต์ หรือสถานที่':'Search groups, events or places',
+'ชวนออกกำลังกาย หาก๊วน หาอีเวนต์':'Find workout buddies & events','กลุ่มของฉัน':'My groups','กลุ่ม':'Groups','อีเวนต์ที่สมัครไว้':'Registered events','อีเวนต์':'Events','ของฉัน':'Mine','ฟุตบอล':'Football','วิ่ง':'Running','แบดมินตัน':'Badminton','ปั่นจักรยาน':'Cycling','บาสเกตบอล':'Basketball','โยคะ':'Yoga','ว่ายน้ำ':'Swimming','เต้น':'Dance','เข้าร่วมแล้ว':'Joined','เข้าร่วม':'Join','เช็กอินแล้ว':'Checked in','เช็กอิน':'Check in','สมัคร':'Register','เต็มแล้ว':'Full','ไม่พบกลุ่มที่ค้นหา':'No groups found','ยังไม่ได้เข้าร่วมกลุ่มหรืออีเวนต์':"You haven't joined any group or event",'ดูกลุ่มทั้งหมด':'See all groups','ดูกลุ่ม':'View groups','ดูอีเวนต์':'View events','ไม่พบอีเวนต์':'No events found','ฟรี':'Free','วันนี้!':'Today!','ทุกระดับ':'All levels','เริ่มต้น':'Beginner','กลาง':'Intermediate','สูง':'Advanced','ตามตกลง':'To be agreed','ทุกวัน':'Daily','ศุกร์':'Fri','เสาร์':'Sat','อาทิตย์':'Sun','จันทร์':'Mon','อังคาร':'Tue','พุธ':'Wed','พฤหัส':'Thu',
+'คูปองของฉัน':'My Coupons','คูปองพร้อมใช้':'Coupons ready','พร้อมใช้':'Ready','ใช้แล้ว':'Used','ทำเครื่องหมายว่าใช้แล้ว':'Mark as used','ยังไม่มีคูปองในหมวดนี้':'No coupons here yet','ไปแลกรางวัล':'Browse rewards','ส่วนลด':'Discount','บาท':'THB',
+'ระยะทาง':'Distance','เวลา':'Time','ความเร็วเฉลี่ย':'Avg pace','กำลังวิ่ง':'Running','หยุดชั่วคราว':'Paused','พร้อมวิ่ง':'Ready','GPS พร้อม':'GPS ready','GPS เปิด':'GPS on','GPS จำลอง':'GPS simulated','เริ่ม':'Start','หยุด':'Pause','สิ้นสุดกิจกรรม':'End run','โปรไฟล์':'Profile','นักวิ่ง':'Runner',
+'การแจ้งเตือน':'Notifications','ย้อนกลับ':'Back','แชร์':'Share','ไปที่กระเป๋า Token':'Go to Token wallet','ช่วงเวลา':'Period','เมนูหลัก':'Main menu','สร้างกลุ่มใหม่':'New group','แผนที่เส้นทางวิ่ง':'Run route map','กราฟระยะทาง 7 วัน':'7-day distance chart','การ์ดสรุปผลวิ่ง':'Run summary card',
+'ยังไม่มีการแจ้งเตือนใหม่':'No new notifications','กำลังวิ่งอยู่ กด END RUN เพื่อจบก่อน':'Run in progress. Tap END RUN first','กด START เพื่อเริ่มวิ่งก่อน':'Tap START to begin first','ทำเป้าหมายวันนี้สำเร็จ! รับเพิ่ม 200 TOKEN':"Today's goal reached! +200 TOKEN",'สิทธิ์หมดแล้ว':'No stock left','แลกสำเร็จ! คูปองพร้อมใช้แล้ว':'Redeemed! Your coupon is ready','ใช้คูปองแล้ว':'Coupon marked as used','กรอกรหัสผู้รับ':'Enter recipient ID','กรอกจำนวน TOKEN ให้ถูกต้อง':'Enter a valid amount','Token ไม่พอ':'Not enough Token','ต้องใช้ ':'needs ','(มี ':'(have ','รีเซ็ตแล้ว':'Reset done','ออกจากกลุ่มแล้ว':'Left the group','เข้าร่วมกลุ่มแล้ว ไปเจอกันที่สนาม!':'Joined! See you on the field','เช็กอินสำเร็จ +10 TOKEN':'Checked in! +10 TOKEN','เช็กอินสำเร็จ +30 TOKEN':'Checked in! +30 TOKEN','สร้างกลุ่มแล้ว ชวนเพื่อนมาเล่นกัน!':'Group created! Invite friends','กรอกชื่อกลุ่มและสถานที่':'Enter group name and place','ยกเลิกการสมัครแล้ว':'Registration cancelled',' คืน ':' · refund ','อีเวนต์เต็มแล้ว':'Event is full','สมัครสำเร็จ! เจอกันที่งาน':'Registered! See you there','ยังทำภารกิจไม่ครบ':'Mission not complete yet','บันทึกเป้าหมายแล้ว':'Goal saved','คัดลอกข้อความแล้ว':'Text copied','คัดลอกไม่ได้ ลองเลือกข้อความเอง':"Couldn't copy. Select the text manually",'คัดลอกรูปแล้ว':'Image copied','คัดลอกรูปไม่ได้ กดค้างที่รูปเพื่อบันทึก':"Couldn't copy. Long-press the image to save",'เกิดข้อผิดพลาด ลองอีกครั้ง':'Something went wrong. Try again','แอพเจอข้อมูลที่ผิดพลาด กดรีเซ็ตเพื่อเริ่มใหม่':'The app found corrupted data. Reset to start over','รีเซ็ตแอพ':'Reset app'};
+Object.assign(EN,{'วันนี้ +':'Today +','วันนี้':'Today','ได้รับ 30 วันล่าสุด':'Earned (30 days)','ใช้ไป 30 วันล่าสุด':'Spent (30 days)','ทั้งหมด':'All','ได้รับ':'Earned','ใช้ไป':'Spent','ดีลแนะนำ':'Featured deals','เริ่มวิ่ง':'Start run','พักวิ่ง':'Pause','วิ่งต่อ':'Resume','จบการวิ่ง':'Finish','จบกิจกรรมนี้ใช่ไหม?':'Finish this activity?','ผลจะถูกบันทึกและคำนวณ Token':'Your run will be saved and Token calculated.','จบและบันทึก':'Finish & save','เพซเฉลี่ย /KM':'Avg pace /KM','แคลอรี่ KCAL':'Calories KCAL','ระยะทาง KM':'Distance KM','โปรไฟล์':'Profile'});
+const PRE=[[/สตรีค (\d+) วัน! รับโบนัส (\d+) TOKEN/g,'$1-day streak! +$2 bonus TOKEN'],[/โอน ([\d,]+) TOKEN ให้ (.+) แล้ว/g,'Sent $1 TOKEN to $2'],[/รับ \+(\d+) TOKEN แล้ว/g,'Claimed +$1 TOKEN'],[/กรอกเป้าหมาย ([\d,]+) ถึง ([\d,]+) (กม\.|ก้าว)/g,(m,a,b,u)=>`Enter a goal from ${a} to ${b} ${u==='ก้าว'?'steps':'km'}`]];
+const POST=[[/เหลือ (\d+) สิทธิ์/g,'$1 left'],[/เหลือ (\d+) ที่/g,'$1 spots left'],[/(\d+) คน/g,'$1 people'],[/สตรีค (\d+) วัน/g,'$1-day streak'],[/รับ \+(\d+)/g,'Claim +$1'],[/(\d+) วัน/g,'$1 days']];
+let trRx=null;
+function tr(s){PRE.forEach(r=>{s=s.replace(r[0],r[1])});if(!trRx)trRx=new RegExp(Object.keys(EN).sort((a,b)=>b.length-a.length).map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'g');s=s.replace(trRx,m=>EN[m]);POST.forEach(r=>{s=s.replace(r[0],r[1])});return s}
+const TH=/[฀-๿]/;
+function trNode(root){if(LANG!=='en'||!root||!document.createTreeWalker)return;const w=document.createTreeWalker(root,4),L=[];let n;while(n=w.nextNode())L.push(n);
+ L.forEach(n=>{if(!TH.test(n.nodeValue))return;const p=n.parentElement;if(p&&p.closest&&p.closest('[data-nt]'))return;n.nodeValue=tr(n.nodeValue)});
+ root.querySelectorAll('[placeholder],[aria-label],[alt]').forEach(el=>{['placeholder','aria-label','alt'].forEach(a=>{const v=el.getAttribute(a);if(v&&TH.test(v))el.setAttribute(a,tr(v))})})}
+function startTr(){if(typeof MutationObserver==='undefined')return;let trQ=0;const mo=new MutationObserver(()=>{if(LANG!=='en'||trQ)return;trQ=requestAnimationFrame(()=>{trQ=0;[$('#root'),$('#sheet'),$('#toast')].forEach(trNode)})});[$('#root'),$('#sheet'),$('#toast')].forEach(e=>e&&mo.observe(e,{childList:true,subtree:true}))}
+let cdT,shareCv=null,shareTxt='';
+function updCd(){document.querySelectorAll('.cd').forEach(el=>{el.textContent='หมดเวลาใน '+cdTxt(+el.dataset.end-Date.now())})}
+function openGoal(type){const val=type===S.goal.type?S.goal.val:(type==='km'?5:8000),pre=type==='km'?[3,5,7,10]:[5000,8000,10000];
+ sheet(`<h3>ตั้งเป้าหมายวันนี้</h3><div class="tabs" style="grid-template-columns:1fr 1fr"><button class="tab${type==='km'?' on':''}" data-act="gtype" data-v="km">กิโลเมตร<small>KM</small></button><button class="tab${type==='steps'?' on':''}" data-act="gtype" data-v="steps">ก้าว<small>STEPS</small></button></div><label class="fld">เป้าหมายต่อวัน (${type==='km'?'กม.':'ก้าว'})<input id="gVal" type="number" inputmode="decimal" value="${val}"></label><div class="chips">${pre.map(v=>`<button class="chip" data-act="gpre" data-v="${v}">${n0(v)}</button>`).join('')}</div><div class="err" id="gErr2"></div><div class="btns"><button class="b2" data-act="close">ยกเลิก</button><button class="b1" data-act="saveGoal">บันทึก</button></div>`)}
+function shareCard(l){const f=()=>{const hp=!!(l.path&&l.path.length>2),W=1080,H=hp?1700:1350,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d'),F='"Noto Sans Thai","Inter",system-ui,sans-serif';
+ const g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,'#14584D');g.addColorStop(1,'#0A3A33');x.fillStyle=g;x.fillRect(0,0,W,H);
+ x.fillStyle='rgba(31,169,113,.25)';x.beginPath();x.arc(W-40,420,340,0,7);x.fill();x.fillStyle='rgba(143,227,195,.1)';x.beginPath();x.arc(100,H-60,380,0,7);x.fill();
+ x.textAlign='left';x.fillStyle='#fff';x.font='800 70px '+F;x.fillText('RUN TO EARN',80,150);x.fillStyle='#8FE3C3';x.font='500 32px '+F;x.fillText('Move · Earn · Live Better',80,202);
+ {const cx0=W-150,cy0=170,gl=x.createRadialGradient(cx0,cy0,40,cx0,cy0,110);gl.addColorStop(0,'rgba(25,217,143,.45)');gl.addColorStop(1,'rgba(25,217,143,0)');x.fillStyle=gl;x.beginPath();x.arc(cx0,cy0,110,0,7);x.fill();
+  const rg=x.createLinearGradient(cx0-70,cy0-70,cx0+70,cy0+70);[[0,'#E9FFF5'],[.3,'#6EF0BE'],[.55,'#12B97E'],[.8,'#9CF7D3'],[1,'#0B8A5E']].forEach(q=>rg.addColorStop(q[0],q[1]));x.fillStyle=rg;x.beginPath();x.arc(cx0,cy0,70,0,7);x.fill();
+  x.fillStyle='#0B1F1A';x.beginPath();x.arc(cx0,cy0,55,0,7);x.fill();
+  const bg=x.createLinearGradient(0,cy0-40,0,cy0+40);bg.addColorStop(0,'#B8FFE0');bg.addColorStop(1,'#19D98F');x.fillStyle=bg;x.beginPath();[[54,25],[34,55],[48,55],[43,77],[67,45],[52,45]].forEach((p,i)=>{const px=cx0+(p[0]-50)*1.15,py=cy0+(p[1]-50)*1.15;i?x.lineTo(px,py):x.moveTo(px,py)});x.closePath();x.fill()}
+ x.fillStyle='#8FE3C3';x.font='600 40px '+F;x.fillText(T_('วันนี้วิ่งไปแล้ว','You ran today'),80,400);
+ x.fillStyle='#fff';x.font='800 300px "Inter",sans-serif';const kt=fk(l.km);x.fillText(kt,80,660);const w=x.measureText(kt).width;x.font='700 84px '+F;x.fillText(T_('กม.','km'),80+w+24,660);
+ const st=[[T_('เวลา','Time'),hms(l.sec)],[T_('เพซ','Pace'),pace(l.sec,l.km*1000)+T_(' /กม.',' /km')],[T_('พลังงาน','Energy'),n0(l.kcal)+' kcal']];
+ st.forEach((a,i)=>{const px=80+i*320;x.fillStyle='#8FE3C3';x.font='500 32px '+F;x.fillText(a[0],px,800);x.fillStyle='#fff';x.font='700 52px "Inter",'+F;x.fillText(a[1],px,870)});
+ let ty=960;
+ if(hp){const bx=80,by=930,bw=W-160,bh=380;x.fillStyle='rgba(255,255,255,.08)';x.beginPath();if(x.roundRect)x.roundRect(bx,by,bw,bh,40);else x.rect(bx,by,bw,bh);x.fill();
+  const P=l.path,xs=P.map(p=>p[0]),ys=P.map(p=>p[1]),mx=Math.min(...xs),Mx=Math.max(...xs),my=Math.min(...ys),My=Math.max(...ys),pd=60,sc=Math.min((bw-2*pd)/Math.max(Mx-mx,20),(bh-2*pd)/Math.max(My-my,20)),ox=bx+bw/2-((Mx+mx)/2)*sc,oy=by+bh/2-((My+my)/2)*sc;
+  x.lineJoin='round';x.lineCap='round';x.strokeStyle='#8FE3C3';x.lineWidth=14;x.beginPath();P.forEach((p,i)=>{const a=ox+p[0]*sc,b=oy+p[1]*sc;i?x.lineTo(a,b):x.moveTo(a,b)});x.stroke();
+  const d0=P[0],d1=P[P.length-1];x.fillStyle='#1FA971';x.beginPath();x.arc(ox+d0[0]*sc,oy+d0[1]*sc,18,0,7);x.fill();x.fillStyle='#FF8A2B';x.beginPath();x.arc(ox+d1[0]*sc,oy+d1[1]*sc,18,0,7);x.fill();x.strokeStyle='#fff';x.lineWidth=5;x.stroke();ty=1360}
+ x.fillStyle='rgba(255,255,255,.12)';x.beginPath();if(x.roundRect)x.roundRect(80,ty,W-160,150,40);else x.rect(80,ty,W-160,150);x.fill();
+ x.fillStyle='#6EF0BE';x.font='800 72px "Inter",sans-serif';x.fillText('+'+n0(l.tok),120,ty+100);const tw=x.measureText('+'+n0(l.tok)).width;x.fillStyle='#fff';x.font='600 44px '+F;x.fillText(T_('TOKEN ที่ได้รับ','TOKEN earned'),120+tw+24,ty+100);
+ const d=new Date();x.fillStyle='#8FE3C3';x.font='500 32px '+F;x.fillText(d.getDate()+' '+MN(d.getMonth())+' '+(d.getFullYear()+(LANG==='en'?0:543)),80,ty+240);x.font='700 34px "Inter",sans-serif';x.fillText('SAME STEPS · A BRIGHTER TOMORROW',80,ty+310);
+ return c};
+ const fl=document.fonts&&document.fonts.load?Promise.all([document.fonts.load('800 60px "Noto Sans Thai"'),document.fonts.load('800 60px Inter')]).catch(()=>{}):Promise.resolve();
+ return fl.then(()=>{shareCv=f();return shareCv.toDataURL('image/png')})}
+function go(r){route=r;render();window.scrollTo(0,0)}
+
+function updRun(){const g=id=>document.getElementById(id);if(!g('rd'))return;const km=R.m/1000;
+ g('rd').textContent=km.toFixed(2);g('rt').textContent=hms(R.sec);g('rp').textContent=pace(R.sec,R.m);g('rk').textContent=Math.round(km*50);
+ g('rst').textContent=R.st==='running'?'กำลังวิ่ง':R.st==='paused'?'หยุดชั่วคราว':'พร้อมวิ่ง';
+ g('gps').textContent=R.st==='idle'?'GPS พร้อม':R.mode==='gps'?'GPS เปิด':'GPS จำลอง';
+ const rp=document.querySelector('.rpill');if(rp)rp.dataset.st=R.st;
+ if(R.cs!==R.st){R.cs=R.st;g('rctl').innerHTML=ctlHTML()}}
+function tick(){if(R.st!=='running')return;const n=Date.now(),dt=Math.min(600,(n-R.lt)/1000);R.lt=n;
+ if(R.mode==='sim'){const d=2.49*(0.92+Math.random()*0.16)*dt*SIM;R.sec+=dt*SIM;R.m+=d;stepSim(d)}else R.sec+=dt;updRun();if(dimOn)dimUpd()}
+function hav(a,b){const r=Math.PI/180,x=(b.longitude-a.longitude)*r*Math.cos((a.latitude+b.latitude)/2*r),y=(b.latitude-a.latitude)*r;return Math.sqrt(x*x+y*y)*6371000}
+function onpos(pos){const c=pos.coords;if(R.mode==='sim'){if(R.m>30)return;R.mode='gps';R.sec=0;R.m=0;R.last=null;R.pts=[{x:0,y:0}];R.px=0;R.py=0;R.o={lat:c.latitude,lon:c.longitude}}
+ if(R.st!=='running'||!R.last){R.last=c;updRun();return}
+ if(c.accuracy>40){return}
+ {const d=hav(R.last,c),dt=Math.max(1,(c.timestamp-R.last.timestamp)/1000),thr=Math.max(3,c.accuracy*.6);
+  if(d>=250||d/dt>12){R.last=c}else if(d>=thr){R.m+=d;gpsPt(c);R.last=c}}
+ updRun()}
+function startRun(){if(R.st==='running')return;R.st='running';wakeOn();dimArm();R.lt=Date.now();if(!R.tm)R.tm=setInterval(tick,1000);
+ if(!R.tried){R.tried=true;try{if(navigator.geolocation)R.geoId=navigator.geolocation.watchPosition(onpos,()=>{},{enableHighAccuracy:true,maximumAge:2000})}catch(e){}}updRun()}
+let wl=null;
+async function wakeOn(){try{if(navigator.wakeLock&&!wl&&!document.hidden){wl=await navigator.wakeLock.request('screen');wl.addEventListener('release',()=>{wl=null})}}catch(e){wl=null}}
+function wakeOff(){try{if(wl)wl.release()}catch(e){}wl=null}
+
+const BADGES=[['run1','run','วิ่งครั้งแรก','First run',()=>S.runs.length>=1],['k5','target','วิ่งครบ 5 กม.','Run 5 km',()=>S.runs.some(r=>r.km>=5)],['s3','flame','สตรีค 3 วัน','3-day streak',()=>S.streak.count>=3],['s7','flame','สตรีค 7 วัน','7-day streak',()=>S.streak.count>=7],['r10','star','วิ่ง 10 ครั้ง','10 runs',()=>S.runs.length>=10],['k42','pin','สะสม 42 กม.','42 km total',()=>S.runs.reduce((a,r)=>a+r.km,0)>=42.2],['grp','users','เข้าร่วมกลุ่ม','Joined a group',()=>S.gj.length>=1],['cpn','ticket','แลกรางวัลแรก','First reward',()=>S.coupons.length>=1]];
+function badgeNew(){S.bd=S.bd||[];const n=[];BADGES.forEach(b=>{let ok=false;try{ok=b[4]()}catch(e){}if(ok&&!S.bd.includes(b[0])){S.bd.push(b[0]);n.push({ic:b[1],th:b[2],en:b[3]})}});return n}
+function badgesHTML(){S.bd=S.bd||[];const L=BADGES.map(b=>{let ok=false;try{ok=b[4]()}catch(e){}if(ok&&!S.bd.includes(b[0]))S.bd.push(b[0]);return `<div class="bdg${ok?' on':''}"><i>${ic(b[1],22)}</i><span>${T_(b[2],b[3])}</span></div>`});
+ const n=BADGES.filter(b=>S.bd.includes(b[0])).length;return `<div class="panel"><div class="ph"><b>${T_('เหรียญรางวัลของฉัน','My badges')}</b><span class="cap">${n}/${BADGES.length}</span></div><div class="bdgs">${L.join('')}</div></div>`}
+function showDone(o){const ex=o.total-o.tok;
+ sheet(`<div class="done"><div class="dcoin">${coin(92)}</div><h3>${T_('วิ่งเสร็จแล้ว!','Run complete!')}</h3><div class="dtok"><b id="dtk">0</b><span>TOKEN</span></div>${ex>0?`<p class="dex">${T_('รวมโบนัส +','Includes bonus +')}${ex}</p>`:''}
+ <div class="rgrid"><div><b>${fk(o.km)}</b><span>km</span></div><div><b>${hms(o.sec)}</b><span>${T_('เวลา','Time')}</span></div><div><b>${o.kcal}</b><span>kcal</span></div></div>
+ ${o.nb.length?`<div class="dbg"><span class="cap">${T_('ปลดล็อกเหรียญใหม่','New badge unlocked')}</span>${o.nb.map(b=>`<span class="bgd">${ic(b.ic,16)} ${T_(b.th,b.en)}</span>`).join('')}</div>`:''}
+ <div class="btns"><button class="b2" data-act="share">${T_('แชร์','Share')}</button><button class="b1" data-act="close">${T_('ดูสรุป','See summary')}</button></div></div>`);
+ const el=document.getElementById('dtk');if(el){if(reduce)el.textContent=n0(o.total);else{const t0=performance.now(),st=t=>{const p=Math.min(1,(t-t0)/900);el.textContent=n0(Math.round(o.total*(1-Math.pow(1-p,3))));if(p<1&&el.isConnected)requestAnimationFrame(st)};requestAnimationFrame(st)}}}
+
+const RG=()=>S.reg=S.reg||{},CX=()=>S.cxl=S.cxl||[],WL=()=>S.wl=S.wl||[];
+const LVL=[['b','มือใหม่','Beginner'],['m','ปานกลาง','Intermediate'],['a','ชำนาญ','Advanced']];
+const RSN=[['busy','ติดธุระกะทันหัน','Something came up'],['sick','ไม่สบาย','Not feeling well'],['time','เวลาไม่ตรงกัน','Schedule conflict'],['mind','เปลี่ยนใจ','Changed my mind'],['other','อื่นๆ','Other']];
+const rkey=(k,id)=>k+':'+id;
+function evStart(e){const d=new Date();d.setDate(d.getDate()+e.off);const t=(e.time||'00:00').split(':');d.setHours(+t[0],+t[1],0,0);return d.getTime()}
+function cxState(k,id){if(k==='e'){const e=EVENTS.find(x=>x.id===id);if(e&&evStart(e)-Date.now()<864e5)return{ok:false,msg:T_('ยกเลิกไม่ได้ เหลือน้อยกว่า 24 ชม. ก่อนเริ่มอีเวนต์','Cannot cancel within 24 h of the start')}}return{ok:true}}
+function recentCx(){const w=Date.now()-7*864e5;return CX().filter(x=>x.t>w).length}
+function blockedMsg(){if((S.blk||0)>Date.now()){return T_('คุณยกเลิกบ่อยเกินไป สมัครใหม่ได้ตั้งแต่ ','Too many cancellations. You can sign up again from ')+new Date(S.blk).toLocaleDateString(LANG==='en'?'en-GB':'th-TH',{day:'numeric',month:'short'})}return ''}
+function mkCode(k,id){const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let c='';for(let i=0;i<4;i++)c+=A[Math.floor(Math.random()*A.length)];return 'RTE-'+(k==='e'?'E':'G')+String(id).replace(/\D/g,'')+'-'+c}
+function rgItem(k,id){return k==='e'?EVENTS.find(x=>x.id===id):allGroups().find(x=>x.id===id)}
+function pName(){const p=S.profile||{};return((p.first||'')+' '+(p.last||'')).trim()||p.name||'-'}
+function chkBtn(act,on,txt){return `<button class="chk${on?' on':''}" data-act="${act}" role="checkbox" aria-checked="${on?'true':'false'}"><i>${on?ic('check',14):''}</i><span>${txt}</span></button>`}
+function rgSheet(){const r=ui.rg;if(!r)return;const it=rgItem(r.k,r.id);if(!it){closeSheet();return}
+ const e=r.k==='e',full=e&&it.taken>=it.cap,fee=e&&it.cost?it.cost:0,pr=S.profile||{},ok=r.lv&&r.a1&&r.a2;
+ sheet(`<h3>${e?T_('ใบสมัครเข้าร่วมอีเวนต์','Event registration'):T_('ใบสมัครเข้าร่วมกลุ่ม','Group registration')}</h3>
+<div class="rgs"><b>${GN(it,'name')}</b><span>${e?evDate(it)+' · '+it.time+' · ':''}${GN(it,'place')}</span>${e?`<span>${T_('ค่าสมัคร','Fee')}: ${fee?fee+' TOKEN':T_('ฟรี','Free')}</span>`:`<span>${GW(it)}</span>`}</div>
+${full?`<p class="note wn">${T_('อีเวนต์เต็มแล้ว คุณจะเข้าคิวรอ ถ้ามีที่ว่างจะได้สิทธิ์ตามลำดับ','This event is full. You will join the waitlist and get a seat in order if one opens.')}</p>`:''}
+<div class="kv"><span>${T_('ผู้สมัคร','Applicant')}</span><b data-nt>${esc(pName())}</b></div><div class="kv"><span>${T_('เบอร์โทรศัพท์','Phone')}</span><b data-nt>${phMask(pr.phone)||'-'}</b></div>
+<div class="fld">${T_('ระดับฝีมือ / ประสบการณ์','Skill level')}<div class="chips">${LVL.map(l=>`<button class="chip${r.lv===l[0]?' on':''}" data-act="rgLv" data-v="${l[0]}">${T_(l[1],l[2])}</button>`).join('')}</div></div>
+${chkBtn('rgA1',r.a1,T_('ฉันมีสุขภาพพร้อมเข้าร่วมกิจกรรมนี้','I am healthy and fit to take part'))}
+${chkBtn('rgA2',r.a2,e?T_('ฉันยอมรับกติกา: มาตรงเวลา ยกเลิกล่วงหน้าอย่างน้อย 24 ชม. และถ้ายกเลิกบ่อยเกินไปจะถูกจำกัดสิทธิ์สมัคร','I accept the rules: arrive on time, cancel at least 24 h ahead, and frequent cancelling limits future sign-ups'):T_('ฉันยอมรับกติกากลุ่ม: สุภาพต่อกัน และถ้ายกเลิกบ่อยเกินไปจะถูกจำกัดสิทธิ์สมัคร','I accept the group rules: be respectful, and frequent cancelling limits future sign-ups'))}
+${fee&&!full?`<p class="note">${T_('จะหัก ','Will deduct ')}${fee} TOKEN · ${T_('คงเหลือ ','balance ')}${n0(S.balance)}</p>`:''}
+<div class="err" id="rgErr"></div><div class="btns"><button class="b2" data-act="close">${T_('ปิด','Close')}</button><button class="b1${ok?'':' dimb'}" data-act="rgGo">${full?T_('เข้าคิวรอ','Join waitlist'):T_('ยืนยันสมัคร','Confirm')}</button></div>`)}
+function showTicket(key){const g=RG()[key];if(!g)return;const q=key.split(':'),k=q[0],it=rgItem(k,q[1]);if(!it)return;const lv=LVL.find(x=>x[0]===g.lv)||LVL[0];
+ sheet(`<div class="tkt"><div class="tk1"><span class="cap">${k==='e'?T_('บัตรผู้เข้าร่วม','Participant pass'):T_('บัตรสมาชิกกลุ่ม','Member pass')}</span><b>${GN(it,'name')}</b><span>${k==='e'?evDate(it)+' · '+it.time:GW(it)} · ${GN(it,'place')}</span></div><div class="tkd"></div><div class="tk2">${g.st==='wait'?`<div class="wq">${T_('รอคิวลำดับที่ ','Waitlist #')}${g.pos}</div>`:`<div class="qr" data-code="${g.code}"></div>`}<div class="code" data-nt>${g.code}</div><div class="kv" style="width:100%"><span>${T_('ผู้เข้าร่วม','Name')}</span><b data-nt>${esc(pName())}</b></div><div class="kv" style="width:100%"><span>${T_('ระดับ','Level')}</span><b>${T_(lv[1],lv[2])}</b></div></div></div><div class="btns"><button class="b1" data-act="close">${T_('เรียบร้อย','Done')}</button></div>`);
+ if(g.st!=='wait'&&document.querySelector('#sheet .qr'))withQR(()=>document.querySelectorAll('#sheet .qr').forEach(el=>{try{new QRCode(el,{text:el.dataset.code,width:124,height:124,colorDark:'#0B3B35',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M})}catch(e){}}))}
+function tkPanel(k,id){const key=rkey(k,id),on=k==='e'?S.ev.includes(id)||WL().includes(id):S.gj.includes(id);if(!on)return '';const g=RG()[key],w=k==='e'&&WL().includes(id);
+ return `<div class="panel"><div class="ph"><b>${T_('บัตรของฉัน','My pass')}</b><span class="cap" style="text-transform:none">${w?T_('รอคิว','Waitlisted'):T_('ยืนยันแล้ว','Confirmed')}</span></div>${g?`<div class="kv"><span>${T_('รหัส','Code')}</span><b data-nt>${g.code}</b></div>`:''}<button class="b2" data-act="tk" data-id="${key}" style="margin-top:8px;width:100%">${T_('ดูบัตรและ QR','View pass and QR')}</button></div>`}
+function cxSheet(){const c=ui.cx;if(!c)return;const it=rgItem(c.k,c.id);if(!it){closeSheet();return}const key=rkey(c.k,c.id),wait=c.k==='e'&&WL().includes(c.id),fee=c.k==='e'&&!wait?it.cost||0:0,n=recentCx();
+ if(c.step===1)sheet(`<h3>${wait?T_('ออกจากคิวรอ','Leave the waitlist'):c.k==='e'?T_('ยกเลิกการสมัคร','Cancel registration'):T_('ออกจากกลุ่ม','Leave group')}</h3><p style="margin:0 0 8px"><b>${GN(it,'name')}</b></p><div class="fld">${T_('เหตุผลที่ยกเลิก','Reason')}<div class="chips" style="flex-wrap:wrap">${RSN.map(x=>`<button class="chip${c.rs===x[0]?' on':''}" data-act="cxRs" data-v="${x[0]}">${T_(x[1],x[2])}</button>`).join('')}</div></div>${wait?'':`<p class="note wn">${T_('ยกเลิกครบ 2 ครั้งใน 7 วัน จะสมัครใหม่ไม่ได้ 7 วัน (ตอนนี้ยกเลิกไปแล้ว ','Cancelling 2 times within 7 days blocks new sign-ups for 7 days (cancelled so far: ')}${n}${T_(' ครั้ง)',')')}</p>`}${fee?`<p class="note">${T_('จะคืน ','Refund ')}${fee} TOKEN</p>`:''}<div class="err" id="cxErr"></div><div class="btns"><button class="b2" data-act="close">${T_('ไม่ยกเลิก','Keep it')}</button><button class="b1 red" data-act="cxNext">${wait?T_('ออกจากคิว','Leave queue'):T_('ถัดไป','Next')}</button></div>`);
+ else sheet(`<h3>${T_('ยืนยันอีกครั้ง','Confirm again')}</h3><p style="margin:0 0 10px">${T_('พิมพ์คำว่า "ยกเลิก" เพื่อยืนยัน','Type "CANCEL" to confirm')}</p><label class="fld"><input id="cxTxt" autocomplete="off" value="${esc(c.txt||'')}" placeholder="${T_('ยกเลิก','CANCEL')}"></label><div class="err" id="cxErr"></div><div class="btns"><button class="b2" data-act="cxBack">${T_('ย้อนกลับ','Back')}</button><button class="b1 red" data-act="cxGo">${T_('ยืนยันยกเลิก','Confirm cancel')}</button></div>`)}
+
+const GEO_R=300;
+const PLC={'สนามหญ้าเทียม ลาดพร้าว':[13.8023,100.5718],'สนามฟุตบอล อารีย์':[13.7790,100.5440],'สนามหญ้าเทียม อารีย์':[13.7790,100.5440],'สวนลุมพินี':[13.7307,100.5418],'สวนเบญจกิติ':[13.7236,100.5589],'คอร์ทแบด บางนา':[13.6685,100.6046],'ท่าพระอาทิตย์':[13.7600,100.4957],'สวนจตุจักร':[13.8030,100.5530],'สวนรถไฟ':[13.8057,100.5522],'ลานสวนหลวง ร.9':[13.6907,100.6616],'สวนหลวง ร.9':[13.6907,100.6616],'สนามฟุตซอล สีลม':[13.7280,100.5340],'สนามกีฬาชุมชน บางกะปิ':[13.7650,100.6470],'สระว่ายน้ำสาธารณะ':[13.7611,100.6232],'ลานกีฬา สวนจตุจักร':[13.8030,100.5530],'คอร์ทแบด รามอินทรา':[13.8470,100.6070],'สนามบาส สวนรถไฟ':[13.8057,100.5522],'เสาชิงช้า':[13.7515,100.5013],'ห้องฟิตเนสส่วนกลาง':[13.7563,100.5018],'ถนนพระราม 9':[13.7580,100.5655],'เขาใหญ่':[14.4350,101.3720]};
+function plOf(it){return String(it.id)[0]==='u'?null:(PLC[it.place]||null)}
+function geoMeters(a,b,c,d){return hav({latitude:a,longitude:b},{latitude:c,longitude:d})}
+function geoFail(msg){const g=ui.geo;if(!g)return;sheet(`<h3>${T_('เช็กอินไม่ได้','Cannot check in')}</h3><p style="margin:0">${msg}</p><p class="note">${T_('ต้องอยู่ภายใน '+GEO_R+' ม. จากสถานที่จัดกิจกรรม','You must be within '+GEO_R+' m of the venue')}</p>${MODE==='admin'?`<button class="b2" data-act="geoSim">${T_('ทดสอบ: จำลองว่าอยู่ที่สถานที่นี้','Test: pretend I am at the venue')}</button>`:''}<div class="btns"><button class="b2" data-act="close">${T_('ปิด','Close')}</button><button class="b1" data-act="geoRetry">${T_('ลองอีกครั้ง','Try again')}</button></div>`)}
+function geoCheck(it,onOk){const pl=plOf(it);ui.geo={it,onOk};if(!pl){onOk();return}
+ sheet(`<h3>${T_('กำลังตรวจตำแหน่งของคุณ...','Checking your location...')}</h3><p class="note">${T_('ต้องอนุญาตให้เบราว์เซอร์ใช้ตำแหน่ง (Location)','Please allow location access in your browser')}</p>`);
+ if(!navigator.geolocation){geoFail(T_('อุปกรณ์หรือเบราว์เซอร์นี้ไม่รองรับ GPS','This device or browser does not support GPS'));return}
+ navigator.geolocation.getCurrentPosition(p=>{const c=p.coords,d=geoMeters(c.latitude,c.longitude,pl[0],pl[1]);
+  if(c.accuracy>100){geoFail(T_('สัญญาณ GPS ไม่แม่นยำพอ (คลาดเคลื่อน ','GPS signal is not accurate enough (±')+Math.round(c.accuracy)+T_(' ม.) ลองออกไปที่โล่งแล้วลองใหม่',' m). Move outdoors and try again'));return}
+  if(d<=GEO_R){closeSheet();ui.geo=null;onOk()}else geoFail(T_('คุณอยู่ห่างจากสถานที่ ','You are ')+(d>=1000?(d/1000).toFixed(1)+' '+T_('กม.','km'):Math.round(d)+' '+T_('ม.','m'))+T_(' ('+plName(it)+')',' away ('+plName(it)+')'))},
+  er=>geoFail(er&&er.code===1?T_('ไม่ได้รับอนุญาตให้ใช้ตำแหน่ง เปิดได้ที่ ตั้งค่า > ความเป็นส่วนตัว > บริการหาตำแหน่ง > เบราว์เซอร์ของคุณ','Location permission denied. Enable it in Settings > Privacy > Location Services > your browser'):T_('หาตำแหน่งไม่ได้ ลองออกไปที่โล่งหรือเปิด GPS','Could not get your location. Try outdoors or turn GPS on')),
+  {enableHighAccuracy:true,timeout:12000,maximumAge:0})}
+function plName(it){return LANG==='en'&&GEN[it.id]?GEN[it.id][1]:it.place}
+
+const NEAR=()=>ui.near||(ui.near={on:false,pos:null,r:0,st:'idle',msg:''});
+function distTo(it){const n=NEAR();if(!n.pos)return null;const pl=plOf(it);return pl?geoMeters(n.pos.lat,n.pos.lon,pl[0],pl[1]):null}
+function fmtD(m){return m>=10000?Math.round(m/1000)+' '+T_('กม.','km'):m>=1000?(m/1000).toFixed(1)+' '+T_('กม.','km'):Math.max(10,Math.round(m/10)*10)+' '+T_('ม.','m')}
+function dTxt(it){const d=distTo(it);return d==null?'':' · '+fmtD(d)}
+function nearApply(l,only){const n=NEAR();if(only||!n.on||!n.pos)return l;let a=l.map(x=>({x,d:distTo(x)}));if(n.r)a=a.filter(o=>o.d!=null&&o.d<=n.r*1000);a.sort((p,q)=>(p.d==null)-(q.d==null)||(p.d||0)-(q.d||0));return a.map(o=>o.x)}
+function getNear(cb){const n=NEAR();n.st='loading';n.msg='';
+ if(!navigator.geolocation){n.st='denied';n.on=false;n.msg=T_('อุปกรณ์นี้ไม่รองรับตำแหน่ง','This device does not support location');cb();return}
+ cb();navigator.geolocation.getCurrentPosition(p=>{n.pos={lat:p.coords.latitude,lon:p.coords.longitude};n.st='ok';cb()},e=>{n.st='denied';n.on=false;n.msg=e&&e.code===1?T_('ไม่ได้รับอนุญาตให้ใช้ตำแหน่ง เปิดได้ในตั้งค่าของเบราว์เซอร์ ยังดูรายการทั้งหมดได้ตามปกติ','Location permission denied. Enable it in browser settings. You can still browse everything.'):T_('หาตำแหน่งไม่ได้ ลองออกไปที่โล่งหรือเปิด GPS','Could not get your location. Try outdoors or turn GPS on');cb()},{enableHighAccuracy:false,timeout:10000,maximumAge:120000})}
+function nearBar(){const n=NEAR();if(ui.gtab==='mine')return '';
+ let h=`<div class="chips nr"><button class="chip${n.on?' on':''}" data-act="nearTog">${ic('pin',14)} ${T_('ใกล้ฉัน','Near me')}</button>`;
+ if(n.on&&n.pos)h+=[0,5,10,25].map(r=>`<button class="chip${n.r===r?' on':''}" data-act="nearR" data-v="${r}">${r?T_('ภายใน ','Within ')+r+' '+T_('กม.','km'):T_('ทุกระยะ','Any distance')}</button>`).join('');
+ h+='</div>';
+ if(n.st==='loading')h+=`<p class="note">${T_('กำลังหาตำแหน่งของคุณ...','Finding your location...')}</p>`;
+ else if(n.st==='denied'&&n.msg)h+=`<p class="note wn">${n.msg}</p>`;
+ else if(n.on&&n.pos&&nearApply(ui.gtab==='events'?EVENTS:allGroups(),false).length===0)h+=`<p class="note wn">${T_('ยังไม่มีกิจกรรมใกล้คุณในระยะนี้ ลองเพิ่มระยะ','Nothing near you within this range. Try a wider range.')}</p>`;
+ return h}
+function nearHome(){const n=NEAR();
+ if(!n.pos)return `<div class="panel nh"><div class="ph"><b>${T_('กิจกรรมใกล้คุณ','Near you')}</b></div><p class="txt">${n.st==='loading'?T_('กำลังหาตำแหน่ง...','Finding your location...'):n.st==='denied'&&n.msg?n.msg:T_('ดูอีเวนต์ที่อยู่ใกล้คุณ ตำแหน่งใช้ในเครื่องนี้เท่านั้น','See events close to you. Your location stays on this device.')}</p><button class="b2" data-act="nearHome" style="width:100%">${ic('pin',16)} ${T_('เปิดตำแหน่ง','Use my location')}</button></div>`;
+ const l=EVENTS.filter(e=>e.off<=7).map(e=>({e,d:distTo(e)})).filter(o=>o.d!=null&&o.d<=50000).sort((a,b)=>a.d-b.d||a.e.off-b.e.off).slice(0,2);
+ return `<div class="panel nh"><div class="ph"><b>${T_('ใกล้คุณ ใน 7 วันนี้','Near you this week')}</b><button class="rbtn" data-act="nearAll" style="padding:6px 12px;font-size:12px">${T_('ดูทั้งหมด','See all')}</button></div>${l.length?l.map(o=>{const c=SG[o.e.sport]||'heart';return `<button class="nhi" data-act="openE" data-id="${o.e.id}"><span class="gi" style="background:linear-gradient(135deg,${GR[c][0]},${GR[c][1]})">${ic(SI[o.e.sport]||'users',22)}</span><div style="min-width:0"><b>${GN(o.e,'name')}</b><span class="cap" style="text-transform:none">${evDate(o.e)} · ${o.e.time} · ${fmtD(o.d)}</span></div>${ic('chevR',18,'style="margin-left:auto;color:var(--muted)"')}</button>`}).join(''):`<p class="txt">${T_('ยังไม่มีอีเวนต์ใกล้คุณใน 7 วันนี้','No events near you in the next 7 days')}</p>`}</div>`}
+function dsPath(P){try{if(!P||P.length<3)return null;const st=Math.max(1,Math.ceil(P.length/80)),o=[];for(let i=0;i<P.length;i+=st)o.push([Math.round(P[i].x),Math.round(P[i].y)]);const e=P[P.length-1];o.push([Math.round(e.x),Math.round(e.y)]);return o}catch(e){return null}}
+
+const TABX={home:0,run:0,activity:1,wallet:2,rewards:3,community:4},SUBD={coupons:1,deal:1,group:1,event:1};
+function dxOf(a,b){if(reduce||!a||a===b)return 0;const da=SUBD[a]||0,db=SUBD[b]||0;if(db!==da)return db>da?56:-56;const ia=TABX[a],ib=TABX[b];if(ia==null||ib==null||ia===ib)return 0;return ib>ia?28:-28}
+function flyCoins(from,n){if(reduce||!from||!document.body.animate)return;try{
+ let tg=document.querySelector('.bal2 .b2c')||document.querySelector('.bal .b2c')||document.querySelector('.nv[data-r="wallet"] i')||document.querySelector('.nv[data-r="wallet"]');if(!tg)return;
+ const a=from,b=tg.getBoundingClientRect();if(!b.width)return;n=Math.min(n||8,12);
+ for(let i=0;i<n;i++){const d=document.createElement('i');d.className='flyc';d.style.left=a.x+'px';d.style.top=a.y+'px';document.body.appendChild(d);
+  const sx=(Math.random()-.5)*90,sy=-30-Math.random()*70,tx=b.left+b.width/2-a.x,ty=b.top+b.height/2-a.y;
+  const an=d.animate([{transform:'translate(0,0) scale(.4)',opacity:0},{transform:`translate(${sx}px,${sy}px) scale(1)`,opacity:1,offset:.3},{transform:`translate(${tx}px,${ty}px) scale(.5)`,opacity:.9}],{duration:700+i*45,delay:i*35,easing:'cubic-bezier(.4,0,.2,1)',fill:'both'});
+  an.onfinish=()=>{d.remove();if(i===n-1){try{tg.animate([{transform:'scale(1)'},{transform:'scale(1.18)'},{transform:'scale(1)'}],{duration:320,easing:'ease-out'})}catch(e){}}};}
+ setTimeout(()=>document.querySelectorAll('.flyc').forEach(x=>x.remove()),2600)}catch(e){}}
+function ptOf(el){const r=el&&el.getBoundingClientRect?el.getBoundingClientRect():null;return r&&r.width?{x:r.left+r.width/2,y:r.top+r.height/2}:{x:innerWidth/2,y:innerHeight*.6}}
+function okFx(){if(reduce)return;try{document.querySelectorAll('.okfx').forEach(x=>x.remove());const o=document.createElement('div');o.className='okfx';o.setAttribute('aria-hidden','true');o.innerHTML='<svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34"/><path d="M24 41l12 12 21-24"/></svg>';document.body.appendChild(o);setTimeout(()=>o.remove(),1300)}catch(e){}}
+let shDrag=null;
+function sheetDragInit(){const root=document.getElementById('sheet');if(!root||root.__dr)return;root.__dr=1;
+ root.addEventListener('touchstart',e=>{const sh=e.target.closest&&e.target.closest('.sheet');if(!sh||e.touches.length!==1)return;shDrag={sh,y:e.touches[0].clientY,dy:0,ok:sh.scrollTop<=0&&!/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)}},{passive:true});
+ root.addEventListener('touchmove',e=>{if(!shDrag||!shDrag.ok)return;const dy=e.touches[0].clientY-shDrag.y;if(shDrag.sh.scrollTop>0){shDrag.ok=false;return}if(dy>0){shDrag.dy=dy;shDrag.sh.style.transition='none';shDrag.sh.style.animation='none';shDrag.sh.style.transform='translateY('+dy+'px)'}},{passive:true});
+ const end=()=>{if(!shDrag)return;const d=shDrag;shDrag=null;if(d.dy>110){closeSheet()}else if(d.dy>0){d.sh.style.transition='transform .28s cubic-bezier(.2,1.2,.3,1)';d.sh.style.transform='';setTimeout(()=>{d.sh.style.transition=''},300)}};
+ root.addEventListener('touchend',end,{passive:true});root.addEventListener('touchcancel',end,{passive:true})}
+
+let LOWFX=0,qrQ=[],qrS=0,calmT=0;
+function mapGap(){return LOWFX?140:(R.st==='running'?80:220)}
+function withQR(cb){if(window.QRCode){cb();return}qrQ.push(cb);if(qrS)return;qrS=1;const sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';sc.async=true;sc.onload=()=>{const q=qrQ;qrQ=[];q.forEach(f=>{try{f()}catch(e){}})};sc.onerror=()=>{qrS=0;qrQ=[]};document.head.appendChild(sc)}
+function calmOff(){const h=document.documentElement;if(h.classList.contains('calm'))h.classList.remove('calm');clearTimeout(calmT);calmT=setTimeout(()=>h.classList.add('calm'),20000)}
+function lowFxInit(){['pointerdown','touchstart','keydown','scroll'].forEach(ev=>addEventListener(ev,calmOff,{passive:true,capture:true}));calmOff();
+ try{const nc=navigator.connection;if(nc&&nc.saveData){LOWFX=1;document.documentElement.classList.add('lowfx')}
+  if(navigator.getBattery)navigator.getBattery().then(b=>{const f=()=>{const lo=(b.level<=.2&&!b.charging)||(nc&&nc.saveData);LOWFX=lo?1:0;document.documentElement.classList.toggle('lowfx',!!lo)};f();b.addEventListener('levelchange',f);b.addEventListener('chargingchange',f)}).catch(()=>{})}catch(e){}}
+lowFxInit();
+
+let dimT=0,dimOn=false;
+function dimUpd(){const o=document.getElementById('dim');if(!o)return;const km=R.m/1000,q=id=>o.querySelector(id);q('.dt').textContent=hms(R.sec);q('.dd').textContent=km.toFixed(2);q('.dp').textContent=pace(R.sec,R.m)}
+function dimShow(){if(dimOn||R.st!=='running'||route!=='run'||document.hidden)return;dimOn=true;cancelAnimationFrame(mapRaf);const o=document.createElement('div');o.id='dim';o.setAttribute('role','button');o.setAttribute('aria-label',T_('แตะเพื่อเปิดหน้าจอ','Tap to wake'));o.innerHTML=`<div class="dt"></div><div class="dr"><div><b class="dd"></b><span>KM</span></div><div><b class="dp"></b><span>${T_('เพซ /กม.','PACE /km')}</span></div></div><p>${T_('ประหยัดแบต · แตะที่ไหนก็ได้เพื่อกลับ','Battery saver · tap anywhere to return')}</p>`;document.body.appendChild(o);dimUpd()}
+function dimHide(){const o=document.getElementById('dim');if(o)o.remove();if(dimOn){dimOn=false;if(route==='run'&&$('#map')){cancelAnimationFrame(mapRaf);mapRaf=requestAnimationFrame(mapLoop)}}}
+function dimArm(){clearTimeout(dimT);dimT=0;if(R.st==='running'&&route==='run'&&!dimOn&&S.pref&&S.pref.dim!==false)dimT=setTimeout(dimShow,30000)}
+let dimSw=0;document.addEventListener('click',e=>{if(Date.now()-dimSw<500){e.stopPropagation();e.preventDefault()}},true);
+['touchstart','pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>{if(dimOn){dimSw=Date.now();dimHide();dimArm();return}if(dimT||R.st==='running')dimArm()},{passive:true,capture:true}));
+function pauseRun(){if(R.st==='running'){R.st='paused';wakeOff();clearTimeout(dimT);dimT=0;dimHide();clearInterval(R.tm);R.tm=null;try{if(R.geoId!=null)navigator.geolocation.clearWatch(R.geoId)}catch(e){}R.geoId=null;R.tried=false;R.last=null;updRun()}}
+function endRun(){if(R.st==='idle'){toast('กด START เพื่อเริ่มวิ่งก่อน');return}
+ wakeOff();clearInterval(R.tm);try{if(R.geoId!=null)navigator.geolocation.clearWatch(R.geoId)}catch(e){}
+ const km=R.m/1000,kcal=Math.round(km*50),tok=Math.round(km*6),steps=Math.round(km*1520),bal0=S.balance,sec0=R.sec;
+ S.today.km=+(S.today.km+km).toFixed(3);S.today.kcal+=kcal;S.today.steps+=steps;S.last={km,sec:R.sec,kcal,tok,path:dsPath(R.pts)};
+ S.runs.push({t:Date.now(),km,sec:R.sec,kcal,tok});if(S.runs.length>100)S.runs.shift();
+ if(tok>0)addTx('in','วิ่งออกกำลังกาย',tok);
+ if(km>=0.1){const st=S.streak,td=todayKey();if(st.last!==td){st.count=st.last===yKey()?st.count+1:1;st.last=td;const b={3:30,7:100,30:500}[st.count];if(b){addTx('in','โบนัสสตรีค '+st.count+' วัน',b);toast('สตรีค '+st.count+' วัน! รับโบนัส '+b+' TOKEN')}}}
+ if(!S.goalDone&&goalMet()){S.goalDone=true;addTx('in','ทำเป้าหมายสำเร็จ',200);toast('ทำเป้าหมายวันนี้สำเร็จ! รับเพิ่ม 200 TOKEN')}
+ const nb=badgeNew();save();R=newRun();go('activity');burst(70);vib(30);setTimeout(()=>{try{showDone({km,sec:sec0,kcal,tok,total:S.balance-bal0,nb})}catch(e){}},260)}
+
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,2600)}
+function sheet(h){$('#sheet').innerHTML=`<div class="sheetbg" data-act="closeBg"><div class="sheet" role="dialog" aria-modal="true"><i class="grab" aria-hidden="true"></i>${h}</div></div>`;sheetDragInit()}
+function closeSheet(){ui.pfSheet=false;const root=$('#sheet'),bg=root.firstElementChild;if(!bg||reduce||!bg.animate||bg.classList.contains('out')){root.innerHTML='';return}bg.classList.add('out');setTimeout(()=>{if(root.firstElementChild===bg)root.innerHTML=''},190)}
+
+const ACT={
+go(d){if(R.st!=='idle'&&d.r!=='run'){toast('กำลังวิ่งอยู่ กด END RUN เพื่อจบก่อน');return}go(d.r)},
+back(){if(R.st!=='idle'){toast('กำลังวิ่งอยู่ กด END RUN เพื่อจบก่อน');return}go('home')},
+bell(){toast('ยังไม่มีการแจ้งเตือนใหม่')},
+share(){const l=S.last;shareTxt=LANG==='en'?`RUN TO EARN: ran ${fk(l.km)} km in ${hms(l.sec)}, pace ${pace(l.sec,l.km*1000)}/km, earned ${n0(l.tok)} TOKEN #RunToEarn`:`RUN TO EARN: วิ่ง ${fk(l.km)} กม. เวลา ${hms(l.sec)} เพซ ${pace(l.sec,l.km*1000)}/กม. ได้รับ ${n0(l.tok)} TOKEN #RunToEarn`;
+ shareCard(l).then(u=>sheet(`<h3>แชร์ผลวิ่ง</h3><img src="${u}" alt="การ์ดสรุปผลวิ่ง" style="width:100%;border-radius:16px;display:block"><p style="font-size:12px">บนมือถือกดค้างที่รูปเพื่อบันทึก หรือกดคัดลอกเพื่อนำไปวางในแอพโซเชียล</p><div class="btns"><button class="b2" data-act="saveImg">${T_('บันทึกรูป','Save image')}</button><button class="b1" data-act="shareImg">${T_('แชร์รูป','Share image')}</button></div><div class="btns"><button class="b2" data-act="copyTxt">คัดลอกข้อความ</button><button class="b2" data-act="copyImg">คัดลอกรูป</button></div><button class="cpact" data-act="close" style="align-self:center">ปิด</button>`))},
+saveImg(){if(!shareCv)return;shareCv.toBlob(b=>{try{const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='run-to-earn.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);toast(T_('กำลังบันทึกรูป ถ้าไม่ขึ้นให้กดค้างที่รูป','Saving image. If nothing happens, long-press the image.'))}catch(e){toast(T_('บันทึกไม่ได้ กดค้างที่รูปเพื่อบันทึก','Could not save. Long-press the image.'))}})},
+shareImg(){if(!shareCv)return;shareCv.toBlob(async b=>{try{const f=new File([b],'run-to-earn.png',{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],text:shareTxt})}else if(navigator.share){await navigator.share({text:shareTxt})}else toast(T_('เครื่องนี้ไม่รองรับการแชร์ตรง ใช้ปุ่มบันทึกรูปแทน','Direct share not supported here. Use Save image.'))}catch(e){if(e&&e.name!=='AbortError')toast(T_('แชร์ไม่ได้ ใช้ปุ่มบันทึกรูปแทน','Could not share. Use Save image.'))}})},
+copyTxt(){try{navigator.clipboard.writeText(shareTxt).then(()=>toast('คัดลอกข้อความแล้ว'),()=>toast('คัดลอกไม่ได้ ลองเลือกข้อความเอง'))}catch(e){toast('คัดลอกไม่ได้ ลองเลือกข้อความเอง')}},
+copyImg(){if(!shareCv)return;shareCv.toBlob(b=>{try{navigator.clipboard.write([new ClipboardItem({'image/png':b})]).then(()=>toast('คัดลอกรูปแล้ว'),()=>toast('คัดลอกรูปไม่ได้ กดค้างที่รูปเพื่อบันทึก'))}catch(e){toast('คัดลอกรูปไม่ได้ กดค้างที่รูปเพื่อบันทึก')}})},
+claim(d,el){const m=MISS.find(x=>x.id===d.id);if(!m||S.mc[m.id])return;if(m.v()<m.max){toast('ยังทำภารกิจไม่ครบ');return}
+ const pt=ptOf(el);S.mc[m.id]=1;addTx('in','ภารกิจประจำวัน',m.tok);save();render();toast('รับ +'+m.tok+' TOKEN แล้ว');burst(36,'coin');flyCoins(pt,9);vib()},
+goal(){openGoal(S.goal.type)},gtype(d){openGoal(d.v)},
+gpre(d){const i=$('#gVal');if(i)i.value=d.v},
+saveGoal(){const on=$('#sheet .tab.on'),type=on?on.dataset.v:S.goal.type,v=+$('#gVal').value,mn=type==='km'?1:1000,mxv=type==='km'?100:100000;
+ if(!(v>=mn&&v<=mxv)){$('#gErr2').textContent='กรอกเป้าหมาย '+n0(mn)+' ถึง '+n0(mxv)+(type==='km'?' กม.':' ก้าว');return}
+ S.goal={type,val:type==='km'?Math.round(v*10)/10:Math.round(v)};save();closeSheet();render();toast('บันทึกเป้าหมายแล้ว')},
+moreRuns(){ui.allRuns=!ui.allRuns;render()},
+cat(d){if(ui.cat===d.v&&ui.filtered)ui.filtered=false;else{ui.cat=d.v;ui.filtered=true}render()},
+allDeals(){ui.filtered=false;ui.q='';render()},
+more(d){ui.all[d.k]=!ui.all[d.k];render()},
+ctab(d){ui.ctab=d.v;render()},
+rs(){startRun();vib()},rp(){pauseRun();vib()},
+re(){if(R.st==='idle'){toast('กด START เพื่อเริ่มวิ่งก่อน');return}sheet(`<h3>จบกิจกรรมนี้ใช่ไหม?</h3><p>ผลจะถูกบันทึกและคำนวณ Token</p><div class="btns"><button class="b2" data-act="close">วิ่งต่อ</button><button class="b1 red" data-act="yesEnd">จบและบันทึก</button></div>`)},
+yesEnd(){closeSheet();endRun()},
+wtab(d){ui.wtab=d.v;ui.wall=false;render()},wmore(){ui.wall=!ui.wall;render()},
+redeem(d){const x=DEALS.find(v=>v.id===d.id);
+ if(left(x.id)<=0){toast('สิทธิ์หมดแล้ว');return}
+ if(S.balance<x.cost){toast(`Token ไม่พอ ต้องใช้ ${x.cost} TOKEN (มี ${n0(S.balance)})`);return}
+ sheet(`<h3>แลก ${x.title}?</h3><p>${LANG==='en'?x.en:x.th+' '+x.th2+' '+x.th3}<br>ใช้ ${x.cost} TOKEN · คงเหลือ ${n0(S.balance-x.cost)} TOKEN</p><div class="btns"><button class="b2" data-act="close">ยกเลิก</button><button class="b1" data-act="yesRedeem" data-id="${x.id}">ยืนยัน</button></div>`)},
+yesRedeem(d){const x=DEALS.find(v=>v.id===d.id);if(S.balance<x.cost||left(x.id)<=0){closeSheet();return}
+ S.stock[x.id]=(S.stock[x.id]||0)+1;
+ addTx('out','แลก '+x.title,x.cost);
+ S.coupons.unshift({id:'c'+Date.now(),deal:x.id,code:x.pre+(Math.random().toString(36)+'00000').slice(2,7).toUpperCase(),t:Date.now(),exp:Date.now()+30*864e5,used:false});
+ save();closeSheet();ui.ctab='all';go('coupons');toast('แลกสำเร็จ! คูปองพร้อมใช้แล้ว');burst(54,'coin');vib(20)},
+useC(d){const c=S.coupons.find(x=>x.id===d.id);if(c){c.used=true;save();render();toast('ใช้คูปองแล้ว')}},
+transfer(){sheet(`<h3>โอน Token</h3><p>คงเหลือ ${n0(S.balance)} TOKEN</p><label class="fld">รหัสผู้รับ<input id="trTo" autocomplete="off" placeholder="เช่น RUN12345"></label><label class="fld">จำนวน TOKEN<input id="trAmt" type="number" inputmode="numeric" min="1" placeholder="0"></label><div class="err" id="trErr"></div><div class="btns"><button class="b2" data-act="close">ยกเลิก</button><button class="b1" data-act="doTransfer">โอน</button></div>`)},
+doTransfer(){const to=$('#trTo').value.trim(),a=Math.floor(+$('#trAmt').value),e=$('#trErr');
+ if(!to){e.textContent='กรอกรหัสผู้รับ';return}if(!(a>0)){e.textContent='กรอกจำนวน TOKEN ให้ถูกต้อง';return}if(a>S.balance){e.textContent='Token ไม่พอ';return}
+ addTx('out','โอนให้ '+to,a);save();closeSheet();render();toast(`โอน ${n0(a)} TOKEN ให้ ${to} แล้ว`)},
+reset(){sheet(`<h3>รีเซ็ตข้อมูลทั้งหมด?</h3><p>Token ประวัติ และคูปองจะกลับเป็นค่าเริ่มต้น</p><div class="btns"><button class="b2" data-act="close">ยกเลิก</button><button class="b1 red" data-act="yesReset">รีเซ็ต</button></div>`)},
+yesReset(){try{localStorage.removeItem(KEY)}catch(e){}clearInterval(R.tm);try{if(R.geoId!=null)navigator.geolocation.clearWatch(R.geoId)}catch(e){}R=newRun();const pf=S.pref;S=seed();if(pf)S.pref=pf;ui.pf=null;Object.assign(ui,{cat:'food',filtered:false,q:'',range:30,ctab:'all',gq:'',gs:'all',gtab:'all',allRuns:false,all:{in:false,out:false}});save();closeSheet();go('home');toast('รีเซ็ตแล้ว')},
+join(d){if(S.gj.includes(d.id)){ACT.cxOpen({k:'g',id:d.id});return}const b=blockedMsg();if(b){toast(b);return}ui.rg={k:'g',id:d.id,lv:'',a1:false,a2:false};rgSheet()},
+checkin(d){const g=allGroups().find(x=>x.id===d.id);if(!g||!S.gj.includes(g.id)||S.ck[g.id]===todayKey())return;
+ geoCheck(g,()=>{if(S.ck[g.id]===todayKey())return;S.ck[g.id]=todayKey();addTx('in','เช็กอินกิจกรรมกลุ่ม',10);save();render();okFx();toast(T_('เช็กอินสำเร็จ +10 TOKEN','Checked in +10 TOKEN'))})},
+nearTog(){const n=NEAR();if(n.on){n.on=false;render();return}n.on=true;if(n.pos){render();return}getNear(()=>render())},
+nearR(d){NEAR().r=+d.v;render()},
+nearHome(){getNear(()=>render())},
+nearAll(){const n=NEAR();n.on=true;ui.gtab='events';ui.gs='all';ui.gq='';go('community')},
+geoRetry(){const g=ui.geo;if(g)geoCheck(g.it,g.onOk)},
+geoSim(){const g=ui.geo;if(MODE!=='admin'||!g)return;closeSheet();ui.geo=null;g.onOk()},
+gtab(d){ui.gtab=d.v;render()},gsport(d){ui.gs=d.v;render()},
+newGroup(){sheet(`<h3>สร้างกลุ่มชวนออกกำลังกาย</h3><label class="fld">ชื่อกลุ่ม<input id="gName" maxlength="40" autocomplete="off" placeholder="เช่น เตะบอลเย็นวันพุธ"></label><label class="fld">ประเภทกีฬา<select id="gSport" class="sel">${SPORTS.slice(1).map(s=>`<option value="${s[0]}">${s[1]}</option>`).join('')}</select></label><label class="fld">สถานที่<input id="gPlace" maxlength="40" autocomplete="off" placeholder="เช่น สวนลุมพินี"></label><label class="fld">วัน-เวลา<input id="gWhen" maxlength="30" autocomplete="off" placeholder="เช่น เสาร์ 17:00"></label><div class="err" id="gErr"></div><div class="btns"><button class="b2" data-act="close">ยกเลิก</button><button class="b1" data-act="doNewGroup">สร้างกลุ่ม</button></div>`)},
+doNewGroup(){const n=$('#gName').value.trim(),p=$('#gPlace').value.trim(),w=$('#gWhen').value.trim();
+ if(!n||!p){$('#gErr').textContent='กรอกชื่อกลุ่มและสถานที่';return}
+ const id='u'+Date.now();S.gc.unshift({id,sport:$('#gSport').value,name:n,place:p,when:w||'ตามตกลง',members:0,level:'ทุกระดับ'});S.gj.push(id);save();closeSheet();ui.gs='all';ui.gtab='mine';render();toast('สร้างกลุ่มแล้ว ชวนเพื่อนมาเล่นกัน!')},
+evjoin(d){const e=EVENTS.find(x=>x.id===d.id);if(!e)return;
+ if(S.ev.includes(e.id)||WL().includes(e.id)){ACT.cxOpen({k:'e',id:e.id});return}
+ const b=blockedMsg();if(b){toast(b);return}ui.rg={k:'e',id:e.id,lv:'',a1:false,a2:false};rgSheet()},
+rgLv(d){if(ui.rg){ui.rg.lv=d.v;rgSheet()}},rgA1(){if(ui.rg){ui.rg.a1=!ui.rg.a1;rgSheet()}},rgA2(){if(ui.rg){ui.rg.a2=!ui.rg.a2;rgSheet()}},
+rgGo(){const r=ui.rg;if(!r)return;const E=$('#rgErr'),it=rgItem(r.k,r.id);if(!it)return;const e=r.k==='e';
+ const er=blockedMsg()||(!r.lv?T_('เลือกระดับฝีมือ','Select your skill level'):!(r.a1&&r.a2)?T_('ต้องติ๊กยอมรับทั้งสองข้อ','Please tick both boxes'):'');
+ if(er){if(E)E.textContent=er;return}
+ if(e?(S.ev.includes(r.id)||WL().includes(r.id)):S.gj.includes(r.id))return;
+ const fee=e?it.cost||0:0,full=e&&it.taken>=it.cap;
+ if(!full&&fee&&S.balance<fee){if(E)E.textContent=T_('Token ไม่พอ ต้องใช้ ','Not enough Token. Need ')+fee+' TOKEN';return}
+ const key=rkey(r.k,r.id);RG()[key]={code:mkCode(r.k,r.id),t:Date.now(),lv:r.lv,st:full?'wait':'ok',pos:full?1+Math.floor(Math.random()*8):0};
+ if(e){if(full)WL().push(r.id);else{if(fee)addTx('out','สมัครอีเวนต์',fee);S.ev.push(r.id)}}else S.gj.push(r.id);
+ save();ui.rg=null;render();showTicket(key);okFx()},
+tk(d){const q=String(d.id).split(':'),k=q[0],id=q[1];if(!rgItem(k,id))return;const on=k==='e'?S.ev.includes(id)||WL().includes(id):S.gj.includes(id);if(!on)return;
+ if(!RG()[d.id]){RG()[d.id]={code:mkCode(k,id),t:Date.now(),lv:'b',st:'ok',pos:0};save()}showTicket(d.id)},
+cxOpen(d){const st=cxState(d.k,d.id);const wait=d.k==='e'&&WL().includes(d.id);if(!wait&&!st.ok){toast(st.msg);return}ui.cx={k:d.k,id:d.id,rs:'',step:1,txt:''};cxSheet()},
+cxRs(d){if(ui.cx){ui.cx.rs=d.v;cxSheet()}},cxBack(){if(ui.cx){ui.cx.step=1;cxSheet()}},
+cxNext(){const c=ui.cx;if(!c)return;if(!c.rs){const E=$('#cxErr');if(E)E.textContent=T_('เลือกเหตุผลก่อน','Please choose a reason');return}
+ if(c.k==='e'&&WL().includes(c.id)){ACT.cxGo();return}c.step=2;cxSheet()},
+cxGo(){const c=ui.cx;if(!c)return;const e=c.k==='e',wait=e&&WL().includes(c.id),E=$('#cxErr');
+ if(!wait){const v=(($('#cxTxt')||{}).value||'').trim();c.txt=v;if(!/^(ยกเลิก|cancel)$/i.test(v)){if(E)E.textContent=T_('พิมพ์คำว่า "ยกเลิก" ให้ถูกต้อง','Please type "CANCEL" exactly');return}
+  const st=cxState(c.k,c.id);if(!st.ok){closeSheet();ui.cx=null;toast(st.msg);return}}
+ const it=rgItem(c.k,c.id),key=rkey(c.k,c.id);let refund=0;
+ if(e){if(wait){const i=WL().indexOf(c.id);if(i>=0)WL().splice(i,1)}else{const i=S.ev.indexOf(c.id);if(i>=0){S.ev.splice(i,1);if(it&&it.cost){refund=it.cost;addTx('in','คืน Token อีเวนต์',refund)}}}}
+ else{const i=S.gj.indexOf(c.id);if(i>=0)S.gj.splice(i,1)}
+ delete RG()[key];let blk=false;if(!wait){CX().push({t:Date.now(),key,rs:c.rs});if(recentCx()>=2){S.blk=Date.now()+7*864e5;blk=true}}
+ save();ui.cx=null;closeSheet();render();toast(T_('ยกเลิกแล้ว','Cancelled')+(refund?T_(' คืน ',' · refunded ')+refund+' TOKEN':'')+(blk?T_(' · สมัครใหม่ได้ใน 7 วัน',' · sign-ups paused for 7 days'):''))},
+evck(d){const e=EVENTS.find(x=>x.id===d.id);if(!e||e.off!==0||S.evck[e.id]===todayKey()||!S.ev.includes(e.id))return;
+ geoCheck(e,()=>{if(S.evck[e.id]===todayKey())return;S.evck[e.id]=todayKey();addTx('in','เช็กอินอีเวนต์',30);save();render();okFx();toast(T_('เช็กอินสำเร็จ +30 TOKEN','Checked in +30 TOKEN'))})},
+pfColor(d){pfSync();ui.pf.color=+d.v;pfRefresh()},
+pfSport(d){pfSync();const a=ui.pf.sports,i=a.indexOf(d.v);if(i>=0)a.splice(i,1);else a.push(d.v);pfRefresh()},
+pfGoal(d){pfSync();ui.pf.goal=+d.v;pfRefresh()},
+saveProfile(){pfSync();const p=ui.pf,first=!S.profile,er=pfCheck(p,first),E=$('#pfErr');
+ if(er){if(E)E.textContent=er;if(first&&/ชื่อจริง|First|นามสกุล|เบอร์|Phone|เพศ|gender/i.test(er)){p.step=1;render();const e2=$('#pfErr');if(e2)e2.textContent=er}return}
+ if(first&&!p.ok){if(E)E.textContent=T_('ต้องติ๊กยอมรับเงื่อนไขก่อนสร้างบัญชี','Please accept the terms to create your account');return}
+ const nm=(p.name||'').trim();S.profile={name:nm.slice(0,20),first:(p.first||'').trim(),last:(p.last||'').trim(),phone:p.phone||'',gender:p.gender||'',color:p.color,sports:p.sports.slice(),created:first?Date.now():S.profile.created,consent:first?Date.now():(S.profile.consent||0)};
+ if(first||S.goal.type!=='km'||S.goal.val!==p.goal)S.goal={type:'km',val:p.goal};
+ save();ui.pf=null;closeSheet();
+ if(first){route='home';render();burst(70);vib(20);toast(T_('ยินดีต้อนรับ '+nm+'! วิ่งเพื่อสะสม Token ได้เลย','Welcome, '+nm+'! Run to start earning Token'))}else{render();toast(T_('บันทึกโปรไฟล์แล้ว','Profile saved'))}},
+pfNext(){pfSync();const p=ui.pf,E=$('#pfErr');if(p.step===1){const er=pfCheck(p,true);if(er){if(E)E.textContent=er;return}}p.step=Math.min(3,(p.step||1)+1);render();window.scrollTo(0,0)},
+pfBack(){pfSync();ui.pf.step=Math.max(1,(ui.pf.step||1)-1);render();window.scrollTo(0,0)},
+pfGender(d){pfSync();ui.pf.gender=d.v;pfRefresh()},
+pfAccept(){pfSync();ui.pf.ok=!ui.pf.ok;render()},
+editProfile(){ui.pf={first:S.profile.first||'',last:S.profile.last||'',phone:S.profile.phone||'',gender:S.profile.gender||'',name:S.profile.name,color:S.profile.color,sports:[...(S.profile.sports||[])],goal:S.goal.type==='km'?S.goal.val:5};ui.pfSheet=true;openPfSheet()},
+openG(d){ui.gid=d.id;go('group')},openD(d){ui.did=d.id;go('deal')},openE(d){ui.eid=d.id;go('event')},
+shareG(d){const g=allGroups().find(x=>x.id===d.id);if(!g)return;ACT.copyInv(T_('ชวนมาออกกำลังกายกลุ่ม ','Join our workout group ')+(LANG==='en'&&GEN[g.id]?GEN[g.id][0]:g.name)+' · '+g.when+' #RunToEarn')},
+shareE(d){const e=EVENTS.find(x=>x.id===d.id);if(!e)return;ACT.copyInv(T_('ชวนมาร่วมอีเวนต์ ','Join this event: ')+(LANG==='en'&&GEN[e.id]?GEN[e.id][0]:e.name)+' · '+evDate(e)+' '+e.time+' #RunToEarn')},
+copyInv(t){try{navigator.clipboard.writeText(t).then(()=>toast(T_('คัดลอกข้อความเชิญแล้ว','Invite text copied')),()=>toast(t))}catch(e){toast(t)}},
+claimChl(d,el){const pt0=ptOf(el);const g=allGroups().find(x=>x.id===d.id);if(!g||!S.gj.includes(g.id)||S.chl[g.id]===weekNo())return;const l=lbData(g);if((l.sum+l.me)/l.target<1){toast(T_('ยังไม่ถึงเป้ากลุ่ม','Group goal not reached yet'));return}
+ S.chl[g.id]=weekNo();addTx('in',T_('รางวัลชาเลนจ์กลุ่ม','Group challenge reward'),50);save();render();burst(50,'coin');flyCoins(pt0,10);vib(20);toast(T_('รับรางวัล +50 TOKEN แล้ว','Reward claimed: +50 TOKEN'))},
+pinGo(){const lk=getLock(),now=Date.now(),er=$('#pinErr');if(now<lk.until){er.textContent=T_('ลองใหม่ใน '+Math.ceil((lk.until-now)/1000)+' วินาที','Try again in '+Math.ceil((lk.until-now)/1000)+' s');return}
+ const v=($('#pinIn').value||'').trim();if(v&&hpin(v)===ADMIN_HASH){setLock({n:0,until:0});closeSheet();switchMode('admin');route='home';render();burst(40);toast(T_('เข้าโหมดผู้ดูแลแล้ว','Admin mode on'));return}
+ lk.n++;if(lk.n>=5){lk.until=now+60000;lk.n=0}setLock(lk);er.textContent=lk.until>now?T_('ใส่ผิดหลายครั้ง รอ 60 วินาที','Too many attempts. Wait 60 s'):T_('PIN ไม่ถูกต้อง','Incorrect PIN');$('#pinIn').value=''},
+exitAdmin(){switchMode('user');route='home';render();toast(T_('ออกจากโหมดผู้ดูแลแล้ว','Left admin mode'))},
+admAdd(){if(MODE!=='admin')return;addTx('in',T_('เติมโดยผู้ดูแล','Admin top-up'),1000);save();render();burst(30,'coin')},
+setLang(d){S.pref.lang=d.v;applyPref();save();closeSheet();render()},
+setDim(d){S.pref.dim=d.v==='1';save();render()},
+setTheme(d){S.pref.theme=d.v;applyPref();save();render()},
+close(){closeSheet()},
+closeBg(d,el){}};
+document.addEventListener('click',e=>{const bg=e.target.closest('.sheetbg');if(bg&&e.target===bg){closeSheet();return}
+ const el=e.target.closest('[data-act]');if(!el||el.dataset.act==='closeBg')return;const h=ACT[el.dataset.act];if(h)try{h(el.dataset,el)}catch(err){console.error(err);toast('เกิดข้อผิดพลาด ลองอีกครั้ง')}});
+let dbT;document.addEventListener('input',e=>{const id=e.target.id;if(id==='q'||id==='gq'){const v=e.target.value;clearTimeout(dbT);dbT=setTimeout(()=>{if(id==='q'){ui.q=v;drawDeals()}else{ui.gq=v;drawGroups()}},120)}});
+document.addEventListener('change',e=>{if(e.target.id==='range'){ui.range=+e.target.value;$('#chart').innerHTML=chart()}});
+document.addEventListener('visibilitychange',()=>{document.documentElement.classList.toggle('calm',document.hidden);clearInterval(cdT);if(document.hidden)return;calmOff();if(route==='rewards')cdT=setInterval(updCd,1000);{tick();if(R.st==='running')wakeOn();if(route==='run'&&$('#map')){cancelAnimationFrame(mapRaf);mapRaf=requestAnimationFrame(mapLoop)}}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+document.addEventListener('input',e=>{if(/^pf(Name|First|Last|Phone)$/.test(e.target.id)&&ui.pf){pfSync();if(e.target.id==='pfPhone')e.target.value=ui.pf.phone}});
+let tapN=0,tapT=0;document.addEventListener('click',e=>{if(route!=='home'||MODE==='admin'||!e.target.closest('.ttl'))return;const n=Date.now();tapN=n-tapT<1500?tapN+1:1;tapT=n;if(tapN>=7){tapN=0;openPin()}});
+applyPref();startTr();render();
+})();
+</script>
